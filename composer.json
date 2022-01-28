@@ -1,0 +1,17 @@
+{
+    "name": "vendor/common",
+    "description": "Description of project common.",
+    "authors": [
+        {
+            "name": "lucio",
+            "email": "lucio.rota@gmail.com"
+        }
+    ],
+    "require": {
+        "html2text/html2text": "dev-master",
+        "setasign/fpdi-fpdf": "dev-master",
+        "phpoffice/phpspreadsheet": "dev-master"
+    },
+    "require-dev": {
+    }
+}

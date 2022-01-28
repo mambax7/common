@@ -1,0 +1,75 @@
+/*
+ You may not change or alter any portion of this comment or credits
+ of supporting developers from this source code or any supporting source code
+ which is considered copyrighted (c) material of the original comment or credit authors.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+/*
+ * common module
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @package         common
+ * @since           1.00
+ * @author          luciorota, studiopas
+ * @version         svn:$Id$
+ */
+
+.common_headertable {
+    padding: 0;
+    border-bottom: 1px solid;
+    margin: 0 0 10px;
+}
+
+.common_modulename {
+    font-size: 10px;
+    text-align: left;
+    font-weight: bold;
+    padding-right: 0.3em;
+    line-height: 18px;
+}
+
+.common_breadcrumb {
+    font-size: 10px;
+    line-height: 18px;
+}
+
+.common_infotitle {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 250%;
+    line-height: 250%;
+    font-weight: bold;
+    display: block;
+}
+
+.common_infotext {
+    margin-bottom: 8px;
+    line-height: 130%;
+    display: block;
+}
+
+.common_adminlinks {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 18px;
+}
+
+.common_indexfooter {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.common_itemfooter {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}

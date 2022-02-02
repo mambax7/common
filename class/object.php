@@ -8,10 +8,7 @@ use Xmf\Request;
 defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once dirname(__DIR__) . '/include/common.php';
 
-
-
-abstract class CommonObject extends XoopsObject
-{
+abstract class CommonObject extends XoopsObject {
 
     /**
      * @var archivioHelper
@@ -23,8 +20,7 @@ abstract class CommonObject extends XoopsObject
     /**
      * constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->db = \XoopsDatabaseFactory::getDatabaseConnection();
         $this->commonHelper = \Xmf\Module\Helper::getHelper('common');
         //
@@ -49,10 +45,9 @@ abstract class CommonObject extends XoopsObject
      * @param mixed  $value value to assign
      * @param bool   $not_gpc
      */
-    public function setVar($key, $value, $not_gpc = false)
-    {
+    public function setVar($key, $value, $not_gpc = false) {
         if (!empty($key) && isset($value) && isset($this->vars[$key])) {
-            $this->vars[$key]['value'] =& $value;
+            $this->vars[$key]['value'] = & $value;
             $this->vars[$key]['not_gpc'] = $not_gpc;
             $this->vars[$key]['changed'] = true;
             $this->setDirty();
@@ -70,8 +65,7 @@ abstract class CommonObject extends XoopsObject
      *
      * @return  array
      */
-    public function getValues($keys = null, $format = 's', $maxDepth = 1)
-    {
+    public function getValues($keys = null, $format = 's', $maxDepth = 1) {
         xoops_load('XoopsUserUtility');
         //
         $values = parent::getValues($keys, $format, $maxDepth);
@@ -96,8 +90,7 @@ abstract class CommonObject extends XoopsObject
      *
      * @return  array
      */
-    public function setValues($default = array(), $hash = 'default')
-    {
+    public function setValues($default = array(), $hash = 'default') {
         $this->setVar('weight', Request::getInt('weight', 0, $hash));
         $this->setVar('category_id', Request::getInt('category_id', 0, $hash));
         //
@@ -106,8 +99,7 @@ abstract class CommonObject extends XoopsObject
 
 }
 
-abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
-{
+abstract class CommonObjectHandler extends XoopsPersistableObjectHandler {
 
     /**
      * @var commonHelper
@@ -117,14 +109,12 @@ abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
     /**
      * @param null|object   $db
      */
-    public function __construct($db = null, $table = '', $className = '', $keyName = '', $identifierName = '')
-    {
+    public function __construct($db = null, $table = '', $className = '', $keyName = '', $identifierName = '') {
         parent::__construct($db, $table, $className, $keyName, $identifierName);
         $this->commonHelper = \Xmf\Module\Helper::getHelper('common');
     }
 
-    public function create($isNew = true)
-    {
+    public function create($isNew = true) {
         $object = parent::create($isNew);
         return $object;
     }
@@ -133,6 +123,7 @@ abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
      * *#@+
      * Methods of write handler {@link XoopsObjectWrite}
      */
+
     /**
      * insert an object into the database
      *
@@ -140,19 +131,16 @@ abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
      * @param  bool        $force  flag to force the query execution despite security settings
      * @return mixed       object ID
      */
-    public function insert(XoopsObject $object, $force = true)
-    {
+    public function insert(XoopsObject $object, $force = true) {
         if ($object->isNew()) {
             // created_uid, created
             $object->setVar('created', date(_DBTIMESTAMPSTRING));
             $object->setVar('created_uid', !empty($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0);
             $object->setVar('modified_uid', 0);
-
         } else {
             // modified_uid, modified
             $object->setVar('modified', date(_DBTIMESTAMPSTRING));
             $object->setVar('modified_uid', !empty($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getVar('uid') : 0);
-
         }
 //        $handler = $this->loadHandler('write');
 //        return $handler->insert($object, $force);
@@ -177,16 +165,14 @@ abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
      * @param null
      * @return int reference to the object
      */
-    public function getInsertId()
-    {
+    public function getInsertId() {
         return $this->db->getInsertId();
     }
 
-    public function deleteAll(CriteriaElement $criteria = null, $force = true, $asObject = false)
-    {
+    public function deleteAll(CriteriaElement $criteria = null, $force = true, $asObject = false) {
         return parent::deleteAll($criteria, $force, true); // delete ALWAYS as object
     }
-    
+
     public function &getObjects(CriteriaElement $tempCriteria = null, $id_as_key = false, $as_object = true) {
         $criteria = new \CriteriaCompo();
         $criteria->setSort('weight');
@@ -278,5 +264,27 @@ abstract class CommonObjectHandler extends XoopsPersistableObjectHandler
         //
         return $values;
     }
-    
+
+    /**
+     * clone an existing object but as s new object
+     *
+     * @param  XoopsObject $object {@link XoopsObject} reference to object
+     * @return XoopsObject 
+     */
+    public function clone(XoopsObject $object) {
+        $notClonableKeys = [$this->keyName];
+
+        $class = get_class($object);
+        $cloneObject = new $this->className();
+        foreach ($object->vars as $key => $var) {
+            if (in_array($key, $notClonableKeys))
+                continue;
+            $cloneObject->setVar($key, $var['value']);
+        }
+        // need this to notify the handler class that this is a newly created object
+        $cloneObject->setNew();
+        //
+        return $cloneObject;
+    }
+
 }

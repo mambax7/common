@@ -1,4 +1,4 @@
-CREATE TABLE mod_common_aziendas (
+CREATE TABLE mod_common_default (
     id                      int(10) unsigned NOT NULL AUTO_INCREMENT,
     category_id             int(10) unsigned,
     nome                    varchar(255) NOT NULL DEFAULT '',

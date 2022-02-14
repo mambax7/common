@@ -101,7 +101,7 @@ $modversion['adminmenu']  = "admin/menu.php";
 
 
 // Menu things
-$modversion['hasMain'] = 0;
+$modversion['hasMain'] = 1;
 
 
 

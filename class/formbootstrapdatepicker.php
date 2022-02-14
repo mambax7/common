@@ -1,12 +1,13 @@
 <?php
-/*
- You may not change or alter any portion of this comment or credits
- of supporting developers from this source code or any supporting source code
- which is considered copyrighted (c) material of the original comment or credit authors.
 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+/*
+  You may not change or alter any portion of this comment or credits
+  of supporting developers from this source code or any supporting source code
+  which is considered copyrighted (c) material of the original comment or credit authors.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 /*
  * common module
@@ -18,7 +19,9 @@
  * @author          luciorota
  * @version         svn:$Id$
  */
+
 namespace common;
+
 use Xmf\Module\Helper;
 
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
@@ -27,12 +30,12 @@ include_once dirname(__DIR__) . '/include/common.php';
 xoops_loadLanguage('formdatepicker', 'common');
 xoops_load('XoopsFormLoader');
 
-class FormBootstrapDatepicker extends \XoopsFormText
-{
+class FormBootstrapDatepicker extends \XoopsFormText {
+
     private $_id;
-	private $_startDate = null;
-	private $_endDate = null;
-	private $_langcode = null;
+    private $_startDate = null;
+    private $_endDate = null;
+    private $_langcode = null;
 
     /**
      * Options
@@ -40,9 +43,9 @@ class FormBootstrapDatepicker extends \XoopsFormText
      * @var array
      * @access private
      */
-    public $_options = array();
+    public $_options = [];
 
-     /**
+    /**
      * Constructor
      *
      * @param string $caption   Caption
@@ -51,26 +54,26 @@ class FormBootstrapDatepicker extends \XoopsFormText
      * @param bool   $maxlength "maxlength" attribute
      * @param int    $min_length should be > 1
      */
-    public function __construct($caption, $name, $value = '', $startDate = null, $endDate = null)
-    {
+    public function __construct($caption, $name, $value = '', $startDate = null, $endDate = null) {
         $this->setCaption($caption);
         $this->setName($name);
+        $this->setId($name);
         $this->setValue($value);
-		$this->_startDate = $startDate;
-		$this->_endDate = $endDate;
-		$this->_langcode = str_replace('_', '-' ,_LANGCODE);
-		//
-		$this->addOption('language', "{$this->_langcode}");
-		$this->addOption('todayBtn', 'linked');
-		$this->addOption('daysOfWeekHighlighted', '0');
-		$this->addOption('calendarWeeks', true);
-		$this->addOption('todayHighlight', true);
-		if (!is_null($startDate)) {
-			$this->addOption('startDate', $startDate);
-		}
-		if (!is_null($endDate)) {
-			$this->addOption('endDate', $endDate);
-		}
+        $this->_startDate = $startDate;
+        $this->_endDate = $endDate;
+        $this->_langcode = str_replace('_', '-', _LANGCODE);
+        //
+        $this->addOption('language', "{$this->_langcode}");
+        $this->addOption('todayBtn', 'linked');
+        $this->addOption('daysOfWeekHighlighted', '0');
+        $this->addOption('calendarWeeks', true);
+        $this->addOption('todayHighlight', true);
+        if (!is_null($startDate)) {
+            $this->addOption('startDate', $startDate);
+        }
+        if (!is_null($endDate)) {
+            $this->addOption('endDate', $endDate);
+        }
     }
 
     /**
@@ -78,9 +81,8 @@ class FormBootstrapDatepicker extends \XoopsFormText
      *
      * @param string $name "name" attribute for the element
      */
-    function setId()
-    {
-        $this->_id = md5(uniqid(rand(), true));
+    function setId($name = null) {
+        $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
     }
 
     /**
@@ -90,8 +92,7 @@ class FormBootstrapDatepicker extends \XoopsFormText
      *
      * @return string "name" attribute
      */
-    function getId($encode = true)
-    {
+    function getId($encode = true) {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
         }
@@ -105,8 +106,7 @@ class FormBootstrapDatepicker extends \XoopsFormText
      * @param string $name  "name"
      * @param string $value "value"
      */
-    public function addOption($name = '', $value)
-    {
+    public function addOption($name = '', $value) {
         if ($name != '') {
             $this->_options[$name] = $value;
         } else {
@@ -119,8 +119,7 @@ class FormBootstrapDatepicker extends \XoopsFormText
      *
      * @param array $options Associative array of name->value pairs
      */
-    public function addOptionArray($options)
-    {
+    public function addOptionArray($options) {
         if (is_array($options)) {
             foreach ($options as $k => $v) {
                 $this->addOption($k, $v);
@@ -133,9 +132,8 @@ class FormBootstrapDatepicker extends \XoopsFormText
      *
      * @return array Associative array of name->value pairs
      */
-    public function getOptions()
-    {
-        $rets = array();
+    public function getOptions() {
+        $rets = [];
         foreach ($this->_options as $name => $value) {
             $rets[$name] = $value;
         }
@@ -147,8 +145,7 @@ class FormBootstrapDatepicker extends \XoopsFormText
      *
      * @return string HTML
      */
-    function render()
-    {
+    function render() {
         $html = "\n";
         // common code
         static $isCommonFormDatepickerIncluded = false;
@@ -156,9 +153,9 @@ class FormBootstrapDatepicker extends \XoopsFormText
             if (!$isCommonFormDatepickerIncluded) {
                 $isCommonFormDatepickerIncluded = true;
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
-				$GLOBALS['xoTheme']->addStylesheet(COMMON_JS_URL . '/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker3.min.css');
+                $GLOBALS['xoTheme']->addStylesheet(COMMON_JS_URL . '/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker3.min.css');
                 $GLOBALS['xoTheme']->addScript(COMMON_JS_URL . "/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js");
-				$GLOBALS['xoTheme']->addScript(COMMON_JS_URL . "/bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.{$this->_langcode}.min.js");
+                $GLOBALS['xoTheme']->addScript(COMMON_JS_URL . "/bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.{$this->_langcode}.min.js");
             }
         } else {
             if (!$isCommonFormDatepickerIncluded) {
@@ -174,16 +171,20 @@ class FormBootstrapDatepicker extends \XoopsFormText
         $css = "";
         $js = "";
         if (is_object($GLOBALS['xoTheme'])) {
-            $GLOBALS['xoTheme']->addStylesheet('', array(), $css);
-            $GLOBALS['xoTheme']->addScript('','', $js);
+            $GLOBALS['xoTheme']->addStylesheet('', [], $css);
+            $GLOBALS['xoTheme']->addScript('', '', $js);
         } else {
             $html .= "<style type='text/css'>\n{$css}\n</style>\n";
             $html .= "<script type='text/javascript'>\n{$js}\n</script>\n";
         }
-        $html .= parent::render();
+        $html .= "
+            <div class='input-group date'>
+                <input type='text' name='{$this->getName()}' title='{$this->getTitle()}' id='{$this->getId()}' class='form-control {$this->getClass()}'><span class='input-group-addon'><i class='glyphicon glyphicon-th'></i></span>
+            </div>
+            ";
         $html .= "
             <script>
-			    $('input[name=\"{$this->getName()}\"]').datepicker({\n";
+                $('input[name=\"{$this->getName()}\"]').datepicker({\n";
         // set options - start
         foreach ($this->getOptions() as $name => $value) {
             $html .= "{$name}: ";
@@ -197,10 +198,9 @@ class FormBootstrapDatepicker extends \XoopsFormText
             $html .= "\n";
         }
         $html .= "
-				});
+                });
             </script>\n";
         return $html;
-//        $html .= "<input type='text' name='{$this->getName()}' title='{$this->getTitle()}' id='{$this->getName()}' class='{$this->getClass()}' size='{$this->getSize()}' maxlength='{$this->getMaxlength()}' value='{$this->getValue()}' {$this->getExtra()} />";
-        return $html;
     }
+
 }

@@ -43,6 +43,8 @@ define('COMMON_JS_URL', COMMON_URL . '/assets/js');
 define('COMMON_CSS_URL', COMMON_URL . '/assets/css');
 define('COMMON_ADMIN_URL', COMMON_URL . '/admin');
 define('COMMON_ROOT_PATH', dirname(__DIR__));
+define('COMMON_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' . COMMON_DIRNAME); // WITHOUT Trailing slash
+define('COMMON_UPLOAD_PATH', XOOPS_UPLOAD_PATH . '/' . COMMON_DIRNAME); // WITHOUT Trailing slash
 
 $commonHelper->loadLanguage('common');
 

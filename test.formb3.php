@@ -1,0 +1,127 @@
+<?php
+
+$currentFile = basename(__FILE__);
+include __DIR__ . '/header.php';
+
+$xoopsOption['template_main'] = "{$commonHelper->getModule()->dirname()}_test.form.tpl";
+include XOOPS_ROOT_PATH . '/header.php';
+
+//$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
+$xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
+//$xoTheme->addStylesheet(COMMON_CSS_URL . '/' . $currentFile . '.css'); // ie: index.php.css
+$xoTheme->addScript(COMMON_JS_URL . '/module.js');
+//$xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
+// template: common\breadcrumb
+xoops_load('breadcrumb', 'common');
+$breadcrumb = new common\breadcrumb();
+$breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
+$xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
+
+// template: isAdmin
+$GLOBALS['xoopsTpl']->assign('$isAdmin', $isAdmin);
+
+xoops_load('XoopsUserUtility');
+
+
+
+xoops_load('XoopsRequest');
+$op = XoopsRequest::getCmd('op', '');
+switch ($op) {
+    default:
+        break;
+
+    case 'save':
+        //var_dump($_POST);
+        break;
+}
+
+
+
+// template: form
+xoops_load('XoopsFormLoader');
+xoops_load('ThemedForm', 'common');
+$formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
+$formObj->setExtra('enctype="multipart/form-data"');
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormB3Datepicker', 'common');
+$formObj->addElement(new common\FormB3Datepicker('FormB3Datepicker', 'FormB3Datepicker'));
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormB3SelectGroup', 'common');
+$FormB3SelectGroup = XoopsRequest::getArray('FormB3SelectGroup', []);
+$formObj->addElement(new common\FormB3SelectGroup('FormB3SelectGroup<br>multiple true', 'FormB3SelectGroup', true, $FormB3SelectGroup, 10, true));
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormB3MultiSelect', 'common');
+$FormB3MultiSelect = XoopsRequest::getArray('FormB3MultiSelect', []);
+$testFormB3MultiSelect = new common\FormB3MultiSelect('FormB3MultiSelect_3', 'FormB3MultiSelect_3', $FormB3MultiSelect, 3, true);
+for ($i = 1; $i <= 10; $i++) {
+    $testFormB3MultiSelect->addOption("{$i}", "name #{$i}", "description #{$i}");
+}
+$formObj->addElement($testFormB3MultiSelect);
+
+$testFormB3MultiSelect = new common\FormB3MultiSelect('FormB3MultiSelect_0', 'FormB3MultiSelect_0', $FormB3MultiSelect, 0, true);
+for ($i = 1; $i <= 10; $i++) {
+    $testFormB3MultiSelect->addOption("{$i}", "value #{$i}", "description #{$i}");
+}
+$formObj->addElement($testFormB3MultiSelect);
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormB3Tagsinput', 'common');
+$FormB3Tagsinput = XoopsRequest::getArray('FormB3Tagsinput', []);
+$availableTags = ["vanessa", "maria", "gaia"];
+$freeInput = true;
+$limit = 0;
+$maxChars = 255;
+$allowDuplicates = false;
+$tagClass = 'label label-success';
+$formObj->addElement(new common\FormB3Tagsinput('FormB3Tagsinput', 'FormB3Tagsinput', $FormB3Tagsinput, $availableTags, $freeInput, $limit, $maxChars, $allowDuplicates, $tagClass));
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormB3Toggle', 'common');
+$FormB3Toggle = XoopsRequest::getBool('FormB3Toggle', true);
+$on = _YES;
+$off = _NO;
+$size = 'normal';
+$onstyle = 'primary';
+$offstyle = 'default';
+$formObj->addElement(new common\FormB3Toggle('FormB3Toggle', 'FormB3Toggle', $FormB3Toggle, $on, $off, $size, $onstyle, $offstyle));
+
+
+
+$formObj->addElement(new \XoopsFormHidden('op', 'save'));
+$button_submit = new \XoopsFormButton('', 'submit', _SUBMIT, 'submit');
+$button_submit->setExtra('onclick="this.form.elements.op.value=\'save\'"');
+$formObj->addElement($button_submit);
+
+$xoopsTpl->assign('form', $formObj->render());
+
+
+
+include __DIR__ . '/footer.php';

@@ -1080,8 +1080,8 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @param string $name "name" attribute for the element
              */
-            function setId($name) {
-                $this->_id = md5(uniqid(rand(), true));
+            function setId($name = null) {
+                $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
             }
 
             /**

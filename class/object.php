@@ -46,7 +46,7 @@ abstract class CommonObject extends XoopsObject {
         //
         $this->initVar('id', XOBJ_DTYPE_INT, null, false); // INT(10) UNSIGNED NOT NULL AUTO_INCREMENT
         $this->initVar('weight', XOBJ_DTYPE_INT, 0, false); // INT(10) UNSIGNED NULL DEFAULT 0
-        $this->initVar('category_id', XOBJ_DTYPE_INT, 0, false); INT(10) UNSIGNED NOT NULL, is the parent category id, set to 0 (default) if a no category/root record
+        $this->initVar('category_id', XOBJ_DTYPE_INT, 0, false); // INT(10) UNSIGNED NOT NULL, is the parent category id, set to 0 (default) if a no category/root record
         //
         $this->initVar('created', XOBJ_DTYPE_OTHER, date(_DBTIMESTAMPSTRING), false); // DATETIME: 'YYYY-MM-DD HH:MM:SS'
         $this->initVar('created_uid', XOBJ_DTYPE_INT, 0, false); //  MEDIUMINT(8) UNSIGNED NULL DEFAULT NULL

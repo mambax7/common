@@ -7,20 +7,25 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-xs-8">
-                <ul>
-                <{foreach from=$tests key=id item=test}>
-                    <li>
-                        <{$test|@var_dump}>
-                        <br>
-                        <a href="?op=edit&id=<{$id}>"><{$smarty.const._EDIT}></a>
-                        &nbsp;
-                        <a href="?op=delete&id=<{$id}>"><{$smarty.const._DELETE}></a>
-                    </li>
-                <{/foreach}>
-                </ul>
+            <div class="col-md-9">
+                <table class="table table-condensed table-hover">
+                    <tbody>
+                    <{foreach from=$tests key=id item=test}>
+                        <tr>
+                        <{foreach from=$test|@array_keys item=key}>
+                            <td><span title="<{$key}>"><{$test[$key]}></span></td>
+                        <{/foreach}>
+                            <th>
+                                <a href="?op=edit&id=<{$id}>"><{$smarty.const._EDIT}></a>
+                                &nbsp;
+                                <a href="?op=delete&id=<{$id}>"><{$smarty.const._DELETE}></a>                
+                            </th>
+                        </tr>
+                    <{/foreach}>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-xs-4">
+            <div class="col-md-3">
                 <{$form}>
             </div>
         </div>

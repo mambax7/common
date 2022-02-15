@@ -4,6 +4,7 @@
  * @see http://www.php-fig.org/psr/psr-4/examples/
  */
 spl_autoload_register(function ($class) {
+
     // project-specific namespace prefix
     $prefix = 'XoopsModules\\' . ucfirst(basename(dirname(__DIR__)));
 
@@ -27,6 +28,6 @@ spl_autoload_register(function ($class) {
 
     // if the file exists, require it
     if (file_exists($file)) {
-        require $file;
+        include_once $file;
     }
 });

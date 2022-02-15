@@ -76,6 +76,9 @@ $formObj->addElement(new common\FormTelephonenumber('FormTelephonenumber', 'Form
 xoops_load('FormEmail', 'common');
 $formObj->addElement(new common\FormEmail('FormEmail', 'FormEmail'));
 
+xoops_load('FormNumber', 'common');
+$formObj->addElement(new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1));
+
 
 
 $formObj->insertBreak();

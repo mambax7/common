@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/test.fileform.php</file>
-            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/class/mediauploader.php</file>
-            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/class/formb3fileinput.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/preloads/autoloader.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/templates/common_test.commonobject.tpl</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/test.form.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/templates/common_index.tpl</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/class/Testobject.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/class/formnumber.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/index.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/test.commonobject.php</file>
+            <file>file:/C:/wamp64/www/passrl.xoops/modules/common/class/TestcategoryHandler.php</file>
         </group>
     </open-files>
 </project-private>

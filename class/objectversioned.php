@@ -13,11 +13,6 @@ include_once dirname(__DIR__) . '/include/common.php';
 abstract class CommonVersionedobject extends CommonObject
 {
 
-    /**
-     * @var archivioHelper
-     * @access public
-     */
-    var $archivioHelper;
     var $itemName;
 
     /**
@@ -49,18 +44,8 @@ abstract class CommonVersionedobject extends CommonObject
      */
     public function setVar($key, $value, $not_gpc = false)
     {
-//        if (!empty($key) && isset($value) && isset($this->vars[$key])) {
-//            $this->vars[$key]['value'] =& $value;
-//            $this->vars[$key]['not_gpc'] = $not_gpc;
-//            $this->vars[$key]['changed'] = true;
-//            $this->setDirty();
-//        }
-//        if (!empty($key) && is_null($value) && isset($this->vars[$key])) {
-//            $this->vars[$key]['value'] = null;
-//            $this->vars[$key]['not_gpc'] = $not_gpc;
-//            $this->vars[$key]['changed'] = false;
-//            $this->setDirty();
-//        }
+//TODO think about this method
+        return parent::setVar($key, $value, $not_gpc);
     }
 
     /**
@@ -70,13 +55,9 @@ abstract class CommonVersionedobject extends CommonObject
      */
     public function getValues($keys = null, $format = 's', $maxDepth = 1)
     {
-        xoops_load('XoopsUserUtility');
-        //
         $values = parent::getValues($keys, $format, $maxDepth);
-//        $values['created_uid_uname'] = \XoopsUserUtility::getUnameFromId($values['created_uid']);
-//        $values['modified_uid_uname'] = \XoopsUserUtility::getUnameFromId($values['modified_uid']);
-//        $values['created_date_data'] = \XoopsLocal::formatTimestamp($values['created'], 'l');
-//        $values['modified_date_data'] = \XoopsLocal::formatTimestamp($values['modified'], 'l');
+        $values['updated_uid_uname'] = \XoopsUserUtility::getUnameFromId($values['updated_uid']);
+        $values['updated_date_data'] = \XoopsLocal::formatTimestamp($values['updated'], 'l');
         //
         return $values;
     }
@@ -86,7 +67,7 @@ abstract class CommonVersionedobject extends CommonObject
      *
      * @return  array
      */
-    public function setValues($default = array(), $hash = 'default')
+    public function setValues($default = [], $hash = 'default')
     {
 //        $this->setVar('weight', Request::getInt('weight', 0, $hash));
 //        $this->setVar('category_id', Request::getInt('category_id', 0, $hash));
@@ -94,19 +75,19 @@ abstract class CommonVersionedobject extends CommonObject
         return true;
     }
     
-    public function getPrevObj() // precedente
+    public function getPrevObj() // get previous object version
     {
 //TODO
     }
-    public function getNextObj() // successivo
+    public function getNextObj() // get next object version
     {
 //TODO
     }
-    public function getLatestObj() // il più recente (next_id IS NULL)
+    public function getLatestObj() // get latest/most recent object version (next_id IS NULL)
     {
 //TODO
     }
-    public function getOldestObj() // il più vecchio (prev_id IS NULL)
+    public function getOldestObj() // get oldest/first object version (prev_id IS NULL)
     {
 //TODO
     }

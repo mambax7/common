@@ -24,7 +24,7 @@ include_once dirname(__DIR__) . '/include/common.php';
  * ) ENGINE=MyISAM;
  *
  * 
- *  * $breadcrumb = new common\breadcrumb(); */
+ */
 
 abstract class CommonObject extends XoopsObject {
 
@@ -32,7 +32,7 @@ abstract class CommonObject extends XoopsObject {
      * @var archivioHelper
      * @access public
      */
-    var $archivioHelper;
+    var $commonHelper;
     var $itemName;
 
     /**
@@ -84,8 +84,6 @@ abstract class CommonObject extends XoopsObject {
      * @return  array
      */
     public function getValues($keys = null, $format = 's', $maxDepth = 1) {
-        xoops_load('XoopsUserUtility');
-        //
         $values = parent::getValues($keys, $format, $maxDepth);
         //        
         $dateTimeObj = DateTime::createFromFormat(_DBTIMESTAMPSTRING, $values['created']);
@@ -108,7 +106,7 @@ abstract class CommonObject extends XoopsObject {
      *
      * @return  array
      */
-    public function setValues($default = array(), $hash = 'default') {
+    public function setValues($default = [], $hash = 'default') {
         $this->setVar('weight', Request::getInt('weight', 0, $hash));
         $this->setVar('category_id', Request::getInt('category_id', 0, $hash));
         //

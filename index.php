@@ -23,7 +23,7 @@ $GLOBALS['xoopsTpl']->assign('$isAdmin', $isAdmin);
 xoops_load('XoopsUserUtility');
 
 // template: tests
-$tests = array();
+$tests = [];
 $files = scandir(__DIR__);
 foreach ($files as $file) {
     $re = '/test\.([\S]*)\.php/m';

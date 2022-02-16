@@ -200,10 +200,10 @@ class FormB3CheckBoxObject extends \XoopsFormElement
 //                $GLOBALS['xoTheme']->addScript('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js');
 //                $GLOBALS['xoTheme']->addScript('https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js');
                 //
-                $GLOBALS['xoTheme']->addScript('', array(), $commonJs);
+                $GLOBALS['xoTheme']->addScript('', [], $commonJs);
                 $isCommonFormB3CheckBoxObjectIncluded = true;
             }
-            $GLOBALS['xoTheme']->addScript('', array(), $headJs);
+            $GLOBALS['xoTheme']->addScript('', [], $headJs);
         } else {
             if (!$isCommonFormB3CheckBoxObjectIncluded) {
 //                $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
@@ -263,11 +263,6 @@ class FormB3CheckBoxObject extends \XoopsFormElement
         $html .= "<br>\n";
         $ret .= $html . "\n";
         // add js
-//        $js .= "<script type='text/javascript'>\n";
-//        $js .= "jQuery(document).ready(function($) {
-//                $('#" . $this->getName() . "').multiSelect();;
-//        });";
-//        $js .= "</script>\n";
         $ret .= $js . "\n";
         
         return $ret;

@@ -49,6 +49,24 @@ $formObj->insertBreak();
 
 
 
+xoops_load('FormB3CheckBoxObject', 'common');
+$TestObjectHandler = new \XoopsModules\Common\TestobjectHandler();
+$FormB3CheckBoxObject = new common\FormB3CheckBoxObject(
+        'FormB3CheckBoxObject',
+        'FormB3CheckBoxObject',
+        $TestObjectHandler,
+        ['id column', 'name column', 'weight column', 'created in date'],
+        ['id', 'name', 'weight', 'created_date_data'],
+        null, null, 10
+);
+$formObj->addElement($FormB3CheckBoxObject);
+
+
+
+$formObj->insertBreak();
+
+
+
 xoops_load('FormB3Datepicker', 'common');
 $formObj->addElement(new common\FormB3Datepicker('FormB3Datepicker', 'FormB3Datepicker'));
 
@@ -58,6 +76,12 @@ $formObj->insertBreak();
 
 
 
+xoops_load('FormB3Doubleselect', 'common');
+$valuesFrom = [0 => 'value 0', 1 => 'value 1', 5 => 'value 5'];
+$valuesTo = [2 => 'value 2', 3 => 'value 3', 4 => 'value 4', 7 => 'value 7'];
+$FormB3Doubleselect = new common\FormB3Doubleselect('FormB3Doubleselect', 'FormB3Doubleselect', $valuesFrom , $valuesTo , 5, 'from', 'to');
+$formObj->addElement($FormB3Doubleselect);
+        
 xoops_load('FormB3SelectGroup', 'common');
 $FormB3SelectGroup = XoopsRequest::getArray('FormB3SelectGroup', []);
 $formObj->addElement(new common\FormB3SelectGroup('FormB3SelectGroup<br>multiple true', 'FormB3SelectGroup', true, $FormB3SelectGroup, 10, true));
@@ -65,6 +89,18 @@ $formObj->addElement(new common\FormB3SelectGroup('FormB3SelectGroup<br>multiple
 
 
 $formObj->insertBreak();
+
+
+
+xoops_load('FormB3Elementrow', 'common');
+xoops_load('FormTelephonenumber', 'common');
+xoops_load('FormEmail', 'common');
+xoops_load('FormUrl', 'common');
+$FormB3Elementrow = new common\FormB3Elementrow('FormB3Elementrow', 3);
+$FormB3Elementrow->addElement(new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, ''));
+$FormB3Elementrow->addElement(new common\FormEmail('FormEmail', 'FormEmail', ''));
+$FormB3Elementrow->addElement(new common\FormUrl('FormUrl', 'FormUrl', ''));
+$formObj->addElement($FormB3Elementrow);
 
 
 

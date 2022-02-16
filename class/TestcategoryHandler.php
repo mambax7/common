@@ -48,13 +48,13 @@ class TestcategoryHandler extends \CommonObjectHandler {
     /**
      * get a array of categorys objects|arrays as an ordered list
      *
-     * @param  CriteriaElement|CriteriaCompo $criteria  {@link CriteriaElement} to match
-     * @param  bool            $as_object  flag indicating as object, otherwise as array
-     * @param  bool            $id_as_key use the ID as key for the array
-     * @param  int             $category_id
-     * @param  int             $level
+     * @param  CriteriaElement|CriteriaCompo $tempCriteria  {@link CriteriaElement} to match
+     * @param  bool             $as_object  flag indicating as object, otherwise as array
+     * @param  bool             $id_as_key use the ID as key for the array
+     * @param  int              $category_id
+     * @param  int              $level
 
-     * @return array           associative array('id' =>, 'parentId' =>, 'level' =>,'element' =>) where element are objects/array {@link XoopsObject}
+     * @return array            associative array('id' =>, 'parentId' =>, 'level' =>,'element' =>) where element are objects/array {@link XoopsObject}
      */
     public function getObjectTreeToArray(\CriteriaElement $tempCriteria = null, $id_as_key = false, $as_object = true, $category_id = 0, $level = 0) {
         $criteria = new \CriteriaCompo();

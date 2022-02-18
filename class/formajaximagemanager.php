@@ -35,13 +35,13 @@ $xoopsLogger->activated = false;
 // Disable error reporting
 error_reporting(0);
 
-define("FORMFILEINPUTBOOTSTRAP3_FILENAME", basename($currentPath));
-define("FORMFILEINPUTBOOTSTRAP3_PATH", dirname($currentPath));
-define("FORMFILEINPUTBOOTSTRAP3_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMFILEINPUTBOOTSTRAP3_URL", XOOPS_URL . '/' . FORMFILEINPUTBOOTSTRAP3_REL_URL . '/' . FORMFILEINPUTBOOTSTRAP3_FILENAME);
-define("FORMFILEINPUTBOOTSTRAP3_JS_REL_URL", FORMFILEINPUTBOOTSTRAP3_REL_URL . "/formajaximagemanager/js");
-define("FORMFILEINPUTBOOTSTRAP3_CSS_REL_URL", FORMFILEINPUTBOOTSTRAP3_REL_URL . "/formajaximagemanager/css");
-define("FORMFILEINPUTBOOTSTRAP3_IMAGES_REL_URL", FORMFILEINPUTBOOTSTRAP3_REL_URL . "/formajaximagemanager/images");
+define("FORMAJAXIMAGEMANAGER_FILENAME", basename($currentPath));
+define("FORMAJAXIMAGEMANAGER_PATH", dirname($currentPath));
+define("FORMAJAXIMAGEMANAGER_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
+define("FORMAJAXIMAGEMANAGER_URL", XOOPS_URL . '/' . FORMAJAXIMAGEMANAGER_REL_URL . '/' . FORMAJAXIMAGEMANAGER_FILENAME);
+define("FORMAJAXIMAGEMANAGER_JS_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/js");
+define("FORMAJAXIMAGEMANAGER_CSS_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/css");
+define("FORMAJAXIMAGEMANAGER_IMAGES_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/images");
 
 $dirname = basename(dirname(__DIR__));
 
@@ -50,7 +50,7 @@ xoops_loadLanguage('formajaximagemanager', $dirname);
 // Ajax check
 if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') || $_GET['ajax'] == 1) {
 	/**
-	 * 	ajax request
+	 *  ajax request
 	 *  render JSON output
 	 */
 
@@ -59,7 +59,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $module_handler = xoops_gethandler('module');
     $systemModule = $module_handler->getByDirname('system');
     $systemModuleId = $systemModule->id;
-    $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
+    $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
     $userIsAdmin = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin($systemModuleId));
 
     $imgcat_handler = xoops_gethandler('imagecategory');
@@ -90,12 +90,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($imgcat_handler->getCount($criteria) == 0) {
                 // ERROR: no imgcats
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = false;
-                $ret['message'] = _FAIM_ERROR_NO_IMGCATS;
-                $ret['html'] = _FAIM_ERROR_NO_IMGCATS;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => false,
+                    'message' => _FAIM_ERROR_NO_IMGCAT,
+                    'html' => _FAIM_ERROR_NO_IMGCATS,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             }
@@ -103,9 +104,9 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $criteria->setOrder('ASC');
             $imgcatObjs = $imgcat_handler->getObjects($criteria, true);
 
-            $imgcats = array();
+            $imgcats = [];
             foreach ($imgcatObjs as $imgcat_id => $imgcatObj) {
-                $imgcat = array();
+                $imgcat = [];
                 $imgcat['data'] = $imgcatObj->toArray();
                 if ($userIsAdmin) {
                     $imgcat['perm']['edit'] = true;
@@ -127,12 +128,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $data['imgcats'] = $imgcats;
             $data['xoopsUser']['isAdmin'] = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin($systemModuleId));
             // Generate ajax return
-            $ret = array();
-            $ret['data'] = $data;
-            $ret['error'] = false;
-            $ret['message'] = '';
-            $ret['html'] = '';
-            $ret['javascript'] = '// NOP';
+            $ret = [
+                'data' => $data,
+                'error' => false,
+                'message' => '',
+                'html' => '',
+                'javascript' => '// NOP'
+            ];
             echo json_encode($ret);
             exit();
             break;
@@ -157,12 +159,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($imgcat_handler->getCount($criteria) == 0) {
                 // ERROR: no imgcats
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = false;
-                $ret['message'] = _FAIM_ERROR_NO_IMGCATS;
-                $ret['html'] = _FAIM_ERROR_NO_IMGCATS;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => false,
+                    'message' => _FAIM_ERROR_NO_IMGCATS,
+                    'html' => _FAIM_ERROR_NO_IMGCATS,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             }
@@ -170,9 +173,9 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $criteria->setOrder('ASC');
             $imgcatsObj = $imgcat_handler->getObjects($criteria, true);
 
-            $imgcatsArray = array();
+            $imgcatsArray = [];
             foreach ($imgcatsObj as $imgcat_id => $imgcatObj) {
-                $imgcat = array();
+                $imgcat = [];
                 $imgcat['data'] = $imgcatObj->toArray();
                 if (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin($systemModuleId)) {
                     $imgcat['perm']['edit'] = true;
@@ -193,12 +196,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $data['imgcats'] = $imgcatsArray;
             $data['xoopsUser']['isAdmin'] = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin($systemModuleId));
             // generate ajax return
-            $ret = array();
-            $ret['data'] = $data;
-            $ret['error'] = false;
-            $ret['message'] = '';
-            $ret['html'] = '';
-            $ret['javascript'] = '// NOP';
+            $ret = [
+                'data' => $data,
+                'error' => false,
+                'message' => '',
+                'html' => '',
+                'javascript' => '// NOP'
+            ];
             echo json_encode($ret);
             exit();
             break;
@@ -212,12 +216,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = true;
-                $ret['message'] = _FAIM_ERROR_NO_IMGCAT;
-                $ret['html'] = _FAIM_ERROR_NO_IMGCAT;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => true,
+                    'message' => _FAIM_ERROR_NO_IMGCAT,
+                    'html' => _FAIM_ERROR_NO_IMGCAT,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             }
@@ -226,12 +231,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!$imgcatperm_handler->checkRight('imgcat_read', $imgcat_id, $userGroups)) {
                 // ERROR: no read permissions
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = true;
-                $ret['message'] = _FAIM_ERROR_NO_IMGCAT_VIEW;
-                $ret['html'] = _FAIM_ERROR_NO_IMGCAT_VIEW;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => true,
+                    'message' => _FAIM_ERROR_NO_IMGCAT_VIEW,
+                    'html' => _FAIM_ERROR_NO_IMGCAT_VIEW,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             }
@@ -263,7 +269,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $perm['img_read'] = true;
             $perm['img_write'] = $imgcatperm_handler->checkRight('imgcat_write', $imgcat_id, $userGroups);
             // generate ajax return
-            $ret = array();
+            $ret = [];
             $ret['data']['images'] = $imagesArray;
             $ret['data']['perm'] = $perm;
             $ret['error'] = false;
@@ -293,7 +299,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imageObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMAGE_OBJECT;
@@ -350,7 +356,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
             $html .= "</div>";
             // generate ajax return
-            $ret = array();
+            $ret = [];
             $ret['data'] = null;
             $ret['error'] = false;
             $ret['message'] = '';
@@ -376,7 +382,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // ERROR
                 // Generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT;
@@ -390,7 +396,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!$imgcatperm_handler->checkRight('imgcat_write', $imgcat_id, $userGroups)) {
                 // ERROR: non write permissions
                 // Generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT_SUBMIT;
@@ -437,7 +443,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($error) {
                 // ERROR
                 // Generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = $error;
@@ -447,7 +453,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             } else {
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = false;
                 $ret['message'] = '';
@@ -472,7 +478,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // ERROR
                 // Generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT;
@@ -486,7 +492,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!$imgcatperm_handler->checkRight('imgcat_write', $imgcat_id, $userGroups)) {
                 // ERROR: no write permissions
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT_SUBMIT;
@@ -500,7 +506,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($image_id <= 0) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMAGE;
@@ -516,7 +522,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imageObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMAGE;
@@ -540,9 +546,9 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             // generate ajax return
             if ($error) {
                 // ERROR
-                $arr = array('error', $error);
+                $arr = ['error', $error];
             } else {
-                $arr = array('success', $imageObj->getVar("image_name"), $imageObj->getVar("image_nicename"));
+                $arr = ['success', $imageObj->getVar("image_name"), $imageObj->getVar("image_nicename")];
             }
             echo json_encode($arr);
             exit();
@@ -557,7 +563,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($image_id <= 0) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMAGE;
@@ -572,7 +578,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imageObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMAGE_OBJECT;
@@ -604,7 +610,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             }
             // delete image object form db
-            $errors = array();
+            $errors = [];
             if (!$image_handler->delete($imageObj)) {
                 // ERROR
                 $errors[] = sprintf(_FAIM_ERROR_NO_IMAGE_DELETE, $imageObj->getVar('image_nicename'));
@@ -622,7 +628,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 $error_html = ob_get_contents(); // store buffer in variable
                 ob_end_clean(); // end buffering and clean up
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = $error_html;
@@ -632,7 +638,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             } else {
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = false;
                 $ret['message'] = _FAIM_IMAGE_DELETED;
@@ -666,7 +672,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT_OBJECT;
@@ -686,7 +692,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $formObj->addElement(new \XoopsFormText(_IMGMAXHEIGHT, $name . '_imgcat_maxheight', 3, 4, $imgcatObj->getVar('imgcat_maxheight')));
             $formObj->addElement(new \XoopsFormText(_MD_IMGCATWEIGHT, $name . '_imgcat_weight', 3, 4, $imgcatObj->getVar('imgcat_weight')));
             $formObj->addElement(new \XoopsFormRadioYN(_MD_IMGCATDISPLAY, $name . '_imgcat_display', $imgcatObj->getVar('imgcat_display'), _YES, _NO));
-            $storetype = array('db' => _MD_INDB, 'file' => _MD_ASFILE);
+            $storetype = ['db' => _MD_INDB, 'file' => _MD_ASFILE];
             //$formObj->addElement(new \XoopsFormLabel( _MD_IMGCATSTRTYPE, $storetype[$imgcatObj->getVar('imgcat_storetype')]));
             if (!$imgcatObj->isNew()) {
                 $formObj->addElement(new \XoopsFormHidden($name . '_imgcat_id', $imgcat_id));
@@ -715,7 +721,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
             $html .= "</div>";
             // generate ajax return
-            $ret = array();
+            $ret = [];
             $ret['data'] = null;
             $ret['error'] = false;
             $ret['message'] = '';
@@ -743,7 +749,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT_OBJECT;
@@ -770,7 +776,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!$imgcat_handler->insert($imgcatObj)) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT_DB;
@@ -783,7 +789,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $imgcat_id = $imgcatObj->getVar('imgcat_id');
             // update permissions
             $imgcatObjperm_handler = xoops_gethandler('groupperm');
-            $readGroups = isset($_POST['imgcat_readgroup']) ? $_POST['imgcat_readgroup'] : array();
+            $readGroups = isset($_POST['imgcat_readgroup']) ? $_POST['imgcat_readgroup'] : [];
             //$readGroups = XoopsRequest::getArray('imgcat_readgroup', array(), 'POST');
             //if (!is_array($readgroups)) $readgroups = array();
             if (!in_array(XOOPS_GROUP_ADMIN, $readGroups)) {
@@ -799,7 +805,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 unset($imgcatObjperm);
             }
 
-            $writeGroups = isset($_POST['imgcat_writegroup']) ? $_POST['imgcat_writegroup'] : array();
+            $writeGroups = isset($_POST['imgcat_writegroup']) ? $_POST['imgcat_writegroup'] : [];
             //$writeGroups = XoopsRequest::getArray('imgcat_writegroup', array(), 'POST');
             if (!in_array(XOOPS_GROUP_ADMIN, $writeGroups)) {
                 array_push($writeGroups, XOOPS_GROUP_ADMIN);
@@ -815,7 +821,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
 
             // generate ajax return
-            $ret = array();
+            $ret = [];
             $ret['data'] = null;
             $ret['error'] = false;
             $ret['message'] = '';
@@ -834,7 +840,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($imgcat_id <= 0) {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT;
@@ -849,7 +855,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if (!is_object($imgcatObj)) {
                 // generate ajax return
                 // ERROR
-                $ret = array();
+                $ret = [];
                 $ret['data'] = null;
                 $ret['error'] = true;
                 $ret['message'] = _FAIM_ERROR_NO_IMGCAT;
@@ -862,7 +868,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             if ($imgcatObj->getVar('imgcat_type') != 'C') {
                 // ERROR
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = array(
                     'name' => $name,
                     'imgcat_id' => $imgcat_id,
@@ -881,7 +887,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 // render delete imgcat form
                 $html = '';
                 // generate ajax return
-                $ret = array();
+                $ret = [];
                 $ret['data'] = array(
                     'name' => $name,
                     'imgcat_id' => $imgcat_id,
@@ -896,7 +902,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
             // delete images
             $imagesObjs = $image_handler->getObjects(new \Criteria('imgcat_id', $imgcat_id), true, false);
-            $errors = array();
+            $errors = [];
             foreach ($imagesObjs as $imageObj) {
                 if (!$image_handler->delete($imageObj)) {
                     // ERROR
@@ -919,22 +925,24 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 $error_html = ob_get_contents(); // store buffer in variable
                 ob_end_clean(); // end buffering and clean up
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = true;
-                $ret['message'] = $error_html;
-                $ret['html'] = $error_html;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => true,
+                    'message' => $error_html,
+                    'html' => $error_html,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             } else {
                 // generate ajax return
-                $ret = array();
-                $ret['data'] = null;
-                $ret['error'] = false;
-                $ret['message'] = _FAIM_IMGCAT_DELETED;
-                $ret['html'] = _FAIM_IMGCAT_DELETED;
-                $ret['javascript'] = '// NOP';
+                $ret = [
+                    'data' => null,
+                    'error' => false,
+                    'message' => _FAIM_IMGCAT_DELETED,
+                    'html' => _FAIM_IMGCAT_DELETED,
+                    'javascript' => '// NOP'
+                ];
                 echo json_encode($ret);
                 exit();
             }
@@ -1009,7 +1017,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param string $value   initial content
              * @param array  $options
              */
-            function __construct($caption, $name, $value = '', $options = array()) {
+            function __construct($caption, $name, $value = '', $options = []) {
                 $this->setCaption($caption);
                 $this->setName($name);
                 $this->setId($name);
@@ -1022,7 +1030,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 $imgcat_handler = xoops_gethandler('imagecategory');
                 $image_handler = xoops_gethandler('image');
 
-                $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
+                $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
 
                 $categories = $imgcat_handler->getList($userGroups, 'imgcat_read', 1);
                 $categoriesCount = count($categories);
@@ -1230,7 +1238,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         $("div#" + name + "_container").empty();
         ajaxloader[name] = new ajaxLoader("div#" + name + "_container");
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1272,8 +1280,8 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                         image += "      <div class=\"faim-selects\"><div class=\"inner0\">";
                         switch (returnType[name]) {
                             case "url" :
-                                image += "          <span class=\"faim-url\" title=\"' . _URL . '\">";
-                                image += "              <img src=\"' . XOOPS_URL . '/images/url.gif\" alt=\"' . _URL . '\" title=\"\" /></span>";
+                                image += "          <span class=\"faim-url\" title=\"' . _FAIM_IMAGE_URL . '\">";
+                                image += "              <img src=\"' . XOOPS_URL . '/images/url.gif\" alt=\"' . _FAIM_IMAGE_URL . '\" title=\"\" /></span>";
                                 break;
                             case "html" :
                                 image += "          <span class=\"faim-html\" title=\"' . _HTML . '\">";
@@ -1378,7 +1386,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         $("div#" + name + "_container").empty();
         ajaxloader[name] = new ajaxLoader("div#" + name + "_container");
         $.ajax({
-            url : "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url : "' . FORMAJAXIMAGEMANAGER_URL . '",
             type : "POST",
             dataType : "json",
             data : {
@@ -1412,7 +1420,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         ajaxloader[name] = new ajaxLoader("div#" + name + "_container");
         var imgcat_id = $("#" + name + "_imgcat_id").val()
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1463,7 +1471,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }).html("' . _YES . '");
         $button_delete_imgcat_yes.click(function(){
             $.ajax({
-                url : "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+                url : "' . FORMAJAXIMAGEMANAGER_URL . '",
                 type : "POST",
                 dataType : "json",
                 data : {
@@ -1512,7 +1520,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
         $("div#" + name + "_container").empty();
         ajaxloader[name] = new ajaxLoader("div#" + name + "_container");
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1551,7 +1559,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 
     function submitNewImageForm(name) {
         $("div#" + name + "_edit_image_form :file").fileupload({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             autoUpload: false,
@@ -1636,7 +1644,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     //    $("div#" + name + "_container").empty();
         ajaxloader[name] = new ajaxLoader("div#" + name + "_container");
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1685,7 +1693,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }).html("' . _YES . '");
         $button_delete_image_yes.click(function(){
             $.ajax({
-                url : "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+                url : "' . FORMAJAXIMAGEMANAGER_URL . '",
                 type : "POST",
                 dataType : "json",
                 data : {
@@ -1733,7 +1741,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     function update_imgcat_select(name) {
         ajaxloader[name] = new ajaxLoader("select#" + name + "_imgcat_select");
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1778,7 +1786,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     function getImgcatPermissions(name, imgcat_id) {
         ajaxloader[name] = new ajaxLoader("select#" + name + "_imgcat_select");
         $.ajax({
-            url: "' . FORMFILEINPUTBOOTSTRAP3_URL . '",
+            url: "' . FORMAJAXIMAGEMANAGER_URL . '",
             type: "POST",
             dataType: "json",
             data: {
@@ -1832,35 +1840,35 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                     if (!$isCommonFormAjaxImageManagerIncluded) {
                         $isCommonFormAjaxImageManagerIncluded = true;
                         //$GLOBALS['xoTheme']->addStylesheet(XOOPS_URL . '/xoops.css');
-                        $GLOBALS['xoTheme']->addStylesheet(FORMFILEINPUTBOOTSTRAP3_CSS_REL_URL . '/formajaximagemanager.css');
+                        $GLOBALS['xoTheme']->addStylesheet(FORMAJAXIMAGEMANAGER_CSS_REL_URL . '/formajaximagemanager.css');
                         $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
                         //
                         $GLOBALS['xoTheme']->addStylesheet(XOOPS_URL . '/modules/system/css/lightbox.css');
                         $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.lightbox.js');
                         //
                         $css = ".ajax_loader {
-                            background: url(" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
+                            background: url(" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
                             width:100%;
                             height:100%;
                         }";
-                        $GLOBALS['xoTheme']->addStylesheet('', array(), $css);
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.ajaxloader/jquery.ajaxloader.js');
+                        $GLOBALS['xoTheme']->addStylesheet('', [], $css);
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.ajaxloader/jquery.ajaxloader.js');
                         // The jQuery UI widget factory, can be omitted if jQuery UI is already included
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js');
                         // The Load Image plugin is included for the preview images and image resizing functionality
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.JavaScript-Load-Image-master/js/load-image.min.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.JavaScript-Load-Image-master/js/load-image.min.js');
                         // The Canvas to Blob plugin is included for image resizing functionality
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js');
                         // The Iframe Transport is required for browsers without support for XHR file uploads
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js');
                         // The basic File Upload plugin
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js');
                         // The File Upload processing plugin
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js');
                         // The File Upload image preview & resize plugin
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js');
                         // The File Upload validation plugin
-                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js');
+                        $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js');
                         //
                         $GLOBALS['xoTheme']->addScript('', '', $commonJs);
                     }
@@ -1869,85 +1877,85 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                         $isCommonFormAjaxImageManagerIncluded = true;
                         $html .= "<style type='text/css'>@import url(" . XOOPS_URL . "/xoops.css);</style>\n";
                         //
-                        $html .= "<style type='text/css'>@import url(" . FORMFILEINPUTBOOTSTRAP3_CSS_REL_URL . "/formajaximagemanager.css);</style>\n";
+                        $html .= "<style type='text/css'>@import url(" . FORMAJAXIMAGEMANAGER_CSS_REL_URL . "/formajaximagemanager.css);</style>\n";
                         $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
                         //
                         $html .= "<style type='text/css'>@import url(" . XOOPS_URL . "/modules/system/css/lightbox.css);</style>\n";
                         $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/plugins/jquery.lightbox.js' type='text/javascript'></script>\n";
                         //
                         $css = ".ajax_loader {
-                            background: url(" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
+                            background: url(" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
                             width:100%;
                             height:100%;
                         }";
                         $html .= "<style type='text/css'>\n" . $css . "\n</style>\n";
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.ajaxloader/jquery.ajaxloader.js' type='text/javascript'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/jquery.ajaxloader.js' type='text/javascript'></script>\n";
                         // The jQuery UI widget factory, can be omitted if jQuery UI is already included
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js'></script>\n";
                         // The Load Image plugin is included for the preview images and image resizing functionality
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.JavaScript-Load-Image-master/js/load-image.min.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Load-Image-master/js/load-image.min.js'></script>\n";
                         // The Canvas to Blob plugin is included for image resizing functionality
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js'></script>\n";
                         // The Iframe Transport is required for browsers without support for XHR file uploads
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js'></script>\n";
                         // The basic File Upload plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js'></script>\n";
                         // The File Upload processing plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js'></script>\n";
                         // The File Upload image preview & resize plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js'></script>\n";
                         // The File Upload validation plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMFILEINPUTBOOTSTRAP3_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js'></script>\n";
                         //
                         $html .= "<script type='text/javascript'>\n" . $commonJs . "\n</script>\n";
                     }
                 }
 
-                $js = '
+                $js = "
     $(document).ready(function() {
-        var name = "' . $this->getId() . '";
-        returnType[name] = "' . $this->getReturn() . '";
-        selected_image_id[name] = "' . $this->getDefaultImageId() . '";
-        selected_imgcat_id[name] = "' . $this->getDefaultImgcatId() . '";
+        var name = '{$this->getId()}';
+        returnType[name] = '{$this->getReturn()}';
+        selected_image_id[name] = '{$this->getDefaultImageId()}';
+        selected_imgcat_id[name] = '{$this->getDefaultImgcatId()}';
 
-        $("input#" + name + "_upload_image_button").click(function() {
-            selected_imgcat_id[name] = $("select#" + name + "_imgcat_select").val();
+        $('input#' + name + '_upload_image_button').click(function() {
+            selected_imgcat_id[name] = $('select#' + name + '_imgcat_select').val();
             if (selected_imgcat_id[name]) {
                 getImageForm(name, 0, selected_imgcat_id[name]);
             } else {
                 // NOP
             }
         });
-        $("input#" + name + "_create_imgcat_button").click(function() {
+        $('input#' + name + '_create_imgcat_button').click(function() {
             getImgcatForm(name, 0);
         });
 
-        $("select#" + name + "_imgcat_select").change(function() {
-            selected_imgcat_id[name] = $("select#" + name + "_imgcat_select").val();
+        $('select#' + name + '_imgcat_select').change(function() {
+            selected_imgcat_id[name] = $('select#' + name + '_imgcat_select').val();
             if (selected_imgcat_id[name]) {
                 getImgcatImagesList(name, selected_imgcat_id[name]);
             } else {
                 // NOP
             }
         });
-        $("input#" + name + "_view_imgcat_button").click(function() {
-            selected_imgcat_id[name] = $("select#" + name + "_imgcat_select").val();
+        $('input#' + name + '_view_imgcat_button').click(function() {
+            selected_imgcat_id[name] = $('select#' + name + '_imgcat_select').val();
             if (selected_imgcat_id[name]) {
                 getImgcatImagesList(name, selected_imgcat_id[name]);
             } else {
                 // NOP
             }
         });
-        $("input#" + name + "_edit_imgcat_button").click(function() {
-            selected_imgcat_id[name] = $("select#" + name + "_imgcat_select").val();
+        $('input#' + name + '_edit_imgcat_button').click(function() {
+            selected_imgcat_id[name] = $('select#' + name + '_imgcat_select').val();
             if (selected_imgcat_id[name]) {
                 getImgcatForm(name, selected_imgcat_id[name]);
             } else {
                 // NOP
             }
         });
-        $("input#" + name + "_delete_imgcat_button").click(function() {
-            selected_imgcat_id[name] = $("select#" + name + "_imgcat_select").val();
+        $('input#' + name + '_delete_imgcat_button').click(function() {
+            selected_imgcat_id[name] = $('select#' + name + '_imgcat_select').val();
             if (selected_imgcat_id[name]) {
                 deleteImgcat(name, selected_imgcat_id[name], false);
             } else {
@@ -1955,11 +1963,8 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
         });
         formajaximagemanager_init(name);
-    //    update_imgcat_select(name);
-    //    getImgcatPermissions(name, selected_imgcat_id[name]);
-    //    getImgcatImagesList(name, selected_imgcat_id[name]);
     });
-                ';
+                ";
                 if (is_object($GLOBALS['xoTheme'])) {
                     $GLOBALS['xoTheme']->addScript('', '', $js);
                 } else {
@@ -1971,7 +1976,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 $module_handler = xoops_gethandler('module');
                 $systemModule = $module_handler->getByDirname('system');
                 $systemModuleId = $systemModule->id;
-                $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : array(XOOPS_GROUP_ANONYMOUS);
+                $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
                 $userIsAdmin = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin());
                 //
                 $imgcat_handler = xoops_gethandler('imagecategory');
@@ -1990,9 +1995,9 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 $html .= "<select name='{$this->getId()}_imgcat_select' id='{$this->getId()}_imgcat_select' title='" . _FAIM_IMGCATS . "'>\n";
                 if ($categoriesCount > 0) {
                     foreach ($categoriesListArray as $id => $imgcat_name) {
-                        $html .= '<option value="' . $id . '"';
-                        $html .= (!is_null($this->getDefaultImgcatId()) && $id == $this->getDefaultImgcatId()) ? ' selected="selected"' : '';
-                        $html .= '>' . $imgcat_name . '</option>\n';
+                        $html .= "<option value='{$id}'";
+                        $html .= (!is_null($this->getDefaultImgcatId()) && $id == $this->getDefaultImgcatId()) ? " selected='selected'" : "";
+                        $html .= ">{$imgcat_name}</option>\n";
                     }
                 }
                 $html .= "</select>\n";

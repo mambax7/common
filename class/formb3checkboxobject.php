@@ -147,49 +147,49 @@ class FormB3CheckBoxObject extends \XoopsFormElement
         $ret = '';
         // add header js
         $headJs .= "
-            $(document).ready(function() {";
-        $headJs .= " 
-                // First add class for pre-checked entries
-                $('#{$this->getId()}_table tbody tr td input[type=checkbox]:checked').each(function() {
-                    $(this).closest('tr').addClass('info');
-                });
-                $('#{$this->getId()}_table tbody tr td input[type=checkbox]').on('change', function() {
-                    $(this).closest('tr').toggleClass('info');
-                });"; 
+$(document).ready(function() {
+    // First add class for pre-checked entries
+    $('#table_{$this->getId()} tbody tr td input[type=checkbox]:checked').each(function() {
+        $(this).closest('tr').addClass('info');
+    });
+    $('#table_{$this->getId()} tbody tr td input[type=checkbox]').on('change', function() {
+        $(this).closest('tr').toggleClass('info');
+    });
+    $('#table_{$this->getId()} thead tr#search_{$this->getId()} th.search').each(function() {
+        var title = $('#table_{$this->getId()} thead tr th').eq($(this).index()).text().trim();
+        $(this).html('<input type=\'text\' class=\'form-control input-sm\' placeholder=\'" . _SEARCH . " ' + title + '\'>' );
+    });";
         $headJs .= "
-                $('#{$this->getId()}_table thead tr#{$this->getId()}_ricerca th.ricerca').each(function() {
-                    var title = $('#{$this->getId()}_table thead tr th').eq($(this).index()).text().trim();
-                    $(this).html('<input type=\'text\' class=\'form-control input-sm\' placeholder=\'" . _SEARCH . " ' + title + '\'>' );
-                });";
-        $headJs .= "
-            table_{$this->getId()} = $('#{$this->getId()}_table').DataTable({";
+    table_{$this->getId()} = $('#table_{$this->getId()}').DataTable({
+        ";
         if($this->_size === false) {
-            $headJs .= 'scrollY": "auto",';
-            $headJs .= '"paging": false,';
+            $headJs .= "
+        'scrollY': 'auto', 'paging': false,
+            ";
         } else {
-            $headJs .= '"scrollY": "' . $this->_size . '",';
-            $headJs .= '"scrollCollapse": true,';       
-            $headJs .= '"paging": false,';
+            $headJs .= "
+        'scrollY': '{$this->_size}', 'scrollCollapse': true, 'paging': false, 
+            ";
         }
-        $headJs .= '"searching": false,';
-        $headJs .= '"scrollX": false,';
-        $headJs .= '"order": [],';
-        $headJs .= '"columnDefs": [{ "orderable": false, "targets": 0 },],';
-        $headJs .= '"lengthMenu": [[-1, 100, 50, 10], ["Tutti", 100, 50, 10] ],';
-        $headJs .= '"language": {"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Italian.json"}';
-        $headJs .= '});';
         $headJs .= "
-            // Apply the search
-            table_{$this->getId()}.columns().eq(0).each(function(colIdx) {
-                $('input', table_{$this->getId()}.column( colIdx ).header()).on('keyup change clear', function () {
-                    table_{$this->getId()}
-                        .column(colIdx)
-                        .search(this.value)
-                        .draw();
-                    });
-                });";
-                    
-        $headJs .= "});";
+        'searching': false,
+        'scrollX': false,
+        'order': [],
+        'columnDefs': [{ 'orderable': false, 'targets': 0 },],
+        'lengthMenu': [[-1, 100, 50, 10], ['" . _ALL . "', 100, 50, 10] ], 
+        'language': {'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Italian.json'}
+    });
+    // Apply the search
+    table_{$this->getId()}.columns().eq(0).each(function(colIdx) {
+        $('input', table_{$this->getId()}.column( colIdx ).header()).on('keyup change clear', function () {
+            table_{$this->getId()}
+                .column(colIdx)
+                .search(this.value)
+                .draw();
+            });
+        });
+    });
+        ";
 
         // add common js
         $commonJs = "";
@@ -212,12 +212,12 @@ class FormB3CheckBoxObject extends \XoopsFormElement
 //                $ret .= "<script src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js' type='text/javascript'></script>\n";
                 //
                 $ret .= "<script type='text/javascript'>\n";
-                $ret .= $commonJs . "\n";
+                $ret .= "{$commonJs}\n";
                 $ret .= "</script>\n";
                 $isCommonFormB3CheckBoxObjectIncluded = true;
             }
             $ret .= "<script type='text/javascript'>\n";
-            $ret .= $headJs . "\n";
+            $ret .= "{$headJs}\n";
             $ret .= "</script>\n";
         }
         // add css
@@ -226,7 +226,7 @@ class FormB3CheckBoxObject extends \XoopsFormElement
         $ret .= $css . "\n";
         // add html
         $html .= "<div style='width:100%;'>\n";
-        $html .= "<table id='{$this->getId()}_table' style='width:100%;' class='table table-condensed table-bordered table-hover'>\n";
+        $html .= "<table id='table_{$this->getId()}' style='width:100%;' class='table table-condensed table-bordered table-hover'>\n";
         $html .= "<thead>\n";
         //
         $html .= "<tr>\n";
@@ -236,10 +236,10 @@ class FormB3CheckBoxObject extends \XoopsFormElement
         }
         $html .= "</tr>\n";
         //
-        $html .= "<tr id='{$this->getId()}_ricerca'>\n";
+        $html .= "<tr id='search_{$this->getId()}'>\n";
         $html .= "<th>&nbsp;</th>\n";
         foreach ($this->_vars as $key) {
-            $html .= "<th class='ricerca'>&nbsp;</th>\n";
+            $html .= "<th class='search'>&nbsp;</th>\n";
         }
         $html .= "</tr>\n";
         //

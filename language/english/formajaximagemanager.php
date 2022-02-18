@@ -26,6 +26,7 @@ define('_FAIM_IMAGE_NAME', "Filename");
 define('_FAIM_IMAGE_NICENAME', "Name");
 define('_FAIM_IMAGE_WIDTH', "Width");
 define('_FAIM_IMAGE_HEIGHT', "Height");
+define('_FAIM_IMAGE_HTML', "Html code");
 define('_FAIM_IMAGE_URL', "Url");
 
 define('_FAIM_ERROR_NO_IMGCATS',"No category available");

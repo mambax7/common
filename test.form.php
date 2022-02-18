@@ -55,15 +55,6 @@ $formObj->insertBreak();
 xoops_load('FormXoopsImage', 'common');
 $formObj->addElement(new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null));
 
-xoops_load('FormAjaxImageManager', 'common');
-$formObj->addElement(new common\FormAjaxImageManager('FormAjaxImageManager', 'FormAjaxImageManager', '', array()));
-
-
-
-$formObj->insertBreak();
-
-
-
 xoops_load('FormCodiceFiscale', 'common');
 $formObj->addElement(new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale'));
 
@@ -78,6 +69,36 @@ $formObj->addElement(new common\FormEmail('FormEmail', 'FormEmail'));
 
 xoops_load('FormNumber', 'common');
 $formObj->addElement(new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1));
+
+
+
+$formObj->insertBreak();
+
+
+
+xoops_load('FormInputmask', 'common');
+$inputmask = '(999) 999-9999';
+$FormInputmask = new common\FormInputmask('FormInputmask1', 'FormInputmask1', '', $inputmask);
+$FormInputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
+$formObj->addElement($FormInputmask);
+
+$inputmask = 'dd/mm/yyyy';
+$options = [
+    'placeholder' => '__/__/____'
+];
+$FormInputmask = new common\FormInputmask('FormInputmask2', 'FormInputmask2', '', $inputmask, $options);
+$FormInputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
+$formObj->addElement($FormInputmask);
+
+$inputmask = 'mm/dd/yyyy';
+$FormInputmask = new common\FormInputmask('FormInputmask3', 'FormInputmask3', '', $inputmask);
+$FormInputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
+$formObj->addElement($FormInputmask);
+
+$inputmask = 'mm/dd/yyyy';
+$FormInputmask = new common\FormInputmask('FormInputmask4', 'FormInputmask4', '', $inputmask);
+$FormInputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
+$formObj->addElement($FormInputmask);
 
 
 

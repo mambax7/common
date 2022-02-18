@@ -1284,13 +1284,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                                 image += "              <img src=\"' . XOOPS_URL . '/images/url.gif\" alt=\"' . _FAIM_IMAGE_URL . '\" title=\"\" /></span>";
                                 break;
                             case "html" :
-                                image += "          <span class=\"faim-html\" title=\"' . _HTML . '\">";
-                                image += "              <img src=\"' . XOOPS_URL . '/images/code.gif\" alt=\"' . _HTML . '\" title=\"\" /></span>";
+                                image += "          <span class=\"faim-html\" title=\"' . _FAIM_IMAGE_HTML . '\">";
+                                image += "              <img src=\"' . XOOPS_URL . '/images/code.gif\" alt=\"' . _FAIM_IMAGE_HTML . '\" title=\"\" /></span>";
                                 break;
                             case "id" :
                             case "image_id" :
-                                image += "          <span class=\"faim-id\" title=\"' . _HTML . '\">";
-                                image += "              <img src=\"' . XOOPS_URL . '/images/code.gif\" alt=\"' . _HTML . '\" title=\"\" /></span>";
+                                image += "          <span class=\"faim-id\" title=\"' . _FAIM_IMAGE_HTML . '\">";
+                                image += "              <img src=\"' . XOOPS_URL . '/images/code.gif\" alt=\"' . _FAIM_IMAGE_HTML . '\" title=\"\" /></span>";
                                 break;
                             case "bbcode" :
                                 image += "          <span class=\"faim-bbcode-left\" title=\"' . _LEFT . '\">";

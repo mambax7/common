@@ -53,7 +53,6 @@ xoops_load('XoopsFormLoader');
  * https://github.com/davidstutz/bootstrap-multiselect
  * The stable release for Boostrap 3 is v0.9.15. 
  *
- *
  */
 class FormB3MultiSelect extends \XoopsFormElement {
 

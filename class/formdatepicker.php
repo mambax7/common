@@ -74,12 +74,10 @@ class FormDatepicker extends \XoopsFormText {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
         }
-
         return $this->_id;
     }
 
 //TODO valutare, migliorare ...
-
     /**
      * render the attributes string for HTML tag
      *

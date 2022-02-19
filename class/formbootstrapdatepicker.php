@@ -106,7 +106,7 @@ class FormBootstrapDatepicker extends \XoopsFormText {
      * @param string $name  "name"
      * @param string $value "value"
      */
-    public function addOption($name = '', $value) {
+    public function addOption($name = '', $value='') {
         if ($name != '') {
             $this->_options[$name] = $value;
         } else {

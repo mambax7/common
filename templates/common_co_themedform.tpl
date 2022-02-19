@@ -46,15 +46,15 @@ $formElement.renderValidationJS
 *}>
 <div>
 <form class="form-horizontal" name="<{$form.getName}>" id="<{$form.getName}>" action="<{$form.getAction}>" method="<{$form.getMethod}>" onsubmit="return xoopsFormValidate_<{$form.getName}>();"<{$form.getExtra}> >
-<h4><{$form.title}></h4>
+<h4><{$form.title|default:''}></h4>
 <{foreach item=formElement from=$formElements}>
-<{if ($formElement.isHidden == true)}>
+<{if ($formElement.isHidden|default:false == true)}>
     <!-- NOP -->
 <{else}>
-<{if ($formElement.is_string == true)}>
+<{if ($formElement.is_string|default:false == true)}>
     <{$formElement.render}>
 <{else}>
-<div class="form-group<{if ($formElement.isRequired == true)}> has-error<{/if}>" title="<{$formElement.getDescription}>" >
+<div class="form-group<{if ($formElement.isRequired|default:false == true)}> has-error<{/if}>" title="<{$formElement.getDescription}>" >
     <label for="<{$formElement.getName}>" class="col-sm-2 control-label">
         <{$formElement.getCaption}>
     </label>
@@ -68,7 +68,7 @@ $formElement.renderValidationJS
 </div>
 <{/if}>
 <{/if}>
-<{if $formElement.getClass <> ''}>
+<{if $formElement.getClass|default:'' <> ''}>
 <script type="text/javascript">
     $("form#<{$form.getName}> [name='<{$formElement.getName}>']").addClass("<{$formElement.getClass}>");
 </script>
@@ -104,7 +104,7 @@ $formElement.renderValidationJS
 
 <!-- hidden form elements here -->
 <{foreach item=formElement from=$formElements}>
-<{if ($formElement.isHidden == true)}>
+<{if ($formElement.isHidden|default:false == true)}>
     <{$formElement.render}>
 <{else}>
 <{/if}>

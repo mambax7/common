@@ -25,7 +25,7 @@ define("FORMINPUTMASK_FILENAME", basename($currentPath));
 define("FORMINPUTMASK_PATH", dirname($currentPath));
 define("FORMINPUTMASK_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
 define("FORMINPUTMASK_URL", XOOPS_URL . '/' . FORMINPUTMASK_REL_URL . '/' . FORMINPUTMASK_FILENAME);
-define("FORMINPUTMASK_JS_REL_URL", FORMINPUTMASK_REL_URL . "/forminputmask/dist");
+define("FORMINPUTMASK_JS_REL_URL", FORMINPUTMASK_REL_URL . "/forminputmask");
 
 xoops_loadLanguage('forminputmask', 'common');
 xoops_load('XoopsFormLoader');
@@ -55,7 +55,7 @@ class FormInputmask extends \XoopsFormElement {
      * @param array     $attributes
      * 
      */
-    public function __construct($caption, $name, $value = '', $inputmask = '', $options = []) {
+    public function __construct($caption, $name, $value = '', $inputmask = null, $options = []) {
         $this->setCaption($caption);
         $this->setName($name);
         $this->setId($name);
@@ -96,11 +96,13 @@ class FormInputmask extends \XoopsFormElement {
      * @return string options string
      */
     function renderOptions() {
-        $ret = "";
-        foreach ($this->_options as $name => $value) {
-            $ret .= "{$name}: '{$value}', ";
-        }
+        $ret = json_encode($this->_options, JSON_FORCE_OBJECT);
         return $ret;
+//        exit();
+//        foreach ($this->_options as $name => $value) {
+//            $ret .= "{$name}: '{$value}', ";
+//        }
+//        return $ret;
     }
 
     /**
@@ -121,14 +123,14 @@ class FormInputmask extends \XoopsFormElement {
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormInputmaskIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
-                $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . '/jquery.inputmask.min.js');
+                $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . '/bundle.jquery.js');
                 $GLOBALS['xoTheme']->addScript('', [], $commonJs);
                 $isCommonFormInputmaskIncluded = true;
             }
         } else {
             if (!$isCommonFormInputmaskIncluded) {
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/jquery.inputmask.min.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/bundle.jquery.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";
@@ -143,13 +145,13 @@ class FormInputmask extends \XoopsFormElement {
         $html .= "<input type='text' id='inputmask_{$this->getId()}' {$this->getExtra()} />";
         $ret .= $html . "\n";
         // add js
+        if (!is_null($this->_inputmask)) {
+            $this->_options['mask'] = $this->_inputmask;
+        }
         $js .= "<script type='text/javascript'>\n";
         $js .= "
 $(document).ready(function(){
-    $('#inputmask_{$this->getId()}').inputmask({
-        mask: '{$this->_inputmask}',
-        {$this->renderOptions()}        
-    });
+    $('#inputmask_{$this->getId()}').inputmask({$this->renderOptions()});
 });
 ";
         $js .= "</script>\n";

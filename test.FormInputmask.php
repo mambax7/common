@@ -43,52 +43,43 @@ xoops_load('ThemedForm', 'common');
 $formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
-//xoops_load('FormGoogleMap', 'common');
-//$formObj->addElement(new common\FormGoogleMap('FormGoogleMap', 'FormGoogleMap', array(), $commonHelper->getConfig('GoogleMapsAPIKey')));
 
 
+xoops_load('FormInputmask', 'common');
+$inputmask = '(999) 999-9999';
+$FormInputmask = new common\FormInputmask('FormInputmask1', 'FormInputmask1', '', $inputmask);
+$FormInputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
+$formObj->addElement($FormInputmask);
 
-$formObj->insertBreak();
+$options = [
+    'alias' => 'datetime',
+    'inputFormat' => 'dd/mm/yyyy'
+];
+$FormInputmask = new common\FormInputmask('FormInputmask2', 'FormInputmask2', '', null, $options);
+$FormInputmask->setDescription('Date');
+$formObj->addElement($FormInputmask);
 
+$options = [
+    'alias' => 'email',
+];
+$FormInputmask = new common\FormInputmask('FormInputmask3', 'FormInputmask3', '', null, $options);
+$FormInputmask->setDescription('Email');
+$formObj->addElement($FormInputmask);
 
+$options = [
+    'mask' => '999.999.999.999',
+    'placeholder' => '___.___.___.___',
+];
+$FormInputmask = new common\FormInputmask('FormInputmask4', 'FormInputmask4', '', null, $options);
+$FormInputmask->setDescription('IP Address');
+$formObj->addElement($FormInputmask);
 
-xoops_load('FormXoopsImage', 'common');
-$formObj->addElement(new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null));
-
-xoops_load('FormCodiceFiscale', 'common');
-$formObj->addElement(new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale'));
-
-xoops_load('FormCap', 'common');
-$formObj->addElement(new common\FormCap('FormCap', 'FormCap'));
-
-xoops_load('FormTelephonenumber', 'common');
-$formObj->addElement(new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, ''));
-
-xoops_load('FormEmail', 'common');
-$formObj->addElement(new common\FormEmail('FormEmail', 'FormEmail'));
-
-xoops_load('FormNumber', 'common');
-$formObj->addElement(new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1));
-
-
-
-xoops_load('FormDatepicker', 'common');
-$formObj->addElement(new common\FormDatepicker('FormDatepicker', 'FormDatepicker'));
-
-
-
-$formObj->insertBreak();
-
-
-
-$formObj->addElement(new \XoopsFormSelectGroup('XoopsFormSelectGroup', 'XoopsFormSelectGroup', false, null, 5, true));
-xoops_load('FormSelectGroup', 'common');
-$formObj->addElement(new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true));
-$formObj->addElement(new common\FormSelectGroup('FormSelectGroup<br>multiple false', 'FormSelectGroup', false, null, 10, false));
-
-
-
-$formObj->insertBreak();
+$options = [
+    'alias' => 'mac',
+];
+$FormInputmask = new common\FormInputmask('FormInputmask5', 'FormInputmask5', '', null, $options);
+$FormInputmask->setDescription('Mac address');
+$formObj->addElement($FormInputmask);
 
 
 

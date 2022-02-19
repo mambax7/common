@@ -11,7 +11,7 @@
 /*
  * common module
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project https://xoops.org/
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @package         common
  * @since           1.00
@@ -62,7 +62,7 @@ if (!class_exists('FormAjaxTextAutocomplete')) {
      * A select field
      *
      * @author 		luciorota <lucio.rota@gmail.com>
-     * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
+     * @copyright   XOOPS Project https://xoops.org/
      * @package 	comuniitaliani
      * @subpackage 	form
      * @access 		public

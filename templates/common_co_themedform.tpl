@@ -61,8 +61,7 @@ $formElement.renderValidationJS
     <div class="col-sm-10">
         <{$formElement.render}>
     <{if ($formElement.getDescription != '')}>
-        <br>
-        <small><{$formElement.getDescription}></small>
+        <div><small><{$formElement.getDescription}></small></div>
     <{/if}>
     </div>
 </div>

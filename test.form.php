@@ -53,27 +53,41 @@ $formObj->insertBreak();
 
 
 xoops_load('FormXoopsImage', 'common');
-$formObj->addElement(new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null));
+$FormXoopsImage = new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null);
+$FormXoopsImage->setDescription("new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null)");
+$formObj->addElement($FormXoopsImage);
 
 xoops_load('FormCodiceFiscale', 'common');
-$formObj->addElement(new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale'));
+$FormCodiceFiscale = new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale');
+$FormCodiceFiscale->setDescription("new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale')");
+$formObj->addElement($FormCodiceFiscale);
 
 xoops_load('FormCap', 'common');
-$formObj->addElement(new common\FormCap('FormCap', 'FormCap'));
+$FormCap = new common\FormCap('FormCap', 'FormCap');
+$FormCap->setDescription("new common\FormCap('FormCap', 'FormCap')");
+$formObj->addElement($FormCap);
 
 xoops_load('FormTelephonenumber', 'common');
-$formObj->addElement(new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, ''));
+$FormTelephonenumber = new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '');
+$FormTelephonenumber->setDescription("new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '')");
+$formObj->addElement($FormTelephonenumber);
 
 xoops_load('FormEmail', 'common');
-$formObj->addElement(new common\FormEmail('FormEmail', 'FormEmail'));
+$FormEmail = new common\FormEmail('FormEmail', 'FormEmail');
+$FormEmail->setDescription("new common\FormEmail('FormEmail', 'FormEmail')");
+$formObj->addElement($FormEmail);
 
 xoops_load('FormNumber', 'common');
-$formObj->addElement(new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1));
+$FormNumber = new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1);
+$FormNumber->setDescription("new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1)");
+$formObj->addElement($FormNumber);
 
 
 
 xoops_load('FormDatepicker', 'common');
-$formObj->addElement(new common\FormDatepicker('FormDatepicker', 'FormDatepicker'));
+$FormDatepicker = new common\FormDatepicker('FormDatepicker', 'FormDatepicker');
+$FormDatepicker->setDescription('Click to open a datepicker pop-up');
+$formObj->addElement($FormDatepicker);
 
 
 
@@ -83,7 +97,9 @@ $formObj->insertBreak();
 
 $formObj->addElement(new \XoopsFormSelectGroup('XoopsFormSelectGroup', 'XoopsFormSelectGroup', false, null, 5, true));
 xoops_load('FormSelectGroup', 'common');
-$formObj->addElement(new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true));
+$FormSelectGroup = new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true);
+$FormSelectGroup->setDescription("new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true)");
+$formObj->addElement($FormSelectGroup);
 $formObj->addElement(new common\FormSelectGroup('FormSelectGroup<br>multiple false', 'FormSelectGroup', false, null, 10, false));
 
 

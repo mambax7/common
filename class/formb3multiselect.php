@@ -34,7 +34,7 @@ define("FORMB3MULTISELECT_FILENAME", basename($currentPath));
 define("FORMB3MULTISELECT_PATH", dirname($currentPath));
 define("FORMB3MULTISELECT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
 define("FORMB3MULTISELECT_URL", XOOPS_URL . '/' . FORMB3MULTISELECT_REL_URL . '/' . FORMB3MULTISELECT_FILENAME);
-define("FORMB3MULTISELECT_JS_REL_URL", FORMB3MULTISELECT_REL_URL . "/formb3multiselect/js");
+define("FORMB3MULTISELECT_JS_REL_URL", FORMB3MULTISELECT_REL_URL . "/formb3multiselect");
 define("FORMB3MULTISELECT_CSS_REL_URL", FORMB3MULTISELECT_REL_URL . "/formb3multiselect/css");
 define("FORMB3MULTISELECT_IMAGES_REL_URL", FORMB3MULTISELECT_REL_URL . "/formb3multiselect/images");
 

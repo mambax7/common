@@ -45,12 +45,12 @@ class objectTree extends XoopsObjectTree
     function _makeSelBoxOptionsArray($fieldName, $key, &$optionsArray, $prefix_orig, $prefix_curr = '')
     {
         if ($key > 0) {
-            $value = $this->_tree[$key]['obj']->getVar( $this->_myId );
-            $optionsArray[$value] = $prefix_curr . $this->_tree[$key]['obj']->getVar($fieldName);
+            $value = $this->tree[$key]['obj']->getVar( $this->myId );
+            $optionsArray[$value] = $prefix_curr . $this->tree[$key]['obj']->getVar($fieldName);
             $prefix_curr .= $prefix_orig;
         }
-        if (isset($this->_tree[$key]['child']) && !empty($this->_tree[$key]['child'])) {
-            foreach ($this->_tree[$key]['child'] as $childkey) {
+        if (isset($this->tree[$key]['child']) && !empty($this->tree[$key]['child'])) {
+            foreach ($this->tree[$key]['child'] as $childkey) {
                 $this->_makeSelBoxOptionsArray($fieldName, $childkey, $optionsArray, $prefix_orig, $prefix_curr);
             }
         }

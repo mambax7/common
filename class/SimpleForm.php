@@ -29,7 +29,7 @@ xoops_load('XoopsForm');
 /**
  * Form that will output as a simple HTML form with minimum formatting
  */
-class SimpleForm extends XoopsForm
+class SimpleForm extends \XoopsForm
 {
     /**
      * create HTML to output the form with minimal formatting

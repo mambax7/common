@@ -14,7 +14,7 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once \dirname(__DIR__) . '/include/common.php';
 
-class TestcategoryHandler extends \CommonObjectHandler {
+class TestcategoryHandler extends CommonObjectHandler {
 
     /**
      * @var moduleHelper, sessionHelper, passds_id

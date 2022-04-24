@@ -3,7 +3,7 @@
 use XoopsModules\Common;
 use Xmf\Module\Helper;
 use Xmf\Module\Helper\Session;
-use Xmf\Module\Permission;
+use Xmf\Module\Helper\Permission;
 
 defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 

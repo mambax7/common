@@ -1,5 +1,9 @@
 <?php
 
+use XoopsModules\Common\{
+    Breadcrumb
+};
+
 $currentBasename = basename(__FILE__);
 $currentFilename = basename(__FILE__, '.php');
 include __DIR__ . '/header.php';
@@ -10,8 +14,8 @@ $xoopsOption['template_main'] = "{$commonHelper->getModule()->dirname()}_test.co
 include XOOPS_ROOT_PATH . '/header.php';
 
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $GLOBALS['xoopsTpl']->assign('commonBreadcrumb', $breadcrumb->render());
 

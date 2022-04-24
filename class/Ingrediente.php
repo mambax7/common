@@ -19,7 +19,7 @@ xoops_load('Object', 'common');
 /**
  * Class Ingrediente
  */
-class Ingrediente extends \CommonObject {
+class Ingrediente extends CommonObject {
 
     /**
      * @var moduleHelper

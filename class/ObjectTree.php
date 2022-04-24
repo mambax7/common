@@ -28,7 +28,7 @@ include_once XOOPS_ROOT_PATH . '/class/tree.php';
 /**
  * Form element that ...
  */
-class objectTree extends XoopsObjectTree
+class ObjectTree extends \XoopsObjectTree
 {
     /**
      * Make options for a select box from

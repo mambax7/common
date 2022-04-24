@@ -27,7 +27,7 @@ include_once dirname(__DIR__) . '/include/common.php';
 
 xoops_loadLanguage('formdatepicker', 'common');
 xoops_load('XoopsFormLoader');
-xoops_load('FormBootstrapDatepicker', 'common');
+//xoops_load('FormBootstrapDatepicker', 'common');
 
 class FormB3Datepicker extends FormBootstrapDatepicker
 {

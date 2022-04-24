@@ -56,7 +56,7 @@ $modversion['people']['developers'][] = "";
 
 $modversion['min_xoops'] = "2.5.10";
 $modversion['min_php'] = "5.5";
-$modversion['min_admin'] = '1.1';
+$modversion['min_admin'] = '1.2';
 $modversion['min_db'] = array(
     'mysql' => '5.0.7',
     'mysqli' => '5.0.7'

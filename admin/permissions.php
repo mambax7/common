@@ -19,6 +19,7 @@
  * @version         svn:$Id$
  */
 use Xmf\Module\Admin;
+use XoopsModules\Common\FormSelectGroupCriteria;
 
 require dirname(__FILE__) . '/admin_header.php';
 
@@ -60,18 +61,18 @@ switch ($op) {
         //
         $groups_perm_permname = $groupperm_handler->getGroupIds('permname', true, $iscrittiHelper->getModule()->mid());
         //
-        xoops_load('FormSelectGroupCriteria', 'common');
-        $formObj = new XoopsThemeForm(_CO_COMMON_PERMS_EDIT, 'op', xoops_getenv('PHP_SELF'));
+//        xoops_load('FormSelectGroupCriteria', 'common');
+        $formObj = new \XoopsThemeForm(_CO_COMMON_PERMS_EDIT, 'op', xoops_getenv('PHP_SELF'));
         //
         $selectGroupLines = min(count($member_handler->getGroupList()), _CONST_COMMON_SELECTGROUPMAXLINES);
         $groupSelectCriteria = new CriteriaCompo();
         $groupSelectCriteria->setSort('name');
         $groupSelectCriteria->setOrder('ASC');
-        $formObj->addElement(new \FormSelectGroupCriteria(_CO_COMMON_PERM_GROUPS_PERMNAME, 'groups_perm_permname', true, $groups_perm_permname, $selectGroupLines, true, $groupSelectCriteria));
+        $formObj->addElement(new FormSelectGroupCriteria(_CO_COMMON_PERM_GROUPS_PERMNAME, 'groups_perm_permname', true, $groups_perm_permname, $selectGroupLines, true, $groupSelectCriteria));
         //
-        $formObj->addElement(new XoopsFormHidden('op', 'global_perms.save'), false);
-            $button_tray = new XoopsFormElementTray('' ,'');
-            $submit_btn = new XoopsFormButton('', 'post', _CO_COMMON_PERM_SAVE, 'submit');
+        $formObj->addElement(new \XoopsFormHidden('op', 'global_perms.save'), false);
+            $button_tray = new \XoopsFormElementTray('' ,'');
+            $submit_btn = new \XoopsFormButton('', 'post', _CO_COMMON_PERM_SAVE, 'submit');
             $submit_btn->setExtra('accesskey="i"');
             $button_tray->addElement($submit_btn);
         $formObj->addElement($button_tray);

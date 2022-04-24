@@ -1,5 +1,13 @@
 <?php
 
+use XoopsModules\Common\{
+    Breadcrumb,
+    MediaUploader,
+    ThemedForm,
+    FormB3Fileinput
+
+};
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -9,8 +17,8 @@ include XOOPS_ROOT_PATH . '/header.php';
 $xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 
@@ -34,7 +42,7 @@ switch ($op) {
 
 
 
-\xoops_load('MediaUploader', 'common');
+//\xoops_load('MediaUploader', 'common');
 \xoops_load('XoopsMediaUploader');
 
 
@@ -48,7 +56,7 @@ if ((isset($_FILES['FormB3Fileinput'])) && ($_FILES['FormB3Fileinput']['error'] 
     $maxFileWidth = null;
     $maxFileHeight = null;
     $randomFilename = true; // per evitare di sovrascrivere accidentalmente file
-    $fileUploader = New common\MediaUploader(
+    $fileUploader = new MediaUploader(
             COMMON_UPLOAD_PATH . '/',
             $allowedMimeTypes,
             $maxFileSize,
@@ -99,19 +107,19 @@ foreach ($fileNames as $fileName) {
 
 // template: form
 xoops_load('XoopsFormLoader');
-xoops_load('ThemedForm', 'common');
-$formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
+//xoops_load('ThemedForm', 'common');
+$formObj = new ThemedForm('title', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
 
 
 // template: $FormB3Fileinput
-\xoops_load('FormB3Fileinput', 'common');
+//\xoops_load('FormB3Fileinput', 'common');
 $multiple = true;
 $showThumbs = true;
 $allowedFileExtensions = [];
 $maxFileSize = 0;
-$FormB3Fileinput = new common\FormB3Fileinput(
+$FormB3Fileinput = new FormB3Fileinput(
     'FormB3Fileinput',
     'FormB3Fileinput',
     $files,

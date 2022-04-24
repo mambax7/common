@@ -33,7 +33,7 @@ defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
  * $breadcrumb->addLink( 'bread 3', 'index3.php' );
  * echo $breadcrumb->render();
  */
-class breadcrumb
+class Breadcrumb
 {
     private $_dirname;
     private $_moduleHelper;

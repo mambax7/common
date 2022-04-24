@@ -27,16 +27,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3DOUBLESELECT_FILENAME", basename($currentPath));
-define("FORMB3DOUBLESELECT_PATH", dirname($currentPath));
-define("FORMB3DOUBLESELECT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3DOUBLESELECT_URL", XOOPS_URL . '/' . FORMB3DOUBLESELECT_REL_URL . '/' . FORMB3DOUBLESELECT_FILENAME);
-define("FORMB3DOUBLESELECT_JS_REL_URL", FORMB3DOUBLESELECT_REL_URL . "/formb3doubleselect/js");
-define("FORMB3DOUBLESELECT_CSS_REL_URL", FORMB3DOUBLESELECT_REL_URL . "/formb3doubleselect/css");
-define("FORMB3DOUBLESELECT_IMAGES_REL_URL", FORMB3DOUBLESELECT_REL_URL . "/formb3doubleselect/images");
+define('FORMB3DOUBLESELECT_FILENAME', basename($currentPath));
+define('FORMB3DOUBLESELECT_PATH', dirname($currentPath));
+define('FORMB3DOUBLESELECT_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3DOUBLESELECT_URL', XOOPS_URL . '/' . FORMB3DOUBLESELECT_REL_URL . '/' . FORMB3DOUBLESELECT_FILENAME);
+define('FORMB3DOUBLESELECT_JS_REL_URL', FORMB3DOUBLESELECT_REL_URL . '/formb3doubleselect/js');
+define('FORMB3DOUBLESELECT_CSS_REL_URL', FORMB3DOUBLESELECT_REL_URL . '/formb3doubleselect/css');
+define('FORMB3DOUBLESELECT_IMAGES_REL_URL', FORMB3DOUBLESELECT_REL_URL . '/formb3doubleselect/images');
 
 xoops_loadLanguage('formb3doubleselect', 'common');
 xoops_load('XoopsFormLoader');
@@ -174,7 +174,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormB3DoubleselectIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -187,7 +187,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
             if (!$isCommonFormB3DoubleselectIncluded) {
                 //$ret .= "<style type='text/css'>@import url(" . FORMB3DOUBLESELECT_JS_REL_URL . "//lou-multi-select/css/multi-select.css);</style>\n";
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3DOUBLESELECT_JS_REL_URL . "/multiselect-master/dist/js/multiselect.min.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3DOUBLESELECT_JS_REL_URL . "/multiselect-master/dist/js/multiselect.min.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";
@@ -205,11 +205,11 @@ class FormB3Doubleselect extends \XoopsFormElement {
         $valuesTo = $this->getValuesTo();
         $select_from = new \XoopsFormSelect('', "{$this->getName()}_{$this->getId()}", null, $this->_size, true);
         $select_from->addOptionArray($valuesFrom);
-        $select_from->setClass("w-100");
+        $select_from->setClass('w-100');
         //
         $select_to = new \XoopsFormSelect('', "{$this->getName()}", null, $this->_size, true);
         $select_to->addOptionArray($valuesTo);
-        $select_to->setClass("form-control w-100");
+        $select_to->setClass('form-control w-100');
         $html .= "        
 <div class='row'>
     <div class='members_from col-md-5'>

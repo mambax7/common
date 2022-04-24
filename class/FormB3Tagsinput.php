@@ -27,16 +27,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3TAGSINPUT_FILENAME", basename($currentPath));
-define("FORMB3TAGSINPUT_PATH", dirname($currentPath));
-define("FORMB3TAGSINPUT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3TAGSINPUT_URL", XOOPS_URL . '/' . FORMB3TAGSINPUT_REL_URL . '/' . FORMB3TAGSINPUT_FILENAME);
-define("FORMB3TAGSINPUT_JS_REL_URL", FORMB3TAGSINPUT_REL_URL . "/formb3tagsinput/js");
-define("FORMB3TAGSINPUT_CSS_REL_URL", FORMB3TAGSINPUT_REL_URL . "/formb3tagsinput/css");
-define("FORMB3TAGSINPUT_IMAGES_REL_URL", FORMB3TAGSINPUT_REL_URL . "/formb3tagsinput/images");
+define('FORMB3TAGSINPUT_FILENAME', basename($currentPath));
+define('FORMB3TAGSINPUT_PATH', dirname($currentPath));
+define('FORMB3TAGSINPUT_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3TAGSINPUT_URL', XOOPS_URL . '/' . FORMB3TAGSINPUT_REL_URL . '/' . FORMB3TAGSINPUT_FILENAME);
+define('FORMB3TAGSINPUT_JS_REL_URL', FORMB3TAGSINPUT_REL_URL . '/formb3tagsinput/js');
+define('FORMB3TAGSINPUT_CSS_REL_URL', FORMB3TAGSINPUT_REL_URL . '/formb3tagsinput/css');
+define('FORMB3TAGSINPUT_IMAGES_REL_URL', FORMB3TAGSINPUT_REL_URL . '/formb3tagsinput/images');
 
 xoops_load('XoopsFormLoader');
 
@@ -234,8 +234,8 @@ class FormB3Tagsinput extends \XoopsFormElement {
                     focusClass: '',
                     tagClass: '{$this->_tagClass}',
         ";
-        $js .= ($this->_freeInput) ? " freeInput: true," : " freeInput: false,";
-        $js .= ($this->_allowDuplicates) ? " allowDuplicates: true," : " allowDuplicates: false,";
+        $js .= ($this->_freeInput) ? ' freeInput: true,' : ' freeInput: false,';
+        $js .= ($this->_allowDuplicates) ? ' allowDuplicates: true,' : ' allowDuplicates: false,';
         $js .= "
                     typeaheadjs: [null, { source: engine{$this->getId()}.ttAdapter() }],
                 });

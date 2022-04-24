@@ -18,14 +18,14 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMINPUTMASK_FILENAME", basename($currentPath));
-define("FORMINPUTMASK_PATH", dirname($currentPath));
-define("FORMINPUTMASK_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMINPUTMASK_URL", XOOPS_URL . '/' . FORMINPUTMASK_REL_URL . '/' . FORMINPUTMASK_FILENAME);
-define("FORMINPUTMASK_JS_REL_URL", FORMINPUTMASK_REL_URL . "/forminputmask");
+define('FORMINPUTMASK_FILENAME', basename($currentPath));
+define('FORMINPUTMASK_PATH', dirname($currentPath));
+define('FORMINPUTMASK_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMINPUTMASK_URL', XOOPS_URL . '/' . FORMINPUTMASK_REL_URL . '/' . FORMINPUTMASK_FILENAME);
+define('FORMINPUTMASK_JS_REL_URL', FORMINPUTMASK_REL_URL . '/forminputmask');
 
 xoops_loadLanguage('forminputmask', 'common');
 xoops_load('XoopsFormLoader');
@@ -113,13 +113,13 @@ class FormInputmask extends \XoopsFormElement {
     public function render() {
 //TODO COMPLETARE QUESTO
         static $isCommonFormInputmaskIncluded = false;
-        $commonJs = "";
+        $commonJs = '';
         $css = '';
         $js = '';
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormInputmaskIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -133,10 +133,10 @@ class FormInputmask extends \XoopsFormElement {
         } else {
             if (!$isCommonFormInputmaskIncluded) {
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/dist/jquery.inputmask.min.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.date.extensions.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.extensions.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.numeric.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . "/dist/jquery.inputmask.min.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.date.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMINPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.numeric.extensions.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";
@@ -173,7 +173,7 @@ $(document).ready(function(){
      */
     public function renderValidationJS() {
 //TODO
-        $js = "";
+        $js = '';
         return $js;
     }
 

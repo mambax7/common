@@ -355,7 +355,7 @@ class CommonUtility extends XoopsObject {
      * @return array
      */
     public static function getCurrentUrls() {
-        $http = ((strpos(XOOPS_URL, "https://")) === false) ? ("http://") : ("https://");
+        $http = ((strpos(XOOPS_URL, 'https://')) === false) ? ('http://') : ('https://');
         $phpSelf = $_SERVER['PHP_SELF'];
         $httpHost = $_SERVER['HTTP_HOST'];
         $queryString = $_SERVER['QUERY_STRING'];

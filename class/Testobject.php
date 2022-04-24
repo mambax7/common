@@ -80,7 +80,7 @@ class Testobject extends CommonObject {
 
         \xoops_load('XoopsFormLoader');
 //        \xoops_load('ThemedForm', 'common');
-        $formObj = new ThemedForm($this->isNew() ? _ADD : _EDIT, "testobjectForm", $action, 'POST', true);
+        $formObj = new ThemedForm($this->isNew() ? _ADD : _EDIT, 'testobjectForm', $action, 'POST', true);
         $formObj->setExtra('enctype="multipart/form-data"');
         $formObj->setClass('form-horizontal');
         // name

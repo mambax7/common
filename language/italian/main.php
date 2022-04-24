@@ -23,6 +23,6 @@
 // _CHARSET : UTF-8
 // Translator: luciorota, nursind
 
-define('_MD_COMMON_ADMIN_PAGE', "Admin");
+define('_MD_COMMON_ADMIN_PAGE', 'Admin');
 
 // index.php

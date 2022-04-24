@@ -53,8 +53,8 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 
 define('_ER_UP_PHPERR_INI_SIZE', 'The uploaded file exceeds the upload_max_filesize directive in php.ini');
@@ -212,7 +212,7 @@ class MediaUploader extends \XoopsMediaUploader {
         // should be private, but is public because common\MediaUploader extends XoopsMediaUploader :-(
         // get file exstension
         $matched = [];
-        if (!preg_match("/\.([a-zA-Z0-9]+)$/", $this->mediaName, $matched)) {
+        if (!preg_match('/\.([a-zA-Z0-9]+)$/', $this->mediaName, $matched)) {
             $this->setErrors(_ER_UP_INVALIDFILENAME);
             return false;
         }
@@ -230,9 +230,9 @@ class MediaUploader extends \XoopsMediaUploader {
         } else {
             $this->savedFileName = strtolower($this->mediaName);
         }
-        $this->savedFileName = iconv("UTF-8", "ASCII//TRANSLIT", $this->savedFileName);
+        $this->savedFileName = iconv('UTF-8', 'ASCII//TRANSLIT', $this->savedFileName);
         $this->savedFileName = preg_replace('!\s+!', '_', $this->savedFileName);
-        $this->savedFileName = preg_replace("/[^a-zA-Z0-9\._-]/", "", $this->savedFileName);
+        $this->savedFileName = preg_replace('/[^a-zA-Z0-9\._-]/', '', $this->savedFileName);
         //
         $this->savedDestination = $this->uploadDir . '/' . $this->savedFileName;
         if (!move_uploaded_file($this->mediaTmpName, $this->savedDestination)) {

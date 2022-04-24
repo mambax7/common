@@ -27,16 +27,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3SELECTGROUP_FILENAME", basename($currentPath));
-define("FORMB3SELECTGROUP_PATH", dirname($currentPath));
-define("FORMB3SELECTGROUP_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3SELECTGROUP_URL", XOOPS_URL . '/' . FORMB3SELECTGROUP_REL_URL . '/' . FORMB3SELECTGROUP_FILENAME);
-define("FORMB3SELECTGROUP_JS_REL_URL", FORMB3SELECTGROUP_REL_URL . "/formb3selectgroup/js");
-define("FORMB3SELECTGROUP_CSS_REL_URL", FORMB3SELECTGROUP_REL_URL . "/formb3selectgroup/css");
-define("FORMB3SELECTGROUP_IMAGES_REL_URL", FORMB3SELECTGROUP_REL_URL . "/formb3selectgroup/images");
+define('FORMB3SELECTGROUP_FILENAME', basename($currentPath));
+define('FORMB3SELECTGROUP_PATH', dirname($currentPath));
+define('FORMB3SELECTGROUP_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3SELECTGROUP_URL', XOOPS_URL . '/' . FORMB3SELECTGROUP_REL_URL . '/' . FORMB3SELECTGROUP_FILENAME);
+define('FORMB3SELECTGROUP_JS_REL_URL', FORMB3SELECTGROUP_REL_URL . '/formb3selectgroup/js');
+define('FORMB3SELECTGROUP_CSS_REL_URL', FORMB3SELECTGROUP_REL_URL . '/formb3selectgroup/css');
+define('FORMB3SELECTGROUP_IMAGES_REL_URL', FORMB3SELECTGROUP_REL_URL . '/formb3selectgroup/images');
 
 xoops_loadLanguage('formb3selectgroup', 'common');
 xoops_load('XoopsFormLoader');
@@ -129,7 +129,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormB3SelectGroupIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -142,7 +142,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
             if (!$isCommonFormB3SelectGroupIncluded) {
                 //$ret .= "<style type='text/css'>@import url(" . FORMB3SELECTGROUP_JS_REL_URL . "//lou-multi-select/css/multi-select.css);</style>\n";
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3SELECTGROUP_JS_REL_URL . "/multiselect-master/dist/js/multiselect.min.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3SELECTGROUP_JS_REL_URL . "/multiselect-master/dist/js/multiselect.min.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";
@@ -167,12 +167,12 @@ class FormB3SelectGroup extends \XoopsFormElement {
         }
         $members_from = new \XoopsFormSelect('', "{$this->getName()}_{$this->getId()}", null, $this->size, true);
         $members_from->addOptionArray($from_members);
-        $members_from->setClass("w-100");
+        $members_from->setClass('w-100');
 
         //
         $members_to = new \XoopsFormSelect('', "{$this->getName()}", null, $this->size, true);
         $members_to->addOptionArray($to_members);
-        $members_to->setClass("form-control w-100");
+        $members_to->setClass('form-control w-100');
         $html .= "        
 <div class='row'>
     <div class='members_from col-xs-5'>

@@ -389,70 +389,70 @@ function xoopsFormGoogleMap(name, id, initLat, initLng, initZoom, draggable) {
 
         $ret .= $js . "\n";
 
-        $html .= "<fieldset>";
+        $html .= '<fieldset>';
         if (empty($this->getApi_key())) {
-            $html .= "<div style='{$this->config['style']}'>" . _FORMGOOGLEMAP_ERROR_NO_APYKEY . "</div>";
+            $html .= "<div style='{$this->config['style']}'>" . _FORMGOOGLEMAP_ERROR_NO_APYKEY . '</div>';
         } else {
             $html .= "<div id='{$this->_name}_GoogleMap' style='{$this->config['style']}'>";
             $html .= _FORMGOOGLEMAP_GOOGLEMAPHERE;
-            $html .= "<br />";
+            $html .= '<br />';
             $html .= _FORMGOOGLEMAP_GOOGLEMAPHERE_DESC;
-            $html .= "</div>";
+            $html .= '</div>';
         }
-        $html .= "</fieldset>";
+        $html .= '</fieldset>';
         $ret .= $html . "\n";
 
         if ($this->config['readonly'] == false) {
-            $ret .= "<div>";
-            $ret .= "<b>" . _FORMGOOGLEMAP_LATLNGZOOM . "</b>";
-            $ret .= "<br />";
+            $ret .= '<div>';
+            $ret .= '<b>' . _FORMGOOGLEMAP_LATLNGZOOM . '</b>';
+            $ret .= '<br />';
             $ret .= _FORMGOOGLEMAP_LATLNGZOOM_DESC1;
-            $ret .= "<br />";
-            $ret .= "<br />";
+            $ret .= '<br />';
+            $ret .= '<br />';
             $ret .= _FORMGOOGLEMAP_LAT;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<input type='text' id='{$this->_name}[lat]' name='{$this->_name}[lat]' value='{$this->lat}' maxlength='255' size='18' title='Latitude' onchange='xoopsFormGoogleMap_{$this->_name}.updatePosition();'>";
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= _FORMGOOGLEMAP_LNG;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<input type='text' id='{$this->_name}[lng]' name='{$this->_name}[lng]' value='{$this->lng}' maxlength='255' size='18' title='Longitude' onchange='xoopsFormGoogleMap_{$this->_name}.updatePosition();'>";
-            $ret .= "<br />";
-            $ret .= "<small>" . _FORMGOOGLEMAP_LATLNGZOOM_DESC2 . "</small>";
-            $ret .= "<br />";
-            $ret .= "<br />";
+            $ret .= '<br />';
+            $ret .= '<small>' . _FORMGOOGLEMAP_LATLNGZOOM_DESC2 . '</small>';
+            $ret .= '<br />';
+            $ret .= '<br />';
             $ret .= _FORMGOOGLEMAP_ELEVATION;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<input readonly type='text' id='{$this->_name}[elevation]' name='{$this->_name}[elevation]' value='{$this->elevation}' maxlength='255' size='18' title='" . _FORMGOOGLEMAP_ELEVATION . "'>";
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<input type='hidden' id='{$this->_name}[maptypeid]' name='{$this->_name}[maptypeid]' value='{$this->maptypeid}'>";
             $ret .= _FORMGOOGLEMAP_ZOOM;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<input type='text' id='{$this->_name}[zoom]' name='{$this->_name}[zoom]' value='{$this->zoom}' maxlength='255' size='2' title='Zoom level' onchange='xoopsFormGoogleMap_{$this->_name}.updateZoom();'>";
-            $ret .= "</div>";
-            $ret .= "<div>";
-            $ret .= "<b>" . _FORMGOOGLEMAP_SEARCH . "</b>";
-            $ret .= "<br />";
+            $ret .= '</div>';
+            $ret .= '<div>';
+            $ret .= '<b>' . _FORMGOOGLEMAP_SEARCH . '</b>';
+            $ret .= '<br />';
             $ret .= "<input type='text' id='{$this->_name}[search]' name='{$this->_name}[search]' value='' maxlength='255' size='80' title='Search location' >";
             $ret .= "<input type='button' id='{$this->_name}button' name='{$this->_name}button' value='Search' class='formButton' onclick='xoopsFormGoogleMap_{$this->_name}.codeAddress();' title='" . _FORMGOOGLEMAP_SEARCH . "'>";
-            $ret .= "<br />";
+            $ret .= '<br />';
             $ret .= _FORMGOOGLEMAP_SEARCH_DESC;
-            $ret .= "</div>";
+            $ret .= '</div>';
         } else {
             $ret .= _FORMGOOGLEMAP_LAT;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<span id='{$this->name}[lat]'>{$this->lat}</span>";
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= _FORMGOOGLEMAP_LNG;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<span id='{$this->name}[lng]'>{$this->lng}</span>";
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= _FORMGOOGLEMAP_ELEVATION;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<span id='{$this->name}[elevation]'>{$this->elevation}</span>";
-            $ret .= "&nbsp;";
-            $ret .= "<br />";
+            $ret .= '&nbsp;';
+            $ret .= '<br />';
             $ret .= _FORMGOOGLEMAP_ZOOM;
-            $ret .= "&nbsp;";
+            $ret .= '&nbsp;';
             $ret .= "<span id='{$this->name}[zoom]'>{$this->zoom}</span>";
         }
         return $ret;

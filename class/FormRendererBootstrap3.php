@@ -33,14 +33,14 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         $class = 'btn btn-default';
         $class .= ($element->getClass()) ? ' ' . $element->getClass() : '';
         $ret
-            = "<input "
-            . "type='{$element->getType()}' "
-            . "class='{$class}' "
-            . "name='{$element->getName()}' "
-            . "id='{$element->getName()}' "
-            . "value='{$element->getValue()}' "
-            . "title='{$element->getValue()}'"
-            . "{$element->getExtra()} />";
+            = '<input '
+              . "type='{$element->getType()}' "
+              . "class='{$class}' "
+              . "name='{$element->getName()}' "
+              . "id='{$element->getName()}' "
+              . "value='{$element->getValue()}' "
+              . "title='{$element->getValue()}'"
+              . "{$element->getExtra()} />";
         return $ret;
     }
 
@@ -268,18 +268,18 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         $ret .= "<br>\n";
         // the textarea box
         $ret
-            .= "<textarea "
-            . "class='form-control' "
-            . "id='" . $element->getName() . "' "
-            . "name='" . $element->getName() . "' "
-            . "title='" . $element->getTitle() . "' "
-            . "onselect=\"xoopsSavePosition('" . $element->getName() . "');\" "
-            . "onclick=\"xoopsSavePosition('" . $element->getName() . "');\" "
-            . "onkeyup=\"xoopsSavePosition('" . $element->getName() . "');\" "
-            . "cols='" . $element->getCols() . "' "
-            . "rows='" . $element->getRows() . "'"
-            . $element->getExtra()
-            . '>' . $element->getValue() . "</textarea>\n";
+            .= '<textarea '
+               . "class='form-control' "
+               . "id='" . $element->getName() . "' "
+               . "name='" . $element->getName() . "' "
+               . "title='" . $element->getTitle() . "' "
+               . "onselect=\"xoopsSavePosition('" . $element->getName() . "');\" "
+               . "onclick=\"xoopsSavePosition('" . $element->getName() . "');\" "
+               . "onkeyup=\"xoopsSavePosition('" . $element->getName() . "');\" "
+               . "cols='" . $element->getCols() . "' "
+               . "rows='" . $element->getRows() . "'"
+               . $element->getExtra()
+               . '>' . $element->getValue() . "</textarea>\n";
 
         if (empty($element->skipPreview)) {
             if (empty($GLOBALS['xoTheme'])) {
@@ -292,7 +292,7 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
             }
             $button = "<button type='button' class='btn btn-primary' onclick=\"form_instantPreview('" . XOOPS_URL
                 . "', '" . $element->getName() . "','" . XOOPS_URL . "/images', " . (int)$element->doHtml . ", '"
-                . $GLOBALS['xoopsSecurity']->createToken() . "')\" title='" . _PREVIEW . "'>" . _PREVIEW . "</button>";
+                . $GLOBALS['xoopsSecurity']->createToken() . "')\" title='" . _PREVIEW . "'>" . _PREVIEW . '</button>';
 
             $ret .= '<br>' . "<div id='" . $element->getName() . "_hidden' style='display: block;'> "
                 . '   <fieldset>' . '       <legend>' . $button . '</legend>'
@@ -344,7 +344,7 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         }
         $code .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsCodeCode(\"{$textarea_id}\", \"" . htmlspecialchars(_ENTERCODE, ENT_QUOTES) . "\");' onmouseover='style.cursor=\"hand\"' title='" . _XOOPS_FORM_ALT_CODE . "'><span class='fa fa-fw fa-code' aria-hidden='true'></span></button>";
         $code .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsCodeQuote(\"{$textarea_id}\", \"" . htmlspecialchars(_ENTERQUOTE, ENT_QUOTES) . "\");' onmouseover='style.cursor=\"hand\"' title='" . _XOOPS_FORM_ALT_QUOTE . "'><span class='fa fa-fw fa-quote-right' aria-hidden='true'></span></button>";
-        $code .= "</div></div>";
+        $code .= '</div></div>';
 
         $xoopsPreload = XoopsPreload::getInstance();
         $xoopsPreload->triggerEvent('core.class.xoopsform.formdhtmltextarea.codeicon', array(&$code));
@@ -432,13 +432,13 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         $styleStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeItalic(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_ITALIC . "' aria-label='Left Align'><span class='fa fa-italic' aria-hidden='true'></span></button>";
         $styleStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeUnderline(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_UNDERLINE . "' aria-label='Left Align'>" . '<span class="fa fa-underline"></span></button>';
         $styleStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeLineThrough(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_LINETHROUGH . "' aria-label='Left Align'>" . '<span class="fa fa-strikethrough"></span></button>';
-        $styleStr .= "</div>";
+        $styleStr .= '</div>';
 
         $alignStr = "<div class='btn-group' role='group'>";
         $alignStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeLeft(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_LEFT . "' aria-label='Left Align'><span class='fa fa-align-left' aria-hidden='true'></span></button>";
         $alignStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeCenter(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_CENTER . "' aria-label='Left Align'><span class='fa fa-align-center' aria-hidden='true'></span></button>";
         $alignStr .= "<button type='button' class='btn btn-default btn-sm' onclick='xoopsMakeRight(\"{$hiddentext}\", \"{$textarea_id}\");' title='" . _XOOPS_FORM_ALT_RIGHT . "' aria-label='Left Align'><span class='fa fa-align-right' aria-hidden='true'></span></button>";
-        $alignStr .= "</div>";
+        $alignStr .= '</div>';
 
         $fontStr .= "&nbsp;{$styleStr}&nbsp;{$alignStr}&nbsp;\n";
 
@@ -446,7 +446,7 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
             . $element->getName() . "', '" . @$element->configs['maxlength'] . "', '"
             . _XOOPS_FORM_ALT_LENGTH . "', '" . _XOOPS_FORM_ALT_LENGTH_MAX . "');\" title='"
             . _XOOPS_FORM_ALT_CHECKLENGTH . "'><span class='fa fa-check-square-o' aria-hidden='true'></span></button>";
-        $fontStr .= "</div></div>";
+        $fontStr .= '</div></div>';
 
         return $fontStr;
     }
@@ -536,30 +536,30 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
      */
     public function renderFormPassword(XoopsFormPassword $element)
     {
-        $ret = "<input "
-            . "class='form-control' "
-            . "type='password' name='{$element->getName()}' "
-            . "id='{$element->getName()}' "
-            . "size='{$element->getSize()}' "
-            . "maxlength='{$element->getMaxlength()}' "
-            . "value='{$element->getValue()}'"
-            . "{$element->getExtra()} " . ($element->autoComplete ? "" : "autocomplete='off' ") . "/>";
+        $ret = '<input '
+               . "class='form-control' "
+               . "type='password' name='{$element->getName()}' "
+               . "id='{$element->getName()}' "
+               . "size='{$element->getSize()}' "
+               . "maxlength='{$element->getMaxlength()}' "
+               . "value='{$element->getValue()}'"
+               . "{$element->getExtra()} " . ($element->autoComplete ? '' : "autocomplete='off' ") . '/>';
         if ($element->confirm) {
-            $ret .= "&nbsp;";
-            $ret .= "<input "
-                . "class='form-control' "
-                . "type='password' name='{$element->getName()}_confirm' "
-                . "id='{$element->getName()}_confirm' "
-                . "size='{$element->getSize()}' "
-                . "maxlength='{$element->getMaxlength()}' "
-                . "value='{$element->getValue()}' "
-                . "onfocusout='";
+            $ret .= '&nbsp;';
+            $ret .= '<input '
+                    . "class='form-control' "
+                    . "type='password' name='{$element->getName()}_confirm' "
+                    . "id='{$element->getName()}_confirm' "
+                    . "size='{$element->getSize()}' "
+                    . "maxlength='{$element->getMaxlength()}' "
+                    . "value='{$element->getValue()}' "
+                    . "onfocusout='";
             $ret .= 'var password = document.getElementById("{$element->getName()}"), password_confirm = document.getElementById("{$element->getName()}_confirm");';
             $ret .= 'if(password.value != password_confirm.value) {';
             $ret .= 'alert("' . _XOOPS_FORMPASSWORD_NOTMATCH . '");';
             $ret .= '}';
             $ret .= "'";
-            $ret .= "{$element->getExtra()} " . ($element->autoComplete ? "" : "autocomplete='off' ") . "/>";
+            $ret .= "{$element->getExtra()} " . ($element->autoComplete ? '' : "autocomplete='off' ") . '/>';
 
         }
         return $ret;
@@ -603,18 +603,18 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         $elementTitle   = $element->getTitle();
         $elementValue   = $element->getValue();
         $elementOptions = $element->getOptions();
-        $ret = "<select "
-                . "class='{$class}' "
-                . "size='{$element->getSize()}' "
-                . "{$element->getExtra()}";
+        $ret = '<select '
+               . "class='{$class}' "
+               . "size='{$element->getSize()}' "
+               . "{$element->getExtra()}";
         if ($element->isMultiple() != false) {
-            $ret .= " "
+            $ret .= ' '
                     . "name='{$elementName}[]' "
                     . "id='{$elementName}' "
                     . "title='{$elementTitle}' "
                     . "multiple='multiple'>";
         } else {
-            $ret .= " "
+            $ret .= ' '
                     . "name='{$elementName}' "
                     . "id='{$elementName}' "
                     . "title='{$elementTitle}'>";
@@ -622,7 +622,7 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         foreach ($elementOptions as $value => $name) {
             $ret .= "<option value='" . htmlspecialchars($value, ENT_QUOTES) . "'";
             if (count($elementValue) > 0 && in_array($value, $elementValue)) {
-                $ret .= " selected";
+                $ret .= ' selected';
             }
             $ret .= ">{$name}</option>";
         }
@@ -641,16 +641,16 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
     {
         $class = 'form-control';
         $class .= ($element->getClass()) ? ' ' . $element->getClass() : '';
-        $ret = "<input "
-            . "class='{$class}' "
-            . "type='text' "
-            . "name='{$element->getName()}' "
-            . "title='{$element->getTitle()}' "
-            . "id='{$element->getName()}' "
-            . "size='{$element->getSize()}' "
-            . "maxlength='{$element->getMaxlength()}' "
-            . "value='{$element->getValue()}'"
-            . "{$element->getExtra()} />";
+        $ret = '<input '
+               . "class='{$class}' "
+               . "type='text' "
+               . "name='{$element->getName()}' "
+               . "title='{$element->getTitle()}' "
+               . "id='{$element->getName()}' "
+               . "size='{$element->getSize()}' "
+               . "maxlength='{$element->getMaxlength()}' "
+               . "value='{$element->getValue()}'"
+               . "{$element->getExtra()} />";
         return $ret;
     }
 
@@ -665,14 +665,14 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
     {
         $class = 'form-control';
         $class .= ($element->getClass()) ? ' ' . $element->getClass() : '';
-        $ret = "<textarea "
-            . "class='{$class}' "
-            . "name='{$element->getName()}' "
-            . "id='{$element->getName()}' "
-            . "title='{$element->getTitle()}' "
-            . "rows='{$element->getRows()}' "
-            . "cols='{$element->getCols()}'"
-            . "{$element->getExtra()}>{$element->getValue()}</textarea>";
+        $ret = '<textarea '
+               . "class='{$class}' "
+               . "name='{$element->getName()}' "
+               . "id='{$element->getName()}' "
+               . "title='{$element->getTitle()}' "
+               . "rows='{$element->getRows()}' "
+               . "cols='{$element->getCols()}'"
+               . "{$element->getExtra()}>{$element->getValue()}</textarea>";
         return $ret;
     }
 
@@ -752,17 +752,17 @@ EOE;
     {
         $formName = $form->getName();
 
-        $ret = "<div>";
-        $ret .= "<form "
-            . "class='{$form->getClass()}' "
-            . "name='{$formName}' "
-            . "id='{$formName}' "
-            . "action='{$form->getAction()}' "
-            . "method='{$form->getMethod()}' "
-            . "onsubmit='return xoopsFormValidate_{$formName}();' "
-            . "{$form->getExtra()}>";
+        $ret = '<div>';
+        $ret .= '<form '
+                . "class='{$form->getClass()}' "
+                . "name='{$formName}' "
+                . "id='{$formName}' "
+                . "action='{$form->getAction()}' "
+                . "method='{$form->getMethod()}' "
+                . "onsubmit='return xoopsFormValidate_{$formName}();' "
+                . "{$form->getExtra()}>";
         $ret .= "<h3>{$form->getTitle()}</h3>";
-        $hidden   = "";
+        $hidden   = '';
         foreach ($form->getElements() as $element) {
             if (!is_object($element)) { // see $form->addBreak()
                 $ret .= $element;
@@ -773,24 +773,24 @@ EOE;
                 continue;
             }
             $ret .= "<div class='form-group'>";
-            if (($caption = $element->getCaption()) != "") {
+            if (($caption = $element->getCaption()) != '') {
                 $ret .= "<label for='{$element->getName()}' class='col-md-2 control-label'>"
                     . $element->getCaption()
-                    . ($element->isRequired() ? "<span class='caption-required'>*</span>" : "")
-                    . "</label>";
+                    . ($element->isRequired() ? "<span class='caption-required'>*</span>" : '')
+                        . '</label>';
             } else {
                 $ret .= "<div class='col-md-2'> </div>";
             }
             $ret .= "<div class='col-md-10'>";
             $ret .= $element->render();
-            if (($desc = $element->getDescription()) != "") {
+            if (($desc = $element->getDescription()) != '') {
                 $ret .= "<p class='help-block'>{$desc}</p>";
             }
-            $ret .= "</div>";
-            $ret .= "</div>";
+            $ret .= '</div>';
+            $ret .= '</div>';
         }
         $ret .= $hidden;
-        $ret .= "</form></div>";
+        $ret .= '</form></div>';
         $ret .= $form->renderValidationJS(true);
 
         return $ret;

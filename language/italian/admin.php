@@ -24,7 +24,7 @@
 // Translator: luciorota
 
 //Menu
-define('_AM_COMMON_ADMIN',"Amministra");
+define('_AM_COMMON_ADMIN', 'Amministra');
 
 
 
@@ -43,4 +43,4 @@ define('_AM_COMMON_ADMIN',"Amministra");
 
 //Error NoFrameworks
 define('_AM_COMMON_NOFRAMEWORKS',"Error: You don&#39;t use the Frameworks \"admin module\". Please install this Frameworks");
-define('_AM_COMMON_MAINTAINEDBY',"Mantained by");
+define('_AM_COMMON_MAINTAINEDBY', 'Mantained by');

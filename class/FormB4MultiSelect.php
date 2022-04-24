@@ -24,16 +24,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB4MULTISELECT_FILENAME", basename($currentPath));
-define("FORMB4MULTISELECT_PATH", dirname($currentPath));
-define("FORMB4MULTISELECT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB4MULTISELECT_URL", XOOPS_URL . '/' . FORMB4MULTISELECT_REL_URL . '/' . FORMB4MULTISELECT_FILENAME);
-define("FORMB4MULTISELECT_JS_REL_URL", FORMB4MULTISELECT_REL_URL . "/formb4multiselect/js");
-define("FORMB4MULTISELECT_CSS_REL_URL", FORMB4MULTISELECT_REL_URL . "/formb4multiselect/css");
-define("FORMB4MULTISELECT_IMAGES_REL_URL", FORMB4MULTISELECT_REL_URL . "/formb4multiselect/images");
+define('FORMB4MULTISELECT_FILENAME', basename($currentPath));
+define('FORMB4MULTISELECT_PATH', dirname($currentPath));
+define('FORMB4MULTISELECT_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB4MULTISELECT_URL', XOOPS_URL . '/' . FORMB4MULTISELECT_REL_URL . '/' . FORMB4MULTISELECT_FILENAME);
+define('FORMB4MULTISELECT_JS_REL_URL', FORMB4MULTISELECT_REL_URL . '/formb4multiselect/js');
+define('FORMB4MULTISELECT_CSS_REL_URL', FORMB4MULTISELECT_REL_URL . '/formb4multiselect/css');
+define('FORMB4MULTISELECT_IMAGES_REL_URL', FORMB4MULTISELECT_REL_URL . '/formb4multiselect/images');
 
 xoops_load('XoopsFormLoader');
 
@@ -277,7 +277,7 @@ class FormB4MultiSelect extends \XoopsFormElement
             $optionDescription = $value['description'];
             $html .= "<option description='{$optionDescription}' value='" . htmlspecialchars($key, ENT_QUOTES) . "'";
             if (count($this->getValues()) > 0 && in_array($key, $this->getValues())) {
-                $html .= " selected";
+                $html .= ' selected';
             }
             $html .= ">{$optionName}</option>\n";
         }

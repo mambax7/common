@@ -514,7 +514,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
                 $fileInfo            = pathinfo($filePath);
                 $fileName            = $fileInfo['basename'];
                 $fileExtrension      = $fileInfo['extension'];
-                $default_contentType = "application/octet-stream";
+                $default_contentType = 'application/octet-stream';
                 // to find and use specific content type, check out this IANA page : http://www.iana.org/assignments/media-types/media-types.xhtml
                 if ($fileMimetype = !'') {
                     $contentType = $fileMimetype;
@@ -538,14 +538,14 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
                         header('Content-Range: bytes ' . $offset . '-' . ($offset + $length) . '/' . $size);
                     }//HEADERS FOR PARTIAL DOWNLOAD FACILITY BEGINS
                     //USUAL HEADERS FOR DOWNLOAD
-                    header("Content-Disposition: attachment;filename=" . $fileName);
+                    header('Content-Disposition: attachment;filename=' . $fileName);
                     header('Content-Type: ' . $contentType);
-                    header("Accept-Ranges: bytes");
-                    header("Pragma: public");
-                    header("Expires: -1");
-                    header("Cache-Control: no-cache");
-                    header("Cache-Control: public, must-revalidate, post-check=0, pre-check=0");
-                    header("Content-Length: " . filesize($filePath));
+                    header('Accept-Ranges: bytes');
+                    header('Pragma: public');
+                    header('Expires: -1');
+                    header('Cache-Control: no-cache');
+                    header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0');
+                    header('Content-Length: ' . filesize($filePath));
                     $chunksize = 8 * (1024 * 1024); //8MB (highest possible fread length)
                     if ($size > $chunksize) {
                         $handle = fopen($_FILES['file']['tmp_name'], 'rb');

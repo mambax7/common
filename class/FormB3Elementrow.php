@@ -27,8 +27,8 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 
 /**
@@ -166,16 +166,16 @@ class FormB3Elementrow extends \XoopsFormElement {
         $html = '';
         $html .= "<div class = 'row'>";
         foreach ($elements as $element) {
-            $required = ($element->_required) ? "*" : "";
+            $required = ($element->_required) ? '*' : '';
             $html .= "<div class='col-md-{$this->_columns}'>";
             //$html .= "<div class='form-group'>";
             $html .= "<label for='{$element->getName()}'>{$element->getCaption()}{$required}</label>";
             $html .= "<span id='help{$element->getName()}' class='help-block'>{$element->getDescription()}</span>";
             $html .= $element->render();
             //$html .= "</div>";
-            $html .= "</div>";
+            $html .= '</div>';
         }
-        $html .= "</div>";
+        $html .= '</div>';
 
         return $html;
     }

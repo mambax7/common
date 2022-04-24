@@ -154,7 +154,7 @@ class FormBootstrapDatepicker extends \XoopsFormText {
                 $isCommonFormDatepickerIncluded = true;
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
                 $GLOBALS['xoTheme']->addStylesheet(COMMON_JS_URL . '/bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker3.min.css');
-                $GLOBALS['xoTheme']->addScript(COMMON_JS_URL . "/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js");
+                $GLOBALS['xoTheme']->addScript(COMMON_JS_URL . '/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js');
                 $GLOBALS['xoTheme']->addScript(COMMON_JS_URL . "/bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.{$this->_langcode}.min.js");
             }
         } else {
@@ -168,8 +168,8 @@ class FormBootstrapDatepicker extends \XoopsFormText {
             }
         }
         // not common code
-        $css = "";
-        $js = "";
+        $css = '';
+        $js = '';
         if (is_object($GLOBALS['xoTheme'])) {
             $GLOBALS['xoTheme']->addStylesheet('', [], $css);
             $GLOBALS['xoTheme']->addScript('', '', $js);
@@ -189,9 +189,9 @@ class FormBootstrapDatepicker extends \XoopsFormText {
         foreach ($this->getOptions() as $name => $value) {
             $html .= "{$name}: ";
             if ($value === true) {
-                $html .= "true,";
+                $html .= 'true,';
             } elseif ($value === false) {
-                $html .= "false,";
+                $html .= 'false,';
             } else {
                 $html .= "'{$value}',";
             }

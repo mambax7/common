@@ -142,7 +142,7 @@ $formObj->insertBreak();
 
 //xoops_load('FormB3Tagsinput', 'common');
 $FormB3Tagsinput = XoopsRequest::getArray('FormB3Tagsinput', []);
-$availableTags = ["vanessa", "maria", "gaia"];
+$availableTags = ['vanessa', 'maria', 'gaia'];
 $freeInput = true;
 $limit = 0;
 $maxChars = 255;

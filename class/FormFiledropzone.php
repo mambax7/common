@@ -24,20 +24,20 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos( $currentPath, "\\\\", 2 ) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos( $currentPath, "\\\\", 2 ) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 
-define("FORMFILEDROPZONE_FILENAME", basename($currentPath));
-define("FORMFILEDROPZONE_PATH", dirname($currentPath));
-define("FORMFILEDROPZONE_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMFILEDROPZONE_URL", XOOPS_URL . '/' . FORMFILEDROPZONE_REL_URL);
-define("FORMFILEDROPZONE_JS_REL_URL", FORMFILEDROPZONE_REL_URL . "/formfiledropzone/dropzone");
-define("FORMFILEDROPZONE_CSS_REL_URL", FORMFILEDROPZONE_REL_URL . "/formfiledropzone/dropzone");
-define("FORMFILEDROPZONE_IMAGES_REL_URL", FORMFILEDROPZONE_REL_URL . "/formfiledropzone/dropzone");
-define("FORMFILEDROPZONE_JS_URL", FORMFILEDROPZONE_URL . "/formfiledropzone/dropzone");
-define("FORMFILEDROPZONE_CSS_URL", FORMFILEDROPZONE_URL . "/formfiledropzone/dropzone");
-define("FORMFILEDROPZONE_IMAGES_URL", FORMFILEDROPZONE_URL . "/formfiledropzone/dropzone");
+define('FORMFILEDROPZONE_FILENAME', basename($currentPath));
+define('FORMFILEDROPZONE_PATH', dirname($currentPath));
+define('FORMFILEDROPZONE_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMFILEDROPZONE_URL', XOOPS_URL . '/' . FORMFILEDROPZONE_REL_URL);
+define('FORMFILEDROPZONE_JS_REL_URL', FORMFILEDROPZONE_REL_URL . '/formfiledropzone/dropzone');
+define('FORMFILEDROPZONE_CSS_REL_URL', FORMFILEDROPZONE_REL_URL . '/formfiledropzone/dropzone');
+define('FORMFILEDROPZONE_IMAGES_REL_URL', FORMFILEDROPZONE_REL_URL . '/formfiledropzone/dropzone');
+define('FORMFILEDROPZONE_JS_URL', FORMFILEDROPZONE_URL . '/formfiledropzone/dropzone');
+define('FORMFILEDROPZONE_CSS_URL', FORMFILEDROPZONE_URL . '/formfiledropzone/dropzone');
+define('FORMFILEDROPZONE_IMAGES_URL', FORMFILEDROPZONE_URL . '/formfiledropzone/dropzone');
 
 xoops_loadLanguage('formfiledropzone', $GLOBALS['xoopsModule']->getVar('dirname'));
 xoops_load('XoopsFormLoader');
@@ -113,11 +113,11 @@ class FormFiledropzone extends \XoopsFormText
                 $html .= "<style type='text/css'>@import url(" . XOOPS_URL . "/xoops.css);</style>\n";
                 $html .= "<style type='text/css'>@import url(" . FORMFILEDROPZONE_CSS_URL . '/dropzone.css' . ");</style>\n";
                 $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMFILEDROPZONE_JS_URL . "/dropzone.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEDROPZONE_JS_URL . "/dropzone.js' type='text/javascript'></script>\n";
             }
         }
         // not common code
-        $css = "";
+        $css = '';
         $js = "
             $( document ).ready(function() {
 //            var myDropzone = new Dropzone('div#{$this->getName()}dropzone', { url: '/'});
@@ -143,8 +143,8 @@ class FormFiledropzone extends \XoopsFormText
         $html .= "<div id='{$this->getName()}dropzone' class='dropzone'>";
         $html .= "<div class='fallback'>";
         $html .= "<input type='file' name='{$this->getName()}' title='{$this->getTitle()}' id='{$this->getName()}' class='{$this->getClass()}' value='{$this->getValue()}' {$this->getExtra()} />";
-        $html .= "</div>";
-        $html .= "</div>";
+        $html .= '</div>';
+        $html .= '</div>';
         return $html;
     }
 }

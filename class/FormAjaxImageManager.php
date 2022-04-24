@@ -22,8 +22,8 @@ namespace XoopsModules\Common;
 use Xmf\Request;
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 include_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
@@ -35,13 +35,13 @@ $xoopsLogger->activated = false;
 // Disable error reporting
 error_reporting(0);
 
-define("FORMAJAXIMAGEMANAGER_FILENAME", basename($currentPath));
-define("FORMAJAXIMAGEMANAGER_PATH", dirname($currentPath));
-define("FORMAJAXIMAGEMANAGER_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMAJAXIMAGEMANAGER_URL", XOOPS_URL . '/' . FORMAJAXIMAGEMANAGER_REL_URL . '/' . FORMAJAXIMAGEMANAGER_FILENAME);
-define("FORMAJAXIMAGEMANAGER_JS_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/js");
-define("FORMAJAXIMAGEMANAGER_CSS_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/css");
-define("FORMAJAXIMAGEMANAGER_IMAGES_REL_URL", FORMAJAXIMAGEMANAGER_REL_URL . "/formajaximagemanager/images");
+define('FORMAJAXIMAGEMANAGER_FILENAME', basename($currentPath));
+define('FORMAJAXIMAGEMANAGER_PATH', dirname($currentPath));
+define('FORMAJAXIMAGEMANAGER_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMAJAXIMAGEMANAGER_URL', XOOPS_URL . '/' . FORMAJAXIMAGEMANAGER_REL_URL . '/' . FORMAJAXIMAGEMANAGER_FILENAME);
+define('FORMAJAXIMAGEMANAGER_JS_REL_URL', FORMAJAXIMAGEMANAGER_REL_URL . '/formajaximagemanager/js');
+define('FORMAJAXIMAGEMANAGER_CSS_REL_URL', FORMAJAXIMAGEMANAGER_REL_URL . '/formajaximagemanager/css');
+define('FORMAJAXIMAGEMANAGER_IMAGES_REL_URL', FORMAJAXIMAGEMANAGER_REL_URL . '/formajaximagemanager/images');
 
 $dirname = basename(dirname(__DIR__));
 
@@ -74,7 +74,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             // NOP
             break;
 
-        case "getImgcats" :
+        case 'getImgcats' :
             $name = Request::getString('name');
             $imgcat_id = Request::getInt('imgcat_id', 0);
 
@@ -139,7 +139,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             exit();
             break;
 
-        case "getImgcatPermissions" :
+        case 'getImgcatPermissions' :
             $name = Request::getString('name');
             $imgcat_id = Request::getInt('imgcat_id', 0);
 
@@ -207,7 +207,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             exit();
             break;
 
-        case "getImgcatImagesList" :
+        case 'getImgcatImagesList' :
             $imgcat_id = Request::getInt('imgcat_id', 0);
 
             // get imgcat object
@@ -324,7 +324,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $select->addOptionArray($categoriesListArray);
             $formObj->addElement($select, true);
             if (!$imageObj->isNew()) {
-                $formObj->addElement(new \XoopsFormLabel(_IMAGEFILE, "<img src='" . XOOPS_URL . "/image.php?id=" . $image_id . "&width=140&height=140' />"));
+                $formObj->addElement(new \XoopsFormLabel(_IMAGEFILE, "<img src='" . XOOPS_URL . '/image.php?id=' . $image_id . "&width=140&height=140' />"));
             } else {
                 $formObj->addElement(new \XoopsFormFile(_IMAGEFILE, $name . '_image_file', $imgcatObj->getVar('imgcat_maxsize')), true);
             }
@@ -341,20 +341,20 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             // render edit image form
             $html = '';
             $html .= "<div id='" . $name . "_edit_image_form'>";
-            $html .= "<b>" . $formObj->getTitle() . "</b>\n";
+            $html .= '<b>' . $formObj->getTitle() . "</b>\n";
             $html .= "<br />\n";
             foreach ($formObj->getElements() as $ele) {
                 if (!$ele->isHidden()) {
                     $caption = $ele->getCaption();
                     if (!empty($caption)) {
-                        $html .= "<strong>" . $ele->getCaption() . "</strong><br />\n";
+                        $html .= '<strong>' . $ele->getCaption() . "</strong><br />\n";
                     }
                     $html .= $ele->render() . "<br />\n";
                 } else {
                     $html .= $ele->render() . "\n";
                 }
             }
-            $html .= "</div>";
+            $html .= '</div>';
             // generate ajax return
             $ret = [];
             $ret['data'] = null;
@@ -412,7 +412,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $uploader->setPrefix('img');
             if ($uploader->fetchMedia($name . '_image_file')) {
                 if (!$uploader->upload()) {
-                    $error = implode("<br />", $uploader->getErrors(false));
+                    $error = implode('<br />', $uploader->getErrors(false));
                 } else {
                     // create image object
                     $imageObj = $image_handler->create();
@@ -437,7 +437,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                     }
                 }
             } else {
-                $error = sprintf(_FAILFETCHIMG, 0) . "|" . implode("|", $uploader->getErrors(false));
+                $error = sprintf(_FAILFETCHIMG, 0) . '|' . implode('|', $uploader->getErrors(false));
             }
             // generate ajax return
             if ($error) {
@@ -548,7 +548,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 // ERROR
                 $arr = ['error', $error];
             } else {
-                $arr = ['success', $imageObj->getVar("image_name"), $imageObj->getVar("image_nicename")];
+                $arr = ['success', $imageObj->getVar('image_name'), $imageObj->getVar('image_nicename')];
             }
             echo json_encode($arr);
             exit();
@@ -706,20 +706,20 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             // render edit imgcat form
             $html = '';
             $html .= "<div id='" . $name . "_edit_imgcat_form'>";
-            $html .= "<b>" . $formObj->getTitle() . "</b>\n";
+            $html .= '<b>' . $formObj->getTitle() . "</b>\n";
             $html .= "<br />\n";
             foreach ($formObj->getElements() as $ele) {
                 if (!$ele->isHidden()) {
                     $caption = $ele->getCaption();
                     if (!empty($caption)) {
-                        $html .= "<strong>" . $ele->getCaption() . "</strong><br />\n";
+                        $html .= '<strong>' . $ele->getCaption() . "</strong><br />\n";
                     }
                     $html .= $ele->render() . "<br />\n";
                 } else {
                     $html .= $ele->render() . "\n";
                 }
             }
-            $html .= "</div>";
+            $html .= '</div>';
             // generate ajax return
             $ret = [];
             $ret['data'] = null;
@@ -1846,11 +1846,11 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                         $GLOBALS['xoTheme']->addStylesheet(XOOPS_URL . '/modules/system/css/lightbox.css');
                         $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/plugins/jquery.lightbox.js');
                         //
-                        $css = ".ajax_loader {
-                            background: url(" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
+                        $css = '.ajax_loader {
+                            background: url(' . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
                             width:100%;
                             height:100%;
-                        }";
+                        }';
                         $GLOBALS['xoTheme']->addStylesheet('', [], $css);
                         $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.ajaxloader/jquery.ajaxloader.js');
                         // The jQuery UI widget factory, can be omitted if jQuery UI is already included
@@ -1883,29 +1883,29 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                         $html .= "<style type='text/css'>@import url(" . XOOPS_URL . "/modules/system/css/lightbox.css);</style>\n";
                         $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/plugins/jquery.lightbox.js' type='text/javascript'></script>\n";
                         //
-                        $css = ".ajax_loader {
-                            background: url(" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
+                        $css = '.ajax_loader {
+                            background: url(' . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . '/jquery.ajaxloader/spinner.gif) no-repeat center center transparent;
                             width:100%;
                             height:100%;
-                        }";
+                        }';
                         $html .= "<style type='text/css'>\n" . $css . "\n</style>\n";
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/jquery.ajaxloader.js' type='text/javascript'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.ajaxloader/jquery.ajaxloader.js' type='text/javascript'></script>\n";
                         // The jQuery UI widget factory, can be omitted if jQuery UI is already included
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/vendor/jquery.ui.widget.js'></script>\n";
                         // The Load Image plugin is included for the preview images and image resizing functionality
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Load-Image-master/js/load-image.min.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Load-Image-master/js/load-image.min.js'></script>\n";
                         // The Canvas to Blob plugin is included for image resizing functionality
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.JavaScript-Canvas-to-Blob-master/js/canvas-to-blob.min.js'></script>\n";
                         // The Iframe Transport is required for browsers without support for XHR file uploads
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.iframe-transport.js'></script>\n";
                         // The basic File Upload plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload.js'></script>\n";
                         // The File Upload processing plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-process.js'></script>\n";
                         // The File Upload image preview & resize plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-image.js'></script>\n";
                         // The File Upload validation plugin
-                        $html .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js'></script>\n";
+                        $html .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMAJAXIMAGEMANAGER_JS_REL_URL . "/jquery.jQuery-File-Upload-master/js/jquery.fileupload-validate.js'></script>\n";
                         //
                         $html .= "<script type='text/javascript'>\n" . $commonJs . "\n</script>\n";
                     }
@@ -1996,7 +1996,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 if ($categoriesCount > 0) {
                     foreach ($categoriesListArray as $id => $imgcat_name) {
                         $html .= "<option value='{$id}'";
-                        $html .= (!is_null($this->getDefaultImgcatId()) && $id == $this->getDefaultImgcatId()) ? " selected='selected'" : "";
+                        $html .= (!is_null($this->getDefaultImgcatId()) && $id == $this->getDefaultImgcatId()) ? " selected='selected'" : '';
                         $html .= ">{$imgcat_name}</option>\n";
                     }
                 }

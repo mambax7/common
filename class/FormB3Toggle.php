@@ -27,16 +27,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3TOGGLE_FILENAME", basename($currentPath));
-define("FORMB3TOGGLE_PATH", dirname($currentPath));
-define("FORMB3TOGGLE_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3TOGGLE_URL", XOOPS_URL . '/' . FORMB3TOGGLE_REL_URL . '/' . FORMB3TOGGLE_FILENAME);
-define("FORMB3TOGGLE_JS_REL_URL", FORMB3TOGGLE_REL_URL . "/formb3toggle/js");
-define("FORMB3TOGGLE_CSS_REL_URL", FORMB3TOGGLE_REL_URL . "/formb3toggle/css");
-define("FORMB3TOGGLE_IMAGES_REL_URL", FORMB3TOGGLE_REL_URL . "/formb3toggle/images");
+define('FORMB3TOGGLE_FILENAME', basename($currentPath));
+define('FORMB3TOGGLE_PATH', dirname($currentPath));
+define('FORMB3TOGGLE_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3TOGGLE_URL', XOOPS_URL . '/' . FORMB3TOGGLE_REL_URL . '/' . FORMB3TOGGLE_FILENAME);
+define('FORMB3TOGGLE_JS_REL_URL', FORMB3TOGGLE_REL_URL . '/formb3toggle/js');
+define('FORMB3TOGGLE_CSS_REL_URL', FORMB3TOGGLE_REL_URL . '/formb3toggle/css');
+define('FORMB3TOGGLE_IMAGES_REL_URL', FORMB3TOGGLE_REL_URL . '/formb3toggle/images');
 
 xoops_load('XoopsFormLoader');
 
@@ -77,9 +77,9 @@ class FormB3Toggle extends \XoopsFormElement {
             $value,
             $on = _YES,
             $off = _NO,
-            $size = "normal",
-            $onstyle = "primary",
-            $offstyle = "default"
+            $size = 'normal',
+            $onstyle = 'primary',
+            $offstyle = 'default'
     ) {
         $this->setCaption($caption);
         $this->setName($name);
@@ -158,7 +158,7 @@ class FormB3Toggle extends \XoopsFormElement {
         $html .= $css . "\n";
         //
         // html
-        $checked = ($this->_value) ? "checked " : "";
+        $checked = ($this->_value) ? 'checked ' : '';
         $html .= "<input type='checkbox' {$this->getExtra()} name='{$this->getName()}' id='{$this->getId()}' title='{$this->getTitle()}' {$checked}>\n";
         //
         // add js just after html

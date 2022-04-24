@@ -74,7 +74,7 @@ class FormNumber extends \XoopsFormText
         $attributes['max'] = (float)$this->getAttribute('max');
         $attributes['min'] = (float)$this->getAttribute('min');
         $attributes['step'] = (float)$this->getAttribute('step');
-        $ret = "<input ";
+        $ret = '<input ';
         foreach ($attributes as $attributeName => $attributeValue) {
             $ret .= "{$attributeName}='{$attributeValue}' ";
         }

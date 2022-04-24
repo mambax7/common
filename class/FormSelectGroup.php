@@ -27,16 +27,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMSELECTGROUP_FILENAME", basename($currentPath));
-define("FORMSELECTGROUP_PATH", dirname($currentPath));
-define("FORMSELECTGROUP_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMSELECTGROUP_URL", XOOPS_URL . '/' . FORMSELECTGROUP_REL_URL . '/' . FORMSELECTGROUP_FILENAME);
-define("FORMSELECTGROUP_JS_REL_URL", FORMSELECTGROUP_REL_URL . "/formselectgroup/js");
-define("FORMSELECTGROUP_CSS_REL_URL", FORMSELECTGROUP_REL_URL . "/formselectgroup/css");
-define("FORMSELECTGROUP_IMAGES_REL_URL", FORMSELECTGROUP_REL_URL . "/formselectgroup/images");
+define('FORMSELECTGROUP_FILENAME', basename($currentPath));
+define('FORMSELECTGROUP_PATH', dirname($currentPath));
+define('FORMSELECTGROUP_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMSELECTGROUP_URL', XOOPS_URL . '/' . FORMSELECTGROUP_REL_URL . '/' . FORMSELECTGROUP_FILENAME);
+define('FORMSELECTGROUP_JS_REL_URL', FORMSELECTGROUP_REL_URL . '/formselectgroup/js');
+define('FORMSELECTGROUP_CSS_REL_URL', FORMSELECTGROUP_REL_URL . '/formselectgroup/css');
+define('FORMSELECTGROUP_IMAGES_REL_URL', FORMSELECTGROUP_REL_URL . '/formselectgroup/images');
 
 xoops_load('XoopsFormLoader');
 
@@ -142,7 +142,7 @@ class FormSelectGroup extends \XoopsFormElement {
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormSelectGroupIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -155,7 +155,7 @@ class FormSelectGroup extends \XoopsFormElement {
             if (!$isCommonFormSelectGroupIncluded) {
                 $ret .= "<style type='text/css'>@import url(" . FORMSELECTGROUP_JS_REL_URL . "//lou-multi-select/css/multi-select.css);</style>\n";
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMSELECTGROUP_JS_REL_URL . "/lou-multi-select/js/jquery.multi-select.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMSELECTGROUP_JS_REL_URL . "/lou-multi-select/js/jquery.multi-select.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";

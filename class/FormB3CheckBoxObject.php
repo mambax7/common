@@ -24,16 +24,16 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3CHECKBOXOBJECT_FILENAME", basename($currentPath));
-define("FORMB3CHECKBOXOBJECT_PATH", dirname($currentPath));
-define("FORMB3CHECKBOXOBJECT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3CHECKBOXOBJECT_URL", XOOPS_URL . '/' . FORMB3CHECKBOXOBJECT_REL_URL . '/' . FORMB3CHECKBOXOBJECT_FILENAME);
-define("FORMB3CHECKBOXOBJECT_JS_REL_URL", FORMB3CHECKBOXOBJECT_REL_URL . "/formb3checkboxobject/js");
-define("FORMB3CHECKBOXOBJECT_CSS_REL_URL", FORMB3CHECKBOXOBJECT_REL_URL . "/formb3checkboxobject/css");
-define("FORMB3CHECKBOXOBJECT_IMAGES_REL_URL", FORMB3CHECKBOXOBJECT_REL_URL . "/formb3checkboxobject/images");
+define('FORMB3CHECKBOXOBJECT_FILENAME', basename($currentPath));
+define('FORMB3CHECKBOXOBJECT_PATH', dirname($currentPath));
+define('FORMB3CHECKBOXOBJECT_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3CHECKBOXOBJECT_URL', XOOPS_URL . '/' . FORMB3CHECKBOXOBJECT_REL_URL . '/' . FORMB3CHECKBOXOBJECT_FILENAME);
+define('FORMB3CHECKBOXOBJECT_JS_REL_URL', FORMB3CHECKBOXOBJECT_REL_URL . '/formb3checkboxobject/js');
+define('FORMB3CHECKBOXOBJECT_CSS_REL_URL', FORMB3CHECKBOXOBJECT_REL_URL . '/formb3checkboxobject/css');
+define('FORMB3CHECKBOXOBJECT_IMAGES_REL_URL', FORMB3CHECKBOXOBJECT_REL_URL . '/formb3checkboxobject/images');
 
 xoops_load('XoopsFormLoader');
 
@@ -192,7 +192,7 @@ $(document).ready(function() {
         ";
 
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if ( !$isCommonFormB3CheckBoxObjectIncluded) {
 //                $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');

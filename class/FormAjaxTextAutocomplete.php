@@ -22,8 +22,8 @@ namespace XoopsModules\Common;
 use Xmf\Request;
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 include_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
@@ -35,10 +35,10 @@ $xoopsLogger->activated = false;
 // Disable error reporting
 error_reporting(0);
 
-define("FORMAJAXTEXTAUTOCOMPLETE_FILENAME", basename($currentPath));
-define("FORMAJAXTEXTAUTOCOMPLETE_PATH", dirname($currentPath));
-define("FORMAJAXTEXTAUTOCOMPLETE_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMAJAXTEXTAUTOCOMPLETE_URL", XOOPS_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_REL_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_FILENAME);
+define('FORMAJAXTEXTAUTOCOMPLETE_FILENAME', basename($currentPath));
+define('FORMAJAXTEXTAUTOCOMPLETE_PATH', dirname($currentPath));
+define('FORMAJAXTEXTAUTOCOMPLETE_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMAJAXTEXTAUTOCOMPLETE_URL', XOOPS_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_REL_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_FILENAME);
 
 xoops_load('XoopsRequest');
 
@@ -223,7 +223,7 @@ if (!class_exists('FormAjaxTextAutocomplete')) {
                     });
                 ";
             } else {
-                $js = "";
+                $js = '';
             }
             if (is_object($GLOBALS['xoTheme'])) {
                 $GLOBALS['xoTheme']->addScript('','', $js);

@@ -43,7 +43,7 @@ class SimpleForm extends \XoopsForm
             if (!is_object($formElement)) {
                 $ret .= $formElement;
             } else if (!$formElement->isHidden()) {
-                $ret .= "" . $formElement->render() . " &nbsp;" . $formElement->getCaption() . "<br />\n";
+                $ret .= '' . $formElement->render() . ' &nbsp;' . $formElement->getCaption() . "<br />\n";
             } else {
                 $ret .= $formElement->render() . "\n";
             }

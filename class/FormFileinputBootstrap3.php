@@ -24,18 +24,18 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos( $currentPath, "\\\\", 2 ) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos( $currentPath, "\\\\", 2 ) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 
-define("FORMFILEINPUTBOOTSTRAP3_FILENAME", basename($currentPath));
-define("FORMFILEINPUTBOOTSTRAP3_PATH", dirname($currentPath));
-define("FORMFILEINPUTBOOTSTRAP3_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMFILEINPUTBOOTSTRAP3_URL", XOOPS_URL . '/' . FORMFILEINPUTBOOTSTRAP3_REL_URL);
-define("FORMFILEINPUTBOOTSTRAP3_JS_URL", FORMFILEINPUTBOOTSTRAP3_URL . "/formfileinputbootstrap3/js");
-define("FORMFILEINPUTBOOTSTRAP3_CSS_URL", FORMFILEINPUTBOOTSTRAP3_URL . "/formfileinputbootstrap3/css");
-define("FORMFILEINPUTBOOTSTRAP3_IMAGES_URL", FORMFILEINPUTBOOTSTRAP3_URL . "/formfileinputbootstrap3/img");
-define("FORMFILEINPUTBOOTSTRAP3_THEMES_URL", FORMFILEINPUTBOOTSTRAP3_URL . "/formfileinputbootstrap3/themes");
+define('FORMFILEINPUTBOOTSTRAP3_FILENAME', basename($currentPath));
+define('FORMFILEINPUTBOOTSTRAP3_PATH', dirname($currentPath));
+define('FORMFILEINPUTBOOTSTRAP3_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMFILEINPUTBOOTSTRAP3_URL', XOOPS_URL . '/' . FORMFILEINPUTBOOTSTRAP3_REL_URL);
+define('FORMFILEINPUTBOOTSTRAP3_JS_URL', FORMFILEINPUTBOOTSTRAP3_URL . '/formfileinputbootstrap3/js');
+define('FORMFILEINPUTBOOTSTRAP3_CSS_URL', FORMFILEINPUTBOOTSTRAP3_URL . '/formfileinputbootstrap3/css');
+define('FORMFILEINPUTBOOTSTRAP3_IMAGES_URL', FORMFILEINPUTBOOTSTRAP3_URL . '/formfileinputbootstrap3/img');
+define('FORMFILEINPUTBOOTSTRAP3_THEMES_URL', FORMFILEINPUTBOOTSTRAP3_URL . '/formfileinputbootstrap3/themes');
 
 xoops_loadLanguage('formfileinputbootstrap3', $GLOBALS['xoopsModule']->getVar('dirname'));
 xoops_load('XoopsFormLoader');
@@ -127,15 +127,15 @@ class FormFileinputBootstrap3 extends \XoopsFormText
                 //
                 $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascriFORMFILEINPUTBOOTSTRAP3_CSS_URL . '/fileinput.css'pt'></script>\n";
                 //
-                $html .= "<script src=" . FORMFILEINPUTBOOTSTRAP3_JS_URL . "plugins/piexif.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/plugins/sortable.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/fileinput.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/locales/{$language}.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMFILEINPUTBOOTSTRAP3_THEMES_URL . "/{$theme}/theme.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEINPUTBOOTSTRAP3_JS_URL . "plugins/piexif.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/plugins/sortable.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/fileinput.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEINPUTBOOTSTRAP3_JS_URL . "/locales/{$language}.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMFILEINPUTBOOTSTRAP3_THEMES_URL . "/{$theme}/theme.js' type='text/javascript'></script>\n";
             }
         }
         // not common code
-        $css = "";
+        $css = '';
         
         $js = "
     $(document).ready(function () {
@@ -174,7 +174,7 @@ class FormFileinputBootstrap3 extends \XoopsFormText
             </script>\n";
         $html .= "<div class='file-loading'>";
         $html .= "<input id='{$this->getName()}' type='file' multiple>";
-        $html .= "</div>";
+        $html .= '</div>';
         return $html;
     }
 }

@@ -96,7 +96,7 @@ $files = [];
 foreach ($fileNames as $fileName) {
     $file = [
         'fileName' => $fileName,
-        'description' => "description",
+        'description' => 'description',
         'url' => COMMON_UPLOAD_URL . '/' . $fileName,
         'path' =>  COMMON_UPLOAD_PATH . '/' . $fileName,
     ];

@@ -26,7 +26,7 @@ require dirname(__FILE__) . '/admin_header.php';
 $op = XoopsRequest::getCmd('op', 'permissions');
 switch ($op) {
     default:
-    case "permissions":
+    case 'permissions':
         //  admin navigation
         //xoops_cp_header();
         $moduleAdmin = Admin::getInstance();
@@ -46,14 +46,14 @@ switch ($op) {
 
 
 
-    case "global_perms.list":
+    case 'global_perms.list':
         //  admin navigation
         xoops_cp_header();
         $indexAdmin = \Xmf\Module\Admin::getInstance();
         $indexAdmin->displayNavigation($currentFile);
         // buttons
         $adminMenu = new ModuleAdmin();
-        $adminMenu->addItemButton(_AM_COMMON_PERM_GLOBAL, "?op=global_perms.list", 'permissions');
+        $adminMenu->addItemButton(_AM_COMMON_PERM_GLOBAL, '?op=global_perms.list', 'permissions');
         echo $adminMenu->renderButton();
         //
         $xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -82,7 +82,7 @@ switch ($op) {
         //
         include __DIR__ . '/admin_footer.php';
         break;
-    case "global_perms.save":
+    case 'global_perms.save':
         // resetta/aggiorna permesso permname
         $groupperm_handler->deleteByModule($GLOBALS['xoopsModule']->getVar('mid'), 'permname');
         $groups_perm_permname = XoopsRequest::getArray('groups_perm_permname');

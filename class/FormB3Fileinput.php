@@ -37,18 +37,18 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
 
-define("FORMB3FILEINPUT_FILENAME", basename($currentPath));
-define("FORMB3FILEINPUT_PATH", dirname($currentPath));
-define("FORMB3FILEINPUT_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3FILEINPUT_URL", XOOPS_URL . '/' . FORMB3FILEINPUT_REL_URL);
-define("FORMB3FILEINPUT_JS_URL", FORMB3FILEINPUT_URL . "/formb3fileinput/js");
-define("FORMB3FILEINPUT_CSS_URL", FORMB3FILEINPUT_URL . "/formb3fileinput/css");
-define("FORMB3FILEINPUT_IMAGES_URL", FORMB3FILEINPUT_URL . "/formb3fileinput/img");
-define("FORMB3FILEINPUT_THEMES_URL", FORMB3FILEINPUT_URL . "/formb3fileinput/themes");
+define('FORMB3FILEINPUT_FILENAME', basename($currentPath));
+define('FORMB3FILEINPUT_PATH', dirname($currentPath));
+define('FORMB3FILEINPUT_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3FILEINPUT_URL', XOOPS_URL . '/' . FORMB3FILEINPUT_REL_URL);
+define('FORMB3FILEINPUT_JS_URL', FORMB3FILEINPUT_URL . '/formb3fileinput/js');
+define('FORMB3FILEINPUT_CSS_URL', FORMB3FILEINPUT_URL . '/formb3fileinput/css');
+define('FORMB3FILEINPUT_IMAGES_URL', FORMB3FILEINPUT_URL . '/formb3fileinput/img');
+define('FORMB3FILEINPUT_THEMES_URL', FORMB3FILEINPUT_URL . '/formb3fileinput/themes');
 
 xoops_loadLanguage('formfileinputbootstrap3', $GLOBALS['xoopsModule']->getVar('dirname'));
 xoops_load('XoopsFormLoader');
@@ -193,15 +193,15 @@ class FormB3Fileinput extends \XoopsFormText {
                 //
                 $html .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
                 //
-                $html .= "<script src=" . FORMB3FILEINPUT_JS_URL . "plugins/piexif.js' type='text/javascript></script>\n";
-                $html .= "<script src=" . FORMB3FILEINPUT_JS_URL . "/plugins/sortable.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMB3FILEINPUT_JS_URL . "/fileinput.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMB3FILEINPUT_JS_URL . "/locales/{$language}.js' type='text/javascript'></script>\n";
-                $html .= "<script src=" . FORMB3FILEINPUT_THEMES_URL . "/{$theme}/theme.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMB3FILEINPUT_JS_URL . "plugins/piexif.js' type='text/javascript></script>\n";
+                $html .= '<script src=' . FORMB3FILEINPUT_JS_URL . "/plugins/sortable.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMB3FILEINPUT_JS_URL . "/fileinput.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMB3FILEINPUT_JS_URL . "/locales/{$language}.js' type='text/javascript'></script>\n";
+                $html .= '<script src=' . FORMB3FILEINPUT_THEMES_URL . "/{$theme}/theme.js' type='text/javascript'></script>\n";
             }
         }
         // not common code
-        $css = "";
+        $css = '';
         $js = "
     $(document).ready(function () {
         $('#{$this->getId()}').fileinput({
@@ -254,11 +254,11 @@ class FormB3Fileinput extends \XoopsFormText {
                         </div>
             ";    
         }
-        $html .= "
+        $html .= '
                     </div>
                 </div>
             </div>
-        ";
+        ';
         return $html;
     }
 

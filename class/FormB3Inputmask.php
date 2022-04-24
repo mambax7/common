@@ -18,14 +18,14 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3INPUTMASK_FILENAME", basename($currentPath));
-define("FORMB3INPUTMASK_PATH", dirname($currentPath));
-define("FORMB3INPUTMASK_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3INPUTMASK_URL", XOOPS_URL . '/' . FORMB3INPUTMASK_REL_URL . '/' . FORMB3INPUTMASK_FILENAME);
-define("FORMB3INPUTMASK_JS_REL_URL", FORMB3INPUTMASK_REL_URL . "/forminputmask");
+define('FORMB3INPUTMASK_FILENAME', basename($currentPath));
+define('FORMB3INPUTMASK_PATH', dirname($currentPath));
+define('FORMB3INPUTMASK_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3INPUTMASK_URL', XOOPS_URL . '/' . FORMB3INPUTMASK_REL_URL . '/' . FORMB3INPUTMASK_FILENAME);
+define('FORMB3INPUTMASK_JS_REL_URL', FORMB3INPUTMASK_REL_URL . '/forminputmask');
 
 xoops_loadLanguage('forminputmask', 'common');
 xoops_load('XoopsFormLoader');
@@ -164,13 +164,13 @@ class FormB3Inputmask extends \XoopsFormElement {
     public function render() {
 //TODO COMPLETARE QUESTO
         static $isCommonFormB3InputmaskIncluded = false;
-        $commonJs = "";
+        $commonJs = '';
         $css = '';
         $js = '';
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormB3InputmaskIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -184,10 +184,10 @@ class FormB3Inputmask extends \XoopsFormElement {
         } else {
             if (!$isCommonFormB3InputmaskIncluded) {
                 $ret .= "<script src='" . XOOPS_URL . "/browse.php?Frameworks/jquery/jquery.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3INPUTMASK_JS_REL_URL . "/dist/jquery.inputmask.min.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.date.extensions.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.extensions.js' type='text/javascript'></script>\n";
-                $ret .= "<script src='" . XOOPS_URL . "/browse.php?" . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.numeric.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3INPUTMASK_JS_REL_URL . "/dist/jquery.inputmask.min.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.date.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.extensions.js' type='text/javascript'></script>\n";
+                $ret .= "<script src='" . XOOPS_URL . '/browse.php?' . FORMB3INPUTMASK_JS_REL_URL . "/lib/extensions/inputmask.numeric.extensions.js' type='text/javascript'></script>\n";
                 $ret .= "<script type='text/javascript'>\n";
                 $ret .= $commonJs . "\n";
                 $ret .= "</script>\n";
@@ -199,7 +199,7 @@ class FormB3Inputmask extends \XoopsFormElement {
         $css .= "</style>\n";
         $ret .= $css . "\n";
         // add html
-        $html .= (!empty($this->_pre) || !empty($this->_post)) ? "<div class='input-group'>" : "<div>";
+        $html .= (!empty($this->_pre) || !empty($this->_post)) ? "<div class='input-group'>" : '<div>';
         if (!empty($this->_pre)) {
             $html .= "<span class='input-group-addon'>{$this->_pre}</span>";
         
@@ -208,7 +208,7 @@ class FormB3Inputmask extends \XoopsFormElement {
         if (!empty($this->_post)) {
             $html .= "<span class='input-group-addon'>{$this->_post}</span>";
         }
-        $html .= "</div>";
+        $html .= '</div>';
         $ret .= $html . "\n";
         // add js
         if (!is_null($this->_inputmask)) {
@@ -233,7 +233,7 @@ $(document).ready(function(){
      */
     public function renderValidationJS() {
 //TODO
-        $js = "";
+        $js = '';
         return $js;
     }
 

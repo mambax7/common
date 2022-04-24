@@ -84,7 +84,7 @@ class FormDatepicker extends \XoopsFormText {
      * @return string attributes string
      */
     function renderAttributes() {
-        $ret = "";
+        $ret = '';
         foreach ($this->_attributes as $name => $value) {
             $ret .= "{$name}='{$value}' ";
         }
@@ -117,8 +117,8 @@ class FormDatepicker extends \XoopsFormText {
             }
         }
         // not common javascript/css code
-        $css = "";
-        $js = "";
+        $css = '';
+        $js = '';
         if (is_object($GLOBALS['xoTheme'])) {
             $GLOBALS['xoTheme']->addStylesheet('', array(), $css);
             $GLOBALS['xoTheme']->addScript('', '', $js);

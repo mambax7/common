@@ -18,14 +18,14 @@ use Xmf\Module\Helper;
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');
 
 $currentPath = __FILE__;
-if (DIRECTORY_SEPARATOR != "/") {
-    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, "/", $currentPath);
+if (DIRECTORY_SEPARATOR != '/') {
+    $currentPath = str_replace(strpos($currentPath, "\\\\", 2) ? "\\\\" : DIRECTORY_SEPARATOR, '/', $currentPath);
 }
-define("FORMB3SLIDER_FILENAME", basename($currentPath));
-define("FORMB3SLIDER_PATH", dirname($currentPath));
-define("FORMB3SLIDER_REL_URL", str_replace(XOOPS_ROOT_PATH . "/", '', dirname($currentPath)));
-define("FORMB3SLIDER_URL", XOOPS_URL . '/' . FORMB3SLIDER_REL_URL . '/' . FORMB3SLIDER_FILENAME);
-define("FORMB3SLIDER_JS_REL_URL", FORMB3SLIDER_REL_URL . "/formb3slider");
+define('FORMB3SLIDER_FILENAME', basename($currentPath));
+define('FORMB3SLIDER_PATH', dirname($currentPath));
+define('FORMB3SLIDER_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
+define('FORMB3SLIDER_URL', XOOPS_URL . '/' . FORMB3SLIDER_REL_URL . '/' . FORMB3SLIDER_FILENAME);
+define('FORMB3SLIDER_JS_REL_URL', FORMB3SLIDER_REL_URL . '/formb3slider');
 
 xoops_loadLanguage('forminputmask', 'common');
 xoops_load('XoopsFormLoader');
@@ -195,13 +195,13 @@ class FormB3Slider extends \XoopsFormElement {
     public function render() {
 //TODO COMPLETARE QUESTO
         static $isCommonFormB3SliderIncluded = false;
-        $commonJs = "";
+        $commonJs = '';
         $css = '';
         $js = '';
         $html = '';
         $ret = '';
         // add common js
-        $commonJs = "";
+        $commonJs = '';
         if (is_object($GLOBALS['xoTheme'])) {
             if (!$isCommonFormB3SliderIncluded) {
                 $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');
@@ -251,7 +251,7 @@ $(document).ready(function(){
      */
     public function renderValidationJS() {
 //TODO
-        $js = "";
+        $js = '';
         return $js;
     }
 

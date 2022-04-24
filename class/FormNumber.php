@@ -34,8 +34,11 @@ class FormNumber extends \XoopsFormText
      * @param mixed $caption
      * @param mixed $name
      * @param integer $value
+     * @param integer $max
+     * @param integer $min
+     * @param float $step
      */
-    public function __construct($caption, $name, $value = '', int $max = PHP_INT_MAX, int $min = 0, float $step = 0)
+    public function __construct($caption, $name, $value = '', $max = PHP_INT_MAX, $min = 0, $step = 0)
     {
 //TODO definire attributi qui
         $this->setCaption($caption);

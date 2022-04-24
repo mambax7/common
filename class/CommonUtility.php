@@ -13,7 +13,7 @@ defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 /**
  * Class CommonUtility
  */
-class CommonUtility extends XoopsObject {
+class CommonUtility extends \XoopsObject {
 
     /**
      * Transforms a numerical size (like 2048) to a letteral size (like 2MB)
@@ -288,10 +288,10 @@ class CommonUtility extends XoopsObject {
      * @param null|string $requiredVer
      * @return bool true if meets requirements, false if not
      */
-    public static function checkVerXoops(XoopsModule $module = null, $requiredVer = null) {
+    public static function checkVerXoops(\XoopsModule $module = null, $requiredVer = null) {
         $moduleDirName = basename(dirname(__DIR__));
         if (null === $module) {
-            $module = XoopsModule::getByDirname($moduleDirName);
+            $module = \XoopsModule::getByDirname($moduleDirName);
         }
         xoops_loadLanguage('admin', $moduleDirName);
         //check for minimum XOOPS version
@@ -335,7 +335,7 @@ class CommonUtility extends XoopsObject {
      *
      * @return bool true if meets requirements, false if not
      */
-    public static function checkVerPhp(XoopsModule $module) {
+    public static function checkVerPhp(\XoopsModule $module) {
         xoops_loadLanguage('admin', $module->dirname());
         // check for minimum PHP version
         $success = true;

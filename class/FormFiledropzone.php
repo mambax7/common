@@ -69,7 +69,7 @@ class FormFiledropzone extends \XoopsFormText
      */
     public function setId()
     {
-        $this->_id = md5(uniqid(rand(), true));
+        $this->_id = md5(uniqid(mt_rand(), true));
     }
 
     /**

@@ -80,7 +80,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
      * @param string $name "name" attribute for the element
      */
     public function setId($name) {
-        $this->_id = md5(uniqid(rand(), true));
+        $this->_id = md5(uniqid(mt_rand(), true));
     }
 
     /**

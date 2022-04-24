@@ -220,7 +220,6 @@ class FormB3MultiSelect extends \XoopsFormElement {
         $css = ''; // rendered just before html
 
         $html = '';
-        $html = '';
         // add common js
         // add css js
         if (is_object($GLOBALS['xoTheme'])) {

@@ -57,6 +57,7 @@ class FormUrl extends \XoopsFormText
      */
     public function renderValidationJS()
     {
+        $eltname = $this->getName();
         $js = "
 function {$eltname}ValidateURL(url) {
     if (url == '') return true;

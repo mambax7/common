@@ -132,13 +132,13 @@ class FormDatepicker extends \XoopsFormText {
         $this->_attributes['name'] = $this->getName();
         $this->_attributes['title'] = $this->getTitle();
         $this->_attributes['value'] = $this->getValue();
-        if (!is_null($this->_min)) {
+        if ($this->_min !== null) {
             $this->_attributes['min'] = $this->_min;
         }
-        if (!is_null($this->_max)) {
+        if ($this->_max !== null) {
             $this->_attributes['max'] = $this->_max;
         }
-        if (!is_null($this->_step)) {
+        if ($this->_step !== null) {
             $this->_attributes['step'] = $this->_step;
         }
         // render output

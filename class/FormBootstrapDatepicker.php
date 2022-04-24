@@ -68,10 +68,10 @@ class FormBootstrapDatepicker extends \XoopsFormText {
         $this->addOption('daysOfWeekHighlighted', '0');
         $this->addOption('calendarWeeks', true);
         $this->addOption('todayHighlight', true);
-        if (!is_null($startDate)) {
+        if ($startDate !== null) {
             $this->addOption('startDate', $startDate);
         }
-        if (!is_null($endDate)) {
+        if ($endDate !== null) {
             $this->addOption('endDate', $endDate);
         }
     }
@@ -82,7 +82,7 @@ class FormBootstrapDatepicker extends \XoopsFormText {
      * @param string $name "name" attribute for the element
      */
     public function setId($name = null) {
-        $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
+        $this->_id = $name === null ? md5(uniqid(rand(), true)) : $name;
     }
 
     /**

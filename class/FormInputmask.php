@@ -70,7 +70,7 @@ class FormInputmask extends \XoopsFormElement {
      * @param string $name "name" attribute for the element
      */
     public function setId($name = null) {
-        $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
+        $this->_id = $name === null ? md5(uniqid(rand(), true)) : $name;
     }
 
     /**
@@ -150,7 +150,7 @@ class FormInputmask extends \XoopsFormElement {
         $html .= "<input type='text' id='inputmask_{$this->getId()}' {$this->getExtra()} />";
         $ret .= $html . "\n";
         // add js
-        if (!is_null($this->_inputmask)) {
+        if ($this->_inputmask !== null) {
             $this->_options['mask'] = $this->_inputmask;
         }
         $js .= "<script type='text/javascript'>\n";

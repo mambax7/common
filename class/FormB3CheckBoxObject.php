@@ -81,7 +81,7 @@ class FormB3CheckBoxObject extends \XoopsFormElement
      * @param string $name "name" attribute for the element
      */
     public function setId($name = null) {
-        $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
+        $this->_id = $name === null ? md5(uniqid(rand(), true)) : $name;
     }
 
     /**

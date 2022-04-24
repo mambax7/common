@@ -69,7 +69,7 @@ abstract class CommonVersionedObjectHandler extends XoopsPersistableObjectHandle
         $queryFunc = empty($force) ? 'query' : 'queryF';
         $vars = $object->getVars();
         foreach ($vars as $key => $value) {
-            if (is_null($value['value']) && ($value['data_type'] != 0)) {
+            if ($value['value'] === null && ($value['data_type'] != 0)) {
                 $sql = "UPDATE `{$this->table}` SET `{$key}` = NULL WHERE `{$this->keyName}` = {$this->db->quote($object->getVar($this->keyName))}";
                 if (!$result = $this->db->{$queryFunc}($sql)) {
                     //return false;

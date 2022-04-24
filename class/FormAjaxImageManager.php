@@ -1089,7 +1089,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param string $name "name" attribute for the element
              */
             public function setId($name = null) {
-                $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
+                $this->_id = $name === null ? md5(uniqid(rand(), true)) : $name;
             }
 
             /**
@@ -1996,7 +1996,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 if ($categoriesCount > 0) {
                     foreach ($categoriesListArray as $id => $imgcat_name) {
                         $html .= "<option value='{$id}'";
-                        $html .= (!is_null($this->getDefaultImgcatId()) && $id == $this->getDefaultImgcatId()) ? " selected='selected'" : '';
+                        $html .= ($this->getDefaultImgcatId() !== null && $id == $this->getDefaultImgcatId()) ? " selected='selected'" : '';
                         $html .= ">{$imgcat_name}</option>\n";
                     }
                 }

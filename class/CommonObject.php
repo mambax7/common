@@ -72,7 +72,7 @@ abstract class CommonObject extends \XoopsObject {
             $this->vars[$key]['changed'] = true;
             $this->setDirty();
         }
-        if (!empty($key) && is_null($value) && isset($this->vars[$key])) {
+        if (!empty($key) && $value === null && isset($this->vars[$key])) {
             $this->vars[$key]['value'] = null;
             $this->vars[$key]['not_gpc'] = $not_gpc;
             $this->vars[$key]['changed'] = false;

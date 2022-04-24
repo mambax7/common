@@ -23,24 +23,22 @@
 // _CHARSET : UTF-8
 // Translator: luciorota
 
-//Menu
-define('_AM_COMMON_ADMIN',"Ammin");
+// menu
+define('_MI_COMMON_MENU_INDEX',"Pagina iniziale");
 
 
 
-// admin/index.php
+// admin menu
+define('_MI_COMMON_ADMENU_INDEX',"Home");
+define('_MI_COMMON_ADMENU_TOOLS',"Tools");
+define('_MI_COMMON_ADMENU_PERMISSIONS',"Permissions");
+define('_MI_COMMON_ADMENU_ABOUT',"About");
 
 
 
-// admin/tools.php
+// Module config setting
+define("_MI_COMMON_EDITOR","[Editor] Choose an editor for textarea fields");
+define("_MI_COMMON_EDITOR_DESC","<ul><li><b>dhtmltextarea:</b> standard Xoops editor</li><li><b>textarea:</b> standard html editor</li><li><b>tinymce:</b> WYSIWYG editor</li><li>...</li></ul>");
 
-
-
-// admin/permissions.php
-
-
-
-
-//Error NoFrameworks
-define('_AM_COMMON_NOFRAMEWORKS',"Error: You don&#39;t use the Frameworks \"admin module\". Please install this Frameworks");
-define('_AM_COMMON_MAINTAINEDBY',"Mantained by");
+define('_MI_COMMON_GOOGLEMAPSAPIKEY',"Google Maps API Key");
+define('_MI_COMMON_GOOGLEMAPSAPIKEY_DESC',"...");

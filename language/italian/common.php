@@ -24,12 +24,12 @@
 // Translator: luciorota
 
 // GENERIC
-define('_ CO_COMMON_ACTIONS', "Actions");
-define('_ CO_COMMON_ACTION_ENABLED', "Enabled");
-define('_ CO_COMMON_ACTION_DISABLED', "Disabled");
-define('_ CO_COMMON_ACTION_TOGGLED', "Toggled");
-define('_ CO_COMMON_GROUP', "Group");
-define('_ CO_COMMON_GROUPS', "Groups");
+define('_CO_COMMON_ACTIONS', "Azioni");
+define('_CO_COMMON_ACTION_ENABLED', "Abilitato");
+define('_CO_COMMON_ACTION_DISABLED', "Disabilitato");
+define('_CO_COMMON_ACTION_TOGGLED', "Toggled");
+define('_CO_COMMON_GROUP', "Gruppo");
+define('_CO_COMMON_GROUPS', "Gruppi");
 
 // warnings
 define('_CO_COMMON_WARNING_NOUPLOADDIR', "Warning: the module upload directory does not exist");
@@ -40,9 +40,9 @@ define('_CO_COMMON_ERROR_NOTTOGGLED', "Error: not toggled");
 define('_CO_COMMON_ERROR_QUERY_DATABASE', "Error: query/database error");
 
 // filter
-define('_ CO_COMMON_FILTER_SEARCH', "Search");
-define('_ CO_COMMON_FILTER_FILTER', "Filter");
-define('_ CO_COMMON_FILTER_CONDITION', "Condition");
+define('_CO_COMMON_FILTER_SEARCH', "Cerca");
+define('_CO_COMMON_FILTER_FILTER', "Filtro");
+define('_CO_COMMON_FILTER_CONDITION', "Condizione");
 
 // form options
 define('_CO_COMMON_TEXTOPTIONS', "Text options");
@@ -58,52 +58,53 @@ define('_CO_COMMON_ND', "n.d.");
 define('_CO_COMMON_ALL', "Tutti");
 
 //  buttons
-define('_ CO_COMMON_BUTTON_LIST', "List");
-define('_ CO_COMMON_BUTTON_MOVE', "Move");
-define('_ CO_COMMON_BUTTON_EDIT', "Edit");
-define('_ CO_COMMON_BUTTON_ADD', "Add");
-define('_ CO_COMMON_BUTTON_VIEW', "View");
-define('_ CO_COMMON_BUTTON_EXECUTE', "Run");
-define('_ CO_COMMON_BUTTON_DELETE', "Delete");
-define('_ CO_COMMON_BUTTON_FILTER', "Filter");
-define('_ CO_COMMON_BUTTON_SEARCH', "Search");
-define('_ CO_COMMON_BUTTON_REORDER', "Reorder");
-define('_ CO_COMMON_BUTTON_APPROVE', "Approve");
-define('_ CO_COMMON_BUTTON_IGNORE', "Ignore");
-define('_ CO_COMMON_BUTTON_CANCEL', "Cancel");
-define('_ CO_COMMON_BUTTON_SAVE', "Save");
-define('_ CO_COMMON_BUTTON_RESET', "Reset");
-define('_ CO_COMMON_BUTTON_UPLOAD', "Upload");
-define('_ CO_COMMON_BUTTON_PRINT', "Print");
-define('_ CO_COMMON_BUTTON_EXPORT', "Export");
-define('_ CO_COMMON_BUTTON_NEXT', "Next");
-define('_ CO_COMMON_BUTTON_PREV', "Previous");
-define('_ CO_COMMON_BUTTON_CHECK', "Check");
-define('_ CO_COMMON_BUTTON_GET', "Get");
-define('_ CO_COMMON_BUTTON_SET', "Set");
+define('_CO_COMMON_BUTTON_LIST', "Lista");
+define('_CO_COMMON_BUTTON_MOVE', "Muovi");
+define('_CO_COMMON_BUTTON_EDIT', "Modifica");
+define('_CO_COMMON_BUTTON_ADD', "Aggiungi");
+define('_CO_COMMON_BUTTON_VIEW', "Visualizza");
+define('_CO_COMMON_BUTTON_EXECUTE', "Esegui");
+define('_CO_COMMON_BUTTON_DELETE', "Elimina");
+define('_CO_COMMON_BUTTON_FILTER', "Filtra");
+define('_CO_COMMON_BUTTON_SEARCH', "Cerca");
+define('_CO_COMMON_BUTTON_REORDER', "Riordina");
+define('_CO_COMMON_BUTTON_APPROVE', "Approva");
+define('_CO_COMMON_BUTTON_IGNORE', "Ignora");
+define('_CO_COMMON_BUTTON_CANCEL', "Annulla");
+define('_CO_COMMON_BUTTON_SAVE', "Salva");
+define('_CO_COMMON_BUTTON_RESET', "Reset");
+define('_CO_COMMON_BUTTON_UPLOAD', "Carica");
+define('_CO_COMMON_BUTTON_PRINT', "Stampa");
+define('_CO_COMMON_BUTTON_EXPORT', "Esporta");
+define('_CO_COMMON_BUTTON_NEXT', "Prossimo");
+define('_CO_COMMON_BUTTON_PREV', "Precedente");
+define('_CO_COMMON_BUTTON_CHECK', "Controlla");
+define('_CO_COMMON_BUTTON_GET', "Ottieni");
+define('_CO_COMMON_BUTTON_SET', "Imposta");
 
-define('_ CO_COMMON_ISCRITTOS_QUICK_SEARCH', "Quick search in the whole database");
-define('_ CO_COMMON_ISCRITTOS_QUICK_SEARCH_DESC', "search in the fields 'Name', 'Surname', 'Tax code', 'Card number'");
+define('_CO_COMMON_ISCRITTOS_QUICK_SEARCH', "Ricerca rapida in tutto il database");
+define('_CO_COMMON_ISCRITTOS_QUICK_SEARCH_DESC', "ricerca nei campi 'Nome', 'Cognome', 'Codice fiscale', 'Numero tessera'");
 
-define('_ CO_COMMON_SEGRETERIAS_QUICK_SEARCH', "Quick Search");
-define('_ CO_COMMON_SEGRETERIAS_QUICK_SEARCH_DESC', "search in the fields' Name");
+define('_CO_COMMON_SEGRETERIAS_QUICK_SEARCH', "Ricerca rapida");
+define('_CO_COMMON_SEGRETERIAS_QUICK_SEARCH_DESC', "ricerca nei campi 'Nome");
 
 
 
 // database
-define('_ CO_COMMON_DATABASE_RECORD', "Record");
-define('_ CO_COMMON_DATABASE_RECORDS', "Record");
-define('_ CO_COMMON_DATABASE_RECORDS_ACCESSIBLE', "Accessible records");
-define('_ CO_COMMON_DATABASE_RECORDS_FILTERED', "Filtered records");
-define('_ CO_COMMON_DATABASE_RECORDS_SHOWN', "Records displayed");
-define('_ CO_COMMON_DATABASE_QUERY', "Query");
-define('_ CO_COMMON_DATABASE_SELECT', "Select (SELECT)");
-define('_ CO_COMMON_DATABASE_WHERE', "Where (WHERE)");
+define('_CO_COMMON_DATABASE_RECORD', "Record");
+define('_CO_COMMON_DATABASE_RECORDS', "Record");
+define('_CO_COMMON_DATABASE_RECORDS_ACCESSIBLE', "Record accessibili");
+define('_CO_COMMON_DATABASE_RECORDS_FILTERED', "Record filtrati");
+define('_CO_COMMON_DATABASE_RECORDS_SHOWN', "Record visualizzati");
+define('_CO_COMMON_DATABASE_QUERY', "Query");
+define('_CO_COMMON_DATABASE_SELECT', "Seleziona (SELECT)");
+define('_CO_COMMON_DATABASE_WHERE', "Dove (WHERE)");
 
-define('_ CO_COMMON_DATABASE_FIELD', "Field");
-define('_ CO_COMMON_DATABASE_FIELDS', "Fields");
-define('_ CO_COMMON_DATABASE_VALUE', "Value");
-define('_ CO_COMMON_DATABASE_VALUES', "Values");
+define('_CO_COMMON_DATABASE_FIELD', "Campo");
+define('_CO_COMMON_DATABASE_FIELDS', "Campi");
+define('_CO_COMMON_DATABASE_VALUE', "Valore");
+define('_CO_COMMON_DATABASE_VALUES', "Valori");
+
 
 
 /*

@@ -24,7 +24,7 @@
 // Translator: luciorota
 
 // menu
-define('_MI_COMMON_MENU_INDEX',"Pagina iniziale");
+define('_MI_COMMON_MENU_INDEX',"First page");
 
 
 

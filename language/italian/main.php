@@ -21,26 +21,8 @@
 
 // _LANGCODE: en
 // _CHARSET : UTF-8
-// Translator: luciorota
+// Translator: luciorota, nursind
 
-//Menu
-define('_AM_COMMON_ADMIN',"Ammin");
+define('_MD_COMMON_ADMIN_PAGE', "Admin");
 
-
-
-// admin/index.php
-
-
-
-// admin/tools.php
-
-
-
-// admin/permissions.php
-
-
-
-
-//Error NoFrameworks
-define('_AM_COMMON_NOFRAMEWORKS',"Error: You don&#39;t use the Frameworks \"admin module\". Please install this Frameworks");
-define('_AM_COMMON_MAINTAINEDBY',"Mantained by");
+// index.php

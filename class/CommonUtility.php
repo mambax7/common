@@ -321,7 +321,7 @@ class CommonUtility extends XoopsObject {
         }
 
         if (!$success) {
-            $module->setErrors(sprintf(_AM_XXXXX_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
+            $module->setErrors(sprintf(_AM_COMMON_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
 
         return $success;

@@ -24,7 +24,7 @@
 // Translator: luciorota
 
 //Menu
-define('_AM_COMMON_ADMIN',"Ammin");
+define('_AM_COMMON_ADMIN',"Amministra");
 
 
 

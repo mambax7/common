@@ -658,14 +658,14 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             // check imgcat_id
             if ($imgcat_id <= 0) {
                 // create imgcat object
-                $imgcatObj = & $imgcat_handler->create();
+                $imgcatObj = $imgcat_handler->create();
                 $imgcatObj->setVar('imgcat_maxsize', 50000); // default for new imgcat
                 $imgcatObj->setVar('imgcat_maxwidth', 120); // default for new imgcat
                 $imgcatObj->setVar('imgcat_maxheight', 120); // default for new imgcat
                 $title = _FAIM_ADD_IMGCAT;
             } else {
                 // get imgcat object
-                $imgcatObj = & $imgcat_handler->get($imgcat_id);
+                $imgcatObj = $imgcat_handler->get($imgcat_id);
                 $title = _FAIM_EDIT_IMGCAT;
             }
             // check imgcat object

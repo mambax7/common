@@ -343,7 +343,7 @@ class CommonUtility extends XoopsObject {
         $reqVer = $module->getInfo('min_php');
         if (false !== $reqVer && '' !== $reqVer) {
             if (version_compare($verNum, $reqVer, '<')) {
-                $module->setErrors(sprintf(_AM_XXXXX_ERROR_BAD_PHP, $reqVer, $verNum));
+                $module->setErrors(sprintf(_AM_COMMON_ERROR_BAD_PHP, $reqVer, $verNum));
                 $success = false;
             }
         }

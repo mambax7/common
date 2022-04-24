@@ -83,7 +83,7 @@ class FormDatepicker extends \XoopsFormText {
      *
      * @return string attributes string
      */
-    function renderAttributes() {
+    public function renderAttributes() {
         $ret = '';
         foreach ($this->_attributes as $name => $value) {
             $ret .= "{$name}='{$value}' ";

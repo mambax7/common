@@ -42,7 +42,7 @@ class FormSelectGroupCriteria extends \XoopsFormSelect {
      * @param bool $multiple Allow multiple selections?
      * @param onject $criteria Sort/groups criteria
      */
-    function __construct($caption, $name, $include_anon = false, $value = null, $size = 1, $multiple = false, $criteria = null) {
+    public function __construct($caption, $name, $include_anon = false, $value = null, $size = 1, $multiple = false, $criteria = null) {
         $this->db = \XoopsDatabaseFactory::getDatabaseConnection();
         parent::__construct($caption, $name, $value, $size, $multiple);
         $groupCriteria = new \CriteriaCompo();

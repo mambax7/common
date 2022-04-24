@@ -13,7 +13,7 @@ include_once dirname(__DIR__) . '/include/common.php';
 abstract class CommonVersionedObject extends CommonObject
 {
 
-    var $itemName;
+    public $itemName;
 
     /**
      * constructor

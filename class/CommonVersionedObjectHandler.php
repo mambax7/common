@@ -16,7 +16,7 @@ abstract class CommonVersionedObjectHandler extends XoopsPersistableObjectHandle
     /**
      * @var commonHelper
      */
-    var $commonHelper;
+    public $commonHelper;
 
     /**
      * @param null|object   $db

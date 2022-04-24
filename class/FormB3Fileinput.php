@@ -67,7 +67,7 @@ class FormB3Fileinput extends \XoopsFormText {
      *
      * @param string $name "name" attribute for the element
      */
-    function setId($name = null) {
+    public function setId($name = null) {
         $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
     }
 
@@ -78,7 +78,7 @@ class FormB3Fileinput extends \XoopsFormText {
      *
      * @return string "name" attribute
      */
-    function getId($encode = true) {
+    public function getId($encode = true) {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
         }
@@ -152,7 +152,7 @@ class FormB3Fileinput extends \XoopsFormText {
      *
      * @return string HTML
      */
-    function render() {
+    public function render() {
         $language = substr(_LANGCODE, 0, 2);
         $theme = 'gly';
         $html = "\n";

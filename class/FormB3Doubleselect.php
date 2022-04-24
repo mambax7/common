@@ -79,7 +79,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
      *
      * @param string $name "name" attribute for the element
      */
-    function setId($name) {
+    public function setId($name) {
         $this->_id = md5(uniqid(rand(), true));
     }
 
@@ -90,7 +90,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
      *
      * @return string "name" attribute
      */
-    function getId($encode = true) {
+    public function getId($encode = true) {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
         }

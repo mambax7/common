@@ -65,7 +65,7 @@ class FormFileinputBootstrap3 extends \XoopsFormText
      * set the "id" attribute for the element
      *
      */
-    function setId()
+    public function setId()
     {
         $this->_id = md5(uniqid(rand(), true));
     }
@@ -77,7 +77,7 @@ class FormFileinputBootstrap3 extends \XoopsFormText
      *
      * @return string "name" attribute
      */
-    function getId($encode = true)
+    public function getId($encode = true)
     {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
@@ -91,7 +91,7 @@ class FormFileinputBootstrap3 extends \XoopsFormText
      *
      * @return string HTML
      */
-    function render()
+    public function render()
     {
         $language = substr(_LANGCODE, 0, 2);
         $theme = 'fas';

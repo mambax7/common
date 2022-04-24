@@ -46,7 +46,7 @@ class UploadHandler
      * @param bool $initialize
      * @param null $error_messages
      */
-    function __construct($options = null, $initialize = true, $error_messages = null) {
+    public function __construct($options = null, $initialize = true, $error_messages = null) {
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
             'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
@@ -403,7 +403,7 @@ class UploadHandler
      *
      * @return float
      */
-    function get_config_bytes($val) {
+    public function get_config_bytes($val) {
         $val = trim($val);
         $last = strtolower($val[strlen($val)-1]);
         switch($last) {

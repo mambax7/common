@@ -1017,7 +1017,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param string $value   initial content
              * @param array  $options
              */
-            function __construct($caption, $name, $value = '', $options = []) {
+            public function __construct($caption, $name, $value = '', $options = []) {
                 $this->setCaption($caption);
                 $this->setName($name);
                 $this->setId($name);
@@ -1088,7 +1088,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @param string $name "name" attribute for the element
              */
-            function setId($name = null) {
+            public function setId($name = null) {
                 $this->_id = is_null($name) ? md5(uniqid(rand(), true)) : $name;
             }
 
@@ -1099,7 +1099,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return string "name" attribute
              */
-            function getId($encode = true)
+            public function getId($encode = true)
             {
                 if (false != $encode) {
                     return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
@@ -1113,7 +1113,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return string
              */
-            function getReturn()
+            public function getReturn()
             {
                 return $this->_return;
             }
@@ -1125,7 +1125,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return void
              */
-            function setReturn($return)
+            public function setReturn($return)
             {
                 $this->_return = $return;
             }
@@ -1135,7 +1135,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @param string $value
              */
-            function setValue($value)
+            public function setValue($value)
             {
                 $this->_value = $value;
             }
@@ -1146,7 +1146,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compat
              * @return string
              */
-            function getValue($encode = false)
+            public function getValue($encode = false)
             {
                 return $encode ? htmlspecialchars($this->_value) : $this->_value;
             }
@@ -1157,7 +1157,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param $image_id
              * @internal param string $value
              */
-            function setDefaultImageId($image_id)
+            public function setDefaultImageId($image_id)
             {
                 $this->_image_id = $image_id;
             }
@@ -1167,7 +1167,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return int
              */
-            function getDefaultImageId()
+            public function getDefaultImageId()
             {
                 return $this->_image_id;
             }
@@ -1178,7 +1178,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              * @param $imgcat_id
              * @internal param string $value
              */
-            function setDefaultImgcatId($imgcat_id)
+            public function setDefaultImgcatId($imgcat_id)
             {
                 $this->_imgcat_id = $imgcat_id;
             }
@@ -1188,7 +1188,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return int
              */
-            function getDefaultImgcatId()
+            public function getDefaultImgcatId()
             {
                 return $this->_imgcat_id;
             }
@@ -1198,7 +1198,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @return string HTML
              */
-            function render()
+            public function render()
             {
                 static $isCommonFormAjaxImageManagerIncluded = false;
                 $commonJs = '';

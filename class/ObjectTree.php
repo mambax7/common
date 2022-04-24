@@ -42,7 +42,7 @@ class ObjectTree extends \XoopsObjectTree
      * @return string
     @access private
      */
-    function _makeSelBoxOptionsArray($fieldName, $key, &$optionsArray, $prefix_orig, $prefix_curr = '')
+    public function _makeSelBoxOptionsArray($fieldName, $key, &$optionsArray, $prefix_orig, $prefix_curr = '')
     {
         if ($key > 0) {
             $value = $this->tree[$key]['obj']->getVar( $this->myId );
@@ -67,7 +67,7 @@ class ObjectTree extends \XoopsObjectTree
      * @param  integer  $key            ID of the object to display as the root of select options
      * @return string    $optionsArray   Associative array of value->name pairs, useful for {@link XoopsFormSelect}->addOptionArray method
      */
-    function makeSelBoxOptionsArray($fieldName, $prefix = '-', $addEmptyOption = false, $key = 0)
+    public function makeSelBoxOptionsArray($fieldName, $prefix = '-', $addEmptyOption = false, $key = 0)
     {
         $optionsArray = array();
         if ($addEmptyOption)
@@ -89,7 +89,7 @@ class ObjectTree extends \XoopsObjectTree
      * @param  string   $extra
      * @return string   HTML select box
      */
-    function makeSelBox($name, $fieldName, $prefix = '-', $selected = '', $addEmptyOption = false, $key = 0, $extra = '')
+    public function makeSelBox($name, $fieldName, $prefix = '-', $selected = '', $addEmptyOption = false, $key = 0, $extra = '')
     {
         $ret = '<select name="' . $name . '" id="' . $name . '" ' . $extra . '>';
         if (is_array($addEmptyOption)) {

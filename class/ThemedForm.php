@@ -49,14 +49,14 @@ class ThemedForm extends \XoopsForm {
      * @param string $summary
      * @param string $tplSource
      */
-    function __construct($title, $name, $action, $method = 'post', $addtoken = false, $summary = '', $tplSource = '') {
+    public function __construct($title, $name, $action, $method = 'post', $addtoken = false, $summary = '', $tplSource = '') {
         $this->_dirname = basename(dirname(__DIR__));
         $this->_moduleHelper = \Xmf\Module\Helper::getHelper($this->_dirname);
         $this->_tplSource = $tplSource;
         parent::__construct($title, $name, $action, $method, $addtoken, $summary);
     }
 
-    function insertBreak($extra = '', $class= '') {
+    public function insertBreak($extra = '', $class= '') {
         $class = ($class != '') ? " class='$class'" : '';
         //Fix for $extra tag not showing
         if ($extra) {
@@ -68,7 +68,7 @@ class ThemedForm extends \XoopsForm {
         }
     }
 
-    function render() {
+    public function render() {
         if (!isset($GLOBALS['xoTheme']) || !is_object($GLOBALS['xoTheme'])) {
             include_once $GLOBALS['xoops']->path('/class/theme.php');
             $GLOBALS['xoTheme'] = new \xos_opal_Theme();

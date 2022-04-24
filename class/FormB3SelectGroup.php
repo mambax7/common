@@ -79,7 +79,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
      *
      * @param string $name "name" attribute for the element
      */
-    function setId($name) {
+    public function setId($name) {
         $this->_id = md5(uniqid(rand(), true));
     }
 
@@ -90,7 +90,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
      *
      * @return string "name" attribute
      */
-    function getId($encode = true) {
+    public function getId($encode = true) {
         if (false != $encode) {
             return str_replace('&amp;', '&', htmlspecialchars($this->_id, ENT_QUOTES));
         }
@@ -102,7 +102,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
      *
      * @param string $value
      */
-    function setValue($value) {
+    public function setValue($value) {
         $this->_value = $value;
     }
 
@@ -112,7 +112,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
      * @param bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compat
      * @return string
      */
-    function getValue($encode = false) {
+    public function getValue($encode = false) {
         return $encode ? htmlspecialchars($this->_value) : $this->_value;
     }
 

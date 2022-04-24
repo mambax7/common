@@ -35,7 +35,7 @@ class FormNumber extends \XoopsFormText
      * @param mixed $name
      * @param integer $value
      */
-    function __construct($caption, $name, $value = '', int $max = PHP_INT_MAX, int $min = 0, float $step = 0)
+    public function __construct($caption, $name, $value = '', int $max = PHP_INT_MAX, int $min = 0, float $step = 0)
     {
 //TODO definire attributi qui
         $this->setCaption($caption);
@@ -46,14 +46,14 @@ class FormNumber extends \XoopsFormText
         $this->setAttribute('step', (float)$step);
     }
 
-    var $attributes = array();
+    public $attributes = array();
 
-    function setAttribute($attributeName, $attributeValue = '')
+    public function setAttribute($attributeName, $attributeValue = '')
     {
         $this->attributes[$attributeName] = $attributeValue;
     }
 
-    function getAttribute($attributeName)
+    public function getAttribute($attributeName)
     {
         return isset($this->attributes[$attributeName]) ? $this->attributes[$attributeName] : '';
     }
@@ -63,7 +63,7 @@ class FormNumber extends \XoopsFormText
      *
      * @return string
      */
-    function render()
+    public function render()
     {
 //TODO definire attributi altrove
         $attributes['type'] = 'number';
@@ -88,7 +88,7 @@ class FormNumber extends \XoopsFormText
      *
      * @return string Element validation Javascript
      */
-    function renderValidationJS()
+    public function renderValidationJS()
     {
         $js = "
 function {$this->getName()}ValidateNumber(number) {

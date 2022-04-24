@@ -34,8 +34,8 @@ abstract class CommonObject extends \XoopsObject {
      * @var archivioHelper
      * @access public
      */
-    var $commonHelper;
-    var $itemName;
+    public $commonHelper;
+    public $itemName;
 
     /**
      * constructor

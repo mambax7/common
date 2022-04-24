@@ -444,7 +444,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
          *
          * @return bool|int
          */
-        function download($filePath, $isBinary = true, $retBytes = true)
+        public function download($filePath, $isBinary = true, $retBytes = true)
         {
             // how many bytes per chunk
             //$chunkSize = 1 * (1024 * 1024);
@@ -484,7 +484,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
          * @return string
          * @throws Html2TextException
          */
-        function html2text($html)
+        public function html2text($html)
         {
             include_once COMMON_ROOT_PATH . '/assets/php/html2text/html2text.php';
             //
@@ -505,7 +505,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
          * @param           $filePath
          * @param           $fileMimetype
          */
-        function largeDownload($filePath, $fileMimetype)
+        public function largeDownload($filePath, $fileMimetype)
         {
             /* You may need these ini settings too */
             set_time_limit(0);

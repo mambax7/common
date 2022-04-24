@@ -15,7 +15,7 @@ abstract class CommonObjectHandler extends \XoopsPersistableObjectHandler {
     /**
      * @var commonHelper
      */
-    var $commonHelper;
+    public $commonHelper;
 
     /**
      * @param null|object   $db

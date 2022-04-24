@@ -148,7 +148,7 @@ class FormB3Inputmask extends \XoopsFormElement {
      *
      * @return string options string
      */
-    function renderOptions() {
+    public function renderOptions() {
         $ret = json_encode($this->_options, JSON_FORCE_OBJECT);
         return $ret;
 //        exit();

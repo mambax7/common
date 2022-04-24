@@ -47,9 +47,9 @@ class FormGoogleMap extends \XoopsFormElementTray
     /**
      * constructor
      */
-    var $_caption = '';
-    var $_name = '';
-    private $_value = array();
+    public  $_caption = '';
+    public  $_name    = '';
+    private $_value   = array();
 
     /**
      * element id, it will different from element name for javascript issues

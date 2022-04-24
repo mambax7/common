@@ -41,7 +41,7 @@ class PageNav extends \XoopsPageNav
      * @param string $start_name    Name for "start" or "offset"
      * @param string $extra_arg     Additional arguments to pass in the URL
      */
-    function __construct($total_items, $items_perpage, $current_start, $start_name = 'start', $extra_arg = '') {
+    public function __construct($total_items, $items_perpage, $current_start, $start_name = 'start', $extra_arg = '') {
         $this->_dirname = basename(dirname(__DIR__));
         $this->_moduleHelper = \Xmf\Module\Helper::getHelper($this->_dirname);
         parent::__construct($total_items, $items_perpage, $current_start, $start_name, $extra_arg);
@@ -54,7 +54,7 @@ class PageNav extends \XoopsPageNav
      * @param string $tplSource
      * @return string
      */
-    function renderThemedNav($offset = 4, $tplSource = '')
+    public function renderThemedNav($offset = 4, $tplSource = '')
     {
         $this->_tplSource = $tplSource;
         //

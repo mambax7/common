@@ -171,7 +171,7 @@ class FormB3Slider extends \XoopsFormElement {
      *
      * @return string options string
      */
-    function renderOptions() {
+    public function renderOptions() {
         $ret = '';
         foreach ($this->_options as $name => $value) {
             if (is_array($value)) {

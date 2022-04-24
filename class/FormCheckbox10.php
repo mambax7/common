@@ -28,7 +28,7 @@ xoops_load('XoopsFormElement');
  */
 class FormCheckbox10 extends \XoopsFormElement
 {
-    var $_value;
+    public $_value;
 
     /**
      * Constructor

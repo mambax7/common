@@ -242,7 +242,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
             if (!xoops_isActiveModule($dirname)) {
                 return false;
             }
-            $module_handler = xoops_gethandler('module');
+            $module_handler = xoops_getHandler('module');
             $module = $module_handler->getByDirname($dirname);
             return $module->getVar('version');
         }

@@ -929,33 +929,33 @@ class UploadHandler
         $orientation = $image->getImageOrientation();
         $background = new ImagickPixel('none');
         switch ($orientation) {
-            case imagick::ORIENTATION_TOPRIGHT: // 2
+            case Imagick::ORIENTATION_TOPRIGHT: // 2
                 $image->flopImage(); // horizontal flop around y-axis
                 break;
-            case imagick::ORIENTATION_BOTTOMRIGHT: // 3
+            case Imagick::ORIENTATION_BOTTOMRIGHT: // 3
                 $image->rotateImage($background, 180);
                 break;
-            case imagick::ORIENTATION_BOTTOMLEFT: // 4
+            case Imagick::ORIENTATION_BOTTOMLEFT: // 4
                 $image->flipImage(); // vertical flip around x-axis
                 break;
-            case imagick::ORIENTATION_LEFTTOP: // 5
+            case Imagick::ORIENTATION_LEFTTOP: // 5
                 $image->flopImage(); // horizontal flop around y-axis
                 $image->rotateImage($background, 270);
                 break;
-            case imagick::ORIENTATION_RIGHTTOP: // 6
+            case Imagick::ORIENTATION_RIGHTTOP: // 6
                 $image->rotateImage($background, 90);
                 break;
-            case imagick::ORIENTATION_RIGHTBOTTOM: // 7
+            case Imagick::ORIENTATION_RIGHTBOTTOM: // 7
                 $image->flipImage(); // vertical flip around x-axis
                 $image->rotateImage($background, 270);
                 break;
-            case imagick::ORIENTATION_LEFTBOTTOM: // 8
+            case Imagick::ORIENTATION_LEFTBOTTOM: // 8
                 $image->rotateImage($background, 270);
                 break;
             default:
                 return false;
         }
-        $image->setImageOrientation(imagick::ORIENTATION_TOPLEFT); // 1
+        $image->setImageOrientation(Imagick::ORIENTATION_TOPLEFT); // 1
         return true;
     }
 
@@ -1015,7 +1015,7 @@ class UploadHandler
         $success = $image->resizeImage(
             $new_width,
             $new_height,
-            isset($options['filter']) ? $options['filter'] : imagick::FILTER_LANCZOS,
+            isset($options['filter']) ? $options['filter'] : Imagick::FILTER_LANCZOS,
             isset($options['blur']) ? $options['blur'] : 1,
             $new_width && $new_height // fit image into constraints if not to be cropped
         );

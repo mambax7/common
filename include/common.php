@@ -29,11 +29,11 @@ global $myts;
 $myts = MyTextSanitizer::getInstance();
 
 // load Xoops handlers
-$module_handler = xoops_gethandler('module');
-$member_handler = xoops_gethandler('member');
-$notification_handler = xoops_gethandler('notification');
-$gperm_handler = xoops_gethandler('groupperm');
-$group_handler = xoops_gethandler('group');
+$module_handler = xoops_getHandler('module');
+$member_handler = xoops_getHandler('member');
+$notification_handler = xoops_getHandler('notification');
+$gperm_handler = xoops_getHandler('groupperm');
+$group_handler = xoops_getHandler('group');
 
 // common common stuff
 define('COMMON_DIRNAME', basename(dirname(__DIR__)));

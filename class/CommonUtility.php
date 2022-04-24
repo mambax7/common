@@ -273,7 +273,7 @@ class CommonUtility extends XoopsObject {
         if (!xoops_isActiveModule($dirname)) {
             return false;
         }
-        $module_handler = xoops_gethandler('module');
+        $module_handler = xoops_getHandler('module');
         $module = $module_handler->getByDirname($dirname);
 
         return $module->getVar('version');
@@ -397,7 +397,7 @@ class CommonUtility extends XoopsObject {
         $id = (int) $id;
         $result = true;
         $mid = $archivioHelper->getModule()->mid();
-        $groupperm_handler = xoops_gethandler('groupperm');
+        $groupperm_handler = xoops_getHandler('groupperm');
 
         // First, if the permissions are already there, delete them
         $groupperm_handler->deleteByModule($mid, $permName, $id);

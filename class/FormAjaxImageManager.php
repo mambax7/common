@@ -56,15 +56,15 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 
     $GLOBALS['xoopsLogger']->activated = false;
 
-    $module_handler = xoops_gethandler('module');
+    $module_handler = xoops_getHandler('module');
     $systemModule = $module_handler->getByDirname('system');
     $systemModuleId = $systemModule->id;
     $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
     $userIsAdmin = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin($systemModuleId));
 
-    $imgcat_handler = xoops_gethandler('imagecategory');
-    $image_handler = xoops_gethandler('image');
-    $imgcatObjperm_handler = xoops_gethandler('groupperm');
+    $imgcat_handler = xoops_getHandler('imagecategory');
+    $image_handler = xoops_getHandler('image');
+    $imgcatObjperm_handler = xoops_getHandler('groupperm');
 
     xoops_load('XoopsRequest');
 
@@ -227,7 +227,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             }
             // check user read permissions
-            $imgcatperm_handler = xoops_gethandler('groupperm');
+            $imgcatperm_handler = xoops_getHandler('groupperm');
             if (!$imgcatperm_handler->checkRight('imgcat_read', $imgcat_id, $userGroups)) {
                 // ERROR: no read permissions
                 // generate ajax return
@@ -392,7 +392,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             }
             // check user write permissions
-            $imgcatperm_handler = xoops_gethandler('groupperm');
+            $imgcatperm_handler = xoops_getHandler('groupperm');
             if (!$imgcatperm_handler->checkRight('imgcat_write', $imgcat_id, $userGroups)) {
                 // ERROR: non write permissions
                 // Generate ajax return
@@ -488,7 +488,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                 exit();
             }
             // check user write permissions
-            $imgcatperm_handler = xoops_gethandler('groupperm');
+            $imgcatperm_handler = xoops_getHandler('groupperm');
             if (!$imgcatperm_handler->checkRight('imgcat_write', $imgcat_id, $userGroups)) {
                 // ERROR: no write permissions
                 // generate ajax return
@@ -788,7 +788,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 
             $imgcat_id = $imgcatObj->getVar('imgcat_id');
             // update permissions
-            $imgcatObjperm_handler = xoops_gethandler('groupperm');
+            $imgcatObjperm_handler = xoops_getHandler('groupperm');
             $readGroups = isset($_POST['imgcat_readgroup']) ? $_POST['imgcat_readgroup'] : [];
             //$readGroups = XoopsRequest::getArray('imgcat_readgroup', array(), 'POST');
             //if (!is_array($readgroups)) $readgroups = array();
@@ -1027,8 +1027,8 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
 
                 $myts = \MyTextSanitizer::getInstance();
 
-                $imgcat_handler = xoops_gethandler('imagecategory');
-                $image_handler = xoops_gethandler('image');
+                $imgcat_handler = xoops_getHandler('imagecategory');
+                $image_handler = xoops_getHandler('image');
 
                 $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
 
@@ -1973,13 +1973,13 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
                     $html .= "</script>\n";
                 }
                 //
-                $module_handler = xoops_gethandler('module');
+                $module_handler = xoops_getHandler('module');
                 $systemModule = $module_handler->getByDirname('system');
                 $systemModuleId = $systemModule->id;
                 $userGroups = (is_object($GLOBALS['xoopsUser'])) ? $GLOBALS['xoopsUser']->getGroups() : [XOOPS_GROUP_ANONYMOUS];
                 $userIsAdmin = (is_object($GLOBALS['xoopsUser']) && $GLOBALS['xoopsUser']->isAdmin());
                 //
-                $imgcat_handler = xoops_gethandler('imagecategory');
+                $imgcat_handler = xoops_getHandler('imagecategory');
                 if ($userIsAdmin) {
                     $categoriesListArray = $imgcat_handler->getList($userGroups, 'imgcat_read');
                 } else {

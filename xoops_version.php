@@ -23,7 +23,7 @@ defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 
 $modversion['dirname'] = basename(__DIR__);
 $modversion['name'] = ucfirst(basename(__DIR__));
-$modversion['version'] = '1.0.0';
+$modversion['version'] = '1.0.0-Beta.11';
 $modversion['description'] = '';
 $modversion['author'] = 'Rota Lucio';
 $modversion['url'] = "http://xoops.org";

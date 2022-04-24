@@ -88,13 +88,13 @@ abstract class CommonObject extends \XoopsObject {
     public function getValues($keys = null, $format = 's', $maxDepth = 1) {
         $values = parent::getValues($keys, $format, $maxDepth);
         //        
-        $dateTimeObj = \DateTime::createFromFormat(_DBTIMESTAMPSTRING, $values['created']);
+        $dateTimeObj = \DateTime::createFromFormat(_DBTIMESTAMPSTRING, (string)$values['created']);
         $values['created_timestamp'] = ($dateTimeObj === false) ? '' : $dateTimeObj->getTimestamp();
         $values['created_date_data'] = \XoopsLocal::formatTimestamp($values['created_timestamp'], _DATESTRING);
         //
         $values['created_uid_uname'] = \XoopsUserUtility::getUnameFromId($values['created_uid']);
         //
-        $dateTimeObj = \DateTime::createFromFormat(_DBTIMESTAMPSTRING, $values['modified']);
+        $dateTimeObj = \DateTime::createFromFormat(_DBTIMESTAMPSTRING, (string)$values['modified']);
         $values['modified_timestamp'] = ($dateTimeObj === false) ? '' : $dateTimeObj->getTimestamp();
         $values['modified_date_data'] = \XoopsLocal::formatTimestamp($values['modified_timestamp'], _DATESTRING);
         //

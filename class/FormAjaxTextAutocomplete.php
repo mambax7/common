@@ -90,8 +90,8 @@ if (!class_exists('FormAjaxTextAutocomplete')) {
         {
             $this->setCaption($caption);
             $this->setName($name);
-            $this->_size = intval($size);
-            $this->_maxlength = intval($maxlength);
+            $this->_size = (int)$size;
+            $this->_maxlength = (int)$maxlength;
             $this->setValue($value);
             //
             $this->_moduleDirname = $moduleDirname;

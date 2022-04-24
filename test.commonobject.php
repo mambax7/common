@@ -34,7 +34,7 @@ switch ($op) {
         $testObj = $TestObjectHandler->get($id);
         $testObj->setValues([], 'POST');
         $TestObjectHandler->insert($testObj);
-        redirect_header("{$currentBasename}", 3, 'saved');
+        redirect_header((string)($currentBasename), 3, 'saved');
         break;
 
     case 'delete':
@@ -42,10 +42,10 @@ switch ($op) {
         $testObj = $TestObjectHandler->get($id);
         if (XoopsRequest::getBool('ok', false, 'POST') == true) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
-                redirect_header("{$currentBasename}", 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+                redirect_header((string)($currentBasename), 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             $TestObjectHandler->delete($testObj);
-            redirect_header("{$currentBasename}", 3, 'deleted');
+            redirect_header((string)($currentBasename), 3, 'deleted');
         } else {
             ob_start();
             xoops_confirm(

@@ -170,7 +170,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
         $members_from->setClass('w-100');
 
         //
-        $members_to = new \XoopsFormSelect('', "{$this->getName()}", null, $this->size, true);
+        $members_to = new \XoopsFormSelect('', (string)($this->getName()), null, $this->size, true);
         $members_to->addOptionArray($to_members);
         $members_to->setClass('form-control w-100');
         $html .= "        

@@ -63,7 +63,7 @@ class FormBootstrapDatepicker extends \XoopsFormText {
         $this->_endDate = $endDate;
         $this->_langcode = str_replace('_', '-', _LANGCODE);
         //
-        $this->addOption('language', "{$this->_langcode}");
+        $this->addOption('language', (string)($this->_langcode));
         $this->addOption('todayBtn', 'linked');
         $this->addOption('daysOfWeekHighlighted', '0');
         $this->addOption('calendarWeeks', true);

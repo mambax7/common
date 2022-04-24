@@ -92,7 +92,7 @@ class PageNav extends \XoopsPageNav
         $prev = $this->current - $this->perpage;
         $pagenavTpl->assign('prev', $prev);
         //
-        $current_page = intval(floor(($this->current + $this->perpage) / $this->perpage));
+        $current_page = (int)floor(($this->current + $this->perpage) / $this->perpage);
         $pagenavTpl->assign('current_page', $current_page);
         //
         $next = $this->current + $this->perpage;

@@ -160,7 +160,7 @@ class FormB3Fileinput extends \XoopsFormText {
 
         $files = $this->getValues();        
         $multiple = $this->_multiple ? 'multiple' : '';
-        $name = $this->_multiple ? "{$this->getName()}[]" : "{$this->getName()}";
+        $name = $this->_multiple ? "{$this->getName()}[]" : (string)($this->getName());
 
         // common code
         static $isCommonFormB3FileinputIncluded = false;

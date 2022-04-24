@@ -207,7 +207,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
         $select_from->addOptionArray($valuesFrom);
         $select_from->setClass('w-100');
         //
-        $select_to = new \XoopsFormSelect('', "{$this->getName()}", null, $this->_size, true);
+        $select_to = new \XoopsFormSelect('', (string)($this->getName()), null, $this->_size, true);
         $select_to->addOptionArray($valuesTo);
         $select_to->setClass('form-control w-100');
         $html .= "        

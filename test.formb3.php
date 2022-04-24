@@ -124,13 +124,13 @@ $formObj->addElement($FormB3Elementrow);
 $FormB3MultiSelect = XoopsRequest::getArray('FormB3MultiSelect', []);
 $testFormB3MultiSelect = new FormB3MultiSelect('FormB3MultiSelect_3', 'FormB3MultiSelect_3', $FormB3MultiSelect, 3, true);
 for ($i = 1; $i <= 10; $i++) {
-    $testFormB3MultiSelect->addOption("{$i}", "name #{$i}", "description #{$i}");
+    $testFormB3MultiSelect->addOption((string)($i), "name #{$i}", "description #{$i}");
 }
 $formObj->addElement($testFormB3MultiSelect);
 
 $testFormB3MultiSelect = new FormB3MultiSelect('FormB3MultiSelect_0', 'FormB3MultiSelect_0', $FormB3MultiSelect, 0, true);
 for ($i = 1; $i <= 10; $i++) {
-    $testFormB3MultiSelect->addOption("{$i}", "value #{$i}", "description #{$i}");
+    $testFormB3MultiSelect->addOption((string)($i), "value #{$i}", "description #{$i}");
 }
 $formObj->addElement($testFormB3MultiSelect);
 

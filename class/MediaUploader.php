@@ -187,7 +187,7 @@ class MediaUploader extends \XoopsMediaUploader {
             return false;
         }
         // than checks by xoopsuploader
-        if (intval($this->mediaSize) < 0) {
+        if ((int)$this->mediaSize < 0) {
             $this->setErrors(_ER_UP_INVALIDFILESIZE);
             return false;
         }

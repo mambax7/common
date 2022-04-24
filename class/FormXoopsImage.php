@@ -47,8 +47,8 @@ class FormXoopsImage extends \XoopsFormText
      */
     public function __constructor($caption, $name, $size, $maxlength, $value = '', $previewformat = null)
     {
-        $this->_size = intval($size);
-        $this->_maxlength = intval($maxlength);
+        $this->_size = (int)$size;
+        $this->_maxlength = (int)$maxlength;
         $this->setValue($value);
         $this->_previewformat = ($previewformat === null ? "<div style='height:100px;'><img src='%s' style='height:100px;' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' /></div>" : $previewformat);
         parent::__construct($caption, $name, $size, $maxlength, $value);

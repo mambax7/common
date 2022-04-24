@@ -528,8 +528,8 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
                     //HEADERS FOR PARTIAL DOWNLOAD FACILITY BEGINS
                     if (isset($_SERVER['HTTP_RANGE'])) {
                         preg_match('/bytes=(\d+)-(\d+)?/', $_SERVER['HTTP_RANGE'], $matches);
-                        $offset  = intval($matches[1]);
-                        $length  = intval($matches[2]) - $offset;
+                        $offset  = (int)$matches[1];
+                        $length  = (int)$matches[2] - $offset;
                         $fhandle = fopen($filePath, 'r');
                         fseek($fhandle, $offset); // seek to the requested offset, this is 0 if it's not a partial content request
                         $data = fread($fhandle, $length);

@@ -606,7 +606,7 @@ class FormRendererBootstrap3 implements XoopsFormRendererInterface
         $ret = '<select '
                . "class='{$class}' "
                . "size='{$element->getSize()}' "
-               . "{$element->getExtra()}";
+               . (string)($element->getExtra());
         if ($element->isMultiple() != false) {
             $ret .= ' '
                     . "name='{$elementName}[]' "

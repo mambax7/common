@@ -177,7 +177,7 @@ class FormB3Slider extends \XoopsFormElement {
             if (is_array($value)) {
                 $vals = [];
                 foreach ($value as $val) {
-                    $vals[] = is_string($val) ? (string)"'{$val}'" : "{$val}";
+                    $vals[] = is_string($val) ? (string)"'{$val}'" : (string)($val);
                 }
                 $value = '[' . implode(',', $vals) . ']';
             }

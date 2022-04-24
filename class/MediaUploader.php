@@ -224,9 +224,9 @@ class MediaUploader extends \XoopsMediaUploader {
         if (isset($this->targetFileName)) {
             $this->savedFileName = $this->targetFileName;
         } else if (isset($this->prefix)) {
-            $this->savedFileName = uniqid($this->prefix) . '.' . strtolower($extension);
+            $this->savedFileName = uniqid($this->prefix, true) . '.' . strtolower($extension);
         } else if ($this->randomFilename) {
-            $this->savedFileName = uniqid(time()) . '.' . strtolower($extension);
+            $this->savedFileName = uniqid(time(), true) . '.' . strtolower($extension);
         } else {
             $this->savedFileName = strtolower($this->mediaName);
         }

@@ -66,7 +66,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
     $image_handler = xoops_getHandler('image');
     $imgcatObjperm_handler = xoops_getHandler('groupperm');
 
-    xoops_load('XoopsRequest');
+//    xoops_load('XoopsRequest');
 
     $op = Request::getString('op', '', 'POST');
     switch ($op) {

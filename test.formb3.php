@@ -1,5 +1,6 @@
 <?php
 
+use Xmf\Request;
 use XoopsModules\Common\{
     Breadcrumb,
     FormB3CheckBoxObject,
@@ -40,8 +41,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;
@@ -99,7 +100,7 @@ $FormB3Doubleselect = new FormB3Doubleselect('FormB3Doubleselect', 'FormB3Double
 $formObj->addElement($FormB3Doubleselect);
         
 //xoops_load('FormB3SelectGroup', 'common');
-$FormB3SelectGroup = XoopsRequest::getArray('FormB3SelectGroup', []);
+$FormB3SelectGroup = Request::getArray('FormB3SelectGroup', []);
 $formObj->addElement(new FormB3SelectGroup('FormB3SelectGroup<br>multiple true', 'FormB3SelectGroup', true, $FormB3SelectGroup, 10, true));
 
 
@@ -121,7 +122,7 @@ $formObj->addElement($FormB3Elementrow);
 
 
 //xoops_load('FormB3MultiSelect', 'common');
-$FormB3MultiSelect = XoopsRequest::getArray('FormB3MultiSelect', []);
+$FormB3MultiSelect = Request::getArray('FormB3MultiSelect', []);
 $testFormB3MultiSelect = new FormB3MultiSelect('FormB3MultiSelect_3', 'FormB3MultiSelect_3', $FormB3MultiSelect, 3, true);
 for ($i = 1; $i <= 10; $i++) {
     $testFormB3MultiSelect->addOption((string)($i), "name #{$i}", "description #{$i}");
@@ -141,7 +142,7 @@ $formObj->insertBreak();
 
 
 //xoops_load('FormB3Tagsinput', 'common');
-$FormB3Tagsinput = XoopsRequest::getArray('FormB3Tagsinput', []);
+$FormB3Tagsinput = Request::getArray('FormB3Tagsinput', []);
 $availableTags = ['vanessa', 'maria', 'gaia'];
 $freeInput = true;
 $limit = 0;
@@ -157,7 +158,7 @@ $formObj->insertBreak();
 
 
 //xoops_load('FormB3Toggle', 'common');
-$FormB3Toggle = XoopsRequest::getBool('FormB3Toggle', true);
+$FormB3Toggle = Request::getBool('FormB3Toggle', true);
 $on = _YES;
 $off = _NO;
 $size = 'normal';

@@ -1,5 +1,6 @@
 <?php
 
+use Xmf\Request;
 use XoopsModules\Common\{
     Breadcrumb,
     FormCap,
@@ -37,8 +38,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;

@@ -23,7 +23,7 @@ use XoopsModules\Common\FormSelectGroupCriteria;
 
 require dirname(__FILE__) . '/admin_header.php';
 
-$op = XoopsRequest::getCmd('op', 'permissions');
+$op = Request::getCmd('op', 'permissions');
 switch ($op) {
     default:
     case 'permissions':
@@ -85,7 +85,7 @@ switch ($op) {
     case 'global_perms.save':
         // resetta/aggiorna permesso permname
         $groupperm_handler->deleteByModule($GLOBALS['xoopsModule']->getVar('mid'), 'permname');
-        $groups_perm_permname = XoopsRequest::getArray('groups_perm_permname');
+        $groups_perm_permname = Request::getArray('groups_perm_permname');
         foreach ($groups_perm_permname as $group) {
             $groupperm_handler->addRight('permname', true, $group, $iscrittiHelper->getModule()->mid());
         }

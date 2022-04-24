@@ -40,14 +40,14 @@ define('FORMAJAXTEXTAUTOCOMPLETE_PATH', dirname($currentPath));
 define('FORMAJAXTEXTAUTOCOMPLETE_REL_URL', str_replace(XOOPS_ROOT_PATH . '/', '', dirname($currentPath)));
 define('FORMAJAXTEXTAUTOCOMPLETE_URL', XOOPS_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_REL_URL . '/' . FORMAJAXTEXTAUTOCOMPLETE_FILENAME);
 
-xoops_load('XoopsRequest');
+//xoops_load('XoopsRequest');
 
-$moduleDirname = \XoopsRequest::getString('moduleDirname', 'system', 'POST');
+$moduleDirname = \Request::getString('moduleDirname', 'system', 'POST');
 $moduleHelper = \Xmf\Module\Helper::getHelper($moduleDirname);
 
-$handlerName = \XoopsRequest::getString('handlerName', '', 'POST');
-$field = \XoopsRequest::getString('field', '', 'POST');
-$keyword = \XoopsRequest::getString('keyword', '', 'POST');
+$handlerName = \Request::getString('handlerName', '', 'POST');
+$field = \Request::getString('field', '', 'POST');
+$keyword = \Request::getString('keyword', '', 'POST');
 if ($keyword != '') {
     $data = $moduleHelper->getHandler($handlerName)->getList(new \Criteria($field, "%{$keyword}%", 'LIKE'));
     echo json_encode($data);

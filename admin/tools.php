@@ -22,7 +22,7 @@
 $currentFile = basename(__FILE__);
 include_once __DIR__ . '/admin_header.php';
 
-$op = XoopsRequest::getCmd('op', 'tools');
+$op = Request::getCmd('op', 'tools');
 switch ($op) {
     default:
     case 'tools':

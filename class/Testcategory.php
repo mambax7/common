@@ -64,7 +64,7 @@ class Testcategory extends CommonObject {
         $category_id = Request::getInt('category_id', 0, $hash);
         $this->setVar('category_id', $category_id);
         // name
-        $this->setVar('name', trim(\XoopsRequest::getString('nome', '', $hash)));
+        $this->setVar('name', trim(\Request::getString('nome', '', $hash)));
         //
         return true;
     }

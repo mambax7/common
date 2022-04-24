@@ -55,5 +55,5 @@ define('_AM_COMMON_ERROR_NO_PLUGIN', 'Could not load plugin');
 
 
 //Error NoFrameworks
-define('_AM_COMMON_NOFRAMEWORKS',"Error: You don&#39;t use the Frameworks \"admin module\". Please install this Frameworks");
+define('_AM_COMMON_NOFRAMEWORKS', 'Error: You don&#39;t use the Frameworks "admin module". Please install this Frameworks');
 define('_AM_COMMON_MAINTAINEDBY', 'Mantained by');

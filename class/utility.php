@@ -1,5 +1,7 @@
 <?php
 
+namespace XoopsModules\Common;
+
 use Xmf\Debug;
 use Xmf\Module\Helper;
 use Xmf\Module\Helper\Session;

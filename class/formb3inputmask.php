@@ -11,7 +11,7 @@
  * @version         svn:$Id$
  */
 
-namespace common;
+namespace XoopsModules\Common;
 
 use Xmf\Module\Helper;
 

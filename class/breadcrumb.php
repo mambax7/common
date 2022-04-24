@@ -18,7 +18,7 @@
  * @author          luciorota
  * @version         svn:$Id$
  */
-namespace common;
+namespace XoopsModules\Common;
 use Xmf\Module\Helper;
 
 defined('XOOPS_ROOT_PATH') or die('XOOPS root path not defined');

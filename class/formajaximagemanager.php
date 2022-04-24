@@ -18,7 +18,7 @@
  * @author          luciorota
  * @version         svn:$Id$
  */
-namespace common;
+namespace XoopsModules\Common;
 use Xmf\Request;
 
 $currentPath = __FILE__;

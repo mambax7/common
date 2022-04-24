@@ -19,7 +19,7 @@
  * @version         svn:$Id$
  */
 
-namespace common;
+namespace XoopsModules\Common;
 
 defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once dirname(__DIR__) . '/include/common.php';

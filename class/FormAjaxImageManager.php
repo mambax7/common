@@ -1148,7 +1148,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              */
             public function getValue($encode = false)
             {
-                return $encode ? htmlspecialchars($this->_value) : $this->_value;
+                return $encode ? htmlspecialchars($this->_value, ENT_QUOTES | ENT_HTML5) : $this->_value;
             }
 
             /**

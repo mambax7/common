@@ -137,7 +137,6 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             ];
             echo json_encode($ret);
             exit();
-            break;
 
         case 'getImgcatPermissions' :
             $name = Request::getString('name');
@@ -205,7 +204,6 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             ];
             echo json_encode($ret);
             exit();
-            break;
 
         case 'getImgcatImagesList' :
             $imgcat_id = Request::getInt('imgcat_id', 0);
@@ -552,7 +550,6 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             }
             echo json_encode($arr);
             exit();
-            break;
 
         case 'deleteImage' :
             $name = Request::getString('name', '');
@@ -729,7 +726,6 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $ret['javascript'] = '// NOP';
             echo json_encode($ret);
             exit();
-            break;
 
         case 'submitImgcatForm' :
             $name = Request::getString('name', '');
@@ -829,7 +825,6 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             $ret['javascript'] = '// NOP';
             echo json_encode($ret);
             exit();
-            break;
 
         case 'deleteImgcat' :
             $name = Request::getString('name', '');

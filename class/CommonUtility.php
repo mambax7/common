@@ -223,7 +223,7 @@ class CommonUtility extends XoopsObject {
             @chmod($path, 0777);
             return @unlink($path);
         } else {
-            return fasle;
+            return false;
         }
     }
 

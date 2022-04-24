@@ -152,7 +152,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
                 @chmod($path, 0777);
                 return @unlink($path);
             } else {
-                return fasle;
+                return false;
             }
         }
         /**

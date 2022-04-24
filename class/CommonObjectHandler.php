@@ -18,7 +18,7 @@ abstract class CommonObjectHandler extends \XoopsPersistableObjectHandler {
     public $commonHelper;
 
     /**
-     * @param null|object   $db
+     * @param null|XoopsDatabase $db
      */
     public function __construct($db = null, $table = '', $className = '', $keyName = '', $identifierName = '') {
         parent::__construct($db, $table, $className, $keyName, $identifierName);

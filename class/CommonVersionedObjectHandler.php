@@ -19,7 +19,7 @@ abstract class CommonVersionedObjectHandler extends XoopsPersistableObjectHandle
     public $commonHelper;
 
     /**
-     * @param null|object   $db
+     * @param null|XoopsDatabase $db
      */
     public function __construct($db = null, $table = '', $className = '', $keyName = '', $identifierName = '')
     {

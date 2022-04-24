@@ -33,14 +33,14 @@ class ObjectTree extends \XoopsObjectTree
     /**
      * Make options for a select box from
      *
-     * @param string    $fieldName    Name of the member variable from the node objects that should be used as the title for the options.
-     * @param int       $key          ID of the object to display as the root of select options
-     * @param string    $optionsArray (reference to a string when called from outside) Result from previous recursions
-     * @param string    $prefix_orig  String to indent items at deeper levels
-     * @param string    $prefix_curr  String to indent the current item
+     * @param string $fieldName    Name of the member variable from the node objects that should be used as the title for the options.
+     * @param int    $key          ID of the object to display as the root of select options
+     * @param array  $optionsArray (reference to a string when called from outside) Result from previous recursions
+     * @param string $prefix_orig  String to indent items at deeper levels
+     * @param string $prefix_curr  String to indent the current item
      *
      * @return string
-    @access private
+     * @access private
      */
     public function _makeSelBoxOptionsArray($fieldName, $key, &$optionsArray, $prefix_orig, $prefix_curr = '')
     {

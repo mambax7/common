@@ -428,7 +428,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
          * @param string    $what is either paras, words, bytes or lists.
          * @param int       $start is whether or not to start the result with ‘Lorem ipsum dolor sit amet…‘
          *
-         * @return string
+         * @return false|\SimpleXMLElement
          */
         public static function randomLipsum($amount = 1, $what = 'paras', $start = 0) {
             //$ret = file_get_contents('http://loripsum.net/api')
@@ -442,7 +442,7 @@ if (!defined('COMMON_FUNCTIONS_INCLUDED')) {
          * @param bool      $isBinary
          * @param bool      $retBytes
          *
-         * @return bool|int|mixed
+         * @return bool|int
          */
         function download($filePath, $isBinary = true, $retBytes = true)
         {

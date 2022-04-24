@@ -39,11 +39,12 @@ class FormDatepicker extends \XoopsFormText {
     /**
      * Constructor
      *
-     * @param string $caption   Caption
-     * @param string $name      "name" attribute
-     * @param int    $size      "size" attribute
-     * @param bool   $maxlength "maxlength" attribute
-     * @param int    $min_length should be > 1
+     * @param string $caption Caption
+     * @param string $name    "name" attribute
+     * @param string $value
+     * @param null   $min
+     * @param null   $max
+     * @param null   $step
      */
     public function __construct($caption, $name, $value = '', $min = null, $max = null, $step = null) {
         $this->setCaption($caption);
@@ -57,7 +58,6 @@ class FormDatepicker extends \XoopsFormText {
     /**
      * set the "id" attribute for the element
      *
-     * @param string $name "name" attribute for the element
      */
     public function setId() {
         $this->_id = md5(uniqid(rand(), true));

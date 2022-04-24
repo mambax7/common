@@ -23,9 +23,7 @@ class Testcategory extends CommonObject {
 
     /** @var \XoopsMySQLDatabase */
     public $db;
-
     /**
-     * @param null|int $id
      */
 //TODO verificare il senso di $id
 //    public function __construct($id = null) {
@@ -58,7 +56,7 @@ class Testcategory extends CommonObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = array(), $hash = 'default') {
         parent::setValues($default, $hash);

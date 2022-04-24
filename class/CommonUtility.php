@@ -519,7 +519,7 @@ class CommonUtility extends XoopsObject {
 
     /**
      * @param  string $document
-     * @return mixed
+     * @return array|string|string[]|null
      */
     public static function html2text($document) {
         // PHP Manual:: function preg_replace
@@ -571,8 +571,9 @@ class CommonUtility extends XoopsObject {
     }
 
     /**
-     * @param  string  $string
-     * @param  boolean $numeric
+     * @param string $string
+     * @param bool   $alphanumeric
+     * @param null   $digits
      * @return string
      */
     public static function increment($string, $alphanumeric = false, $digits = null) {

@@ -35,8 +35,7 @@ class FormCheckbox10 extends \XoopsFormElement
      *
      * @param string $caption
      * @param string $name
-     * @param mixed  $value     Either one value as a string or an array of them.
-     * @param string $delimeter
+     * @param mixed  $value Either one value as a string or an array of them.
      */
     public function __construct($caption, $name, $value = 0)
     {
@@ -48,7 +47,6 @@ class FormCheckbox10 extends \XoopsFormElement
     /**
      * Get the "value"
      *
-     * @param  bool  $encode To sanitizer the text?
      * @return array
      */
     public function getValue()

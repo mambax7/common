@@ -147,8 +147,7 @@ class FormGoogleMap extends \XoopsFormElementTray
     /**
      * FormGoogleMap::setConfig()
      *
-     * @param mixed $key, $options or array($key=>, $options=>)
-     * @return
+     * @return bool
      */
     public function setConfig()
     {
@@ -171,7 +170,7 @@ class FormGoogleMap extends \XoopsFormElementTray
     /**
      * prepare HTML for output
      *
-     * @return sting HTML
+     * @return string HTML
      */
     public function render() {
         static $isCommonFormGoogleMapIncluded = false;

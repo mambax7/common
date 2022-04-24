@@ -85,7 +85,7 @@ class Ingrediente extends CommonObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = array(), $hash = 'default') {
         parent::setValues($default, $hash);

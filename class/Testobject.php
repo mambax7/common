@@ -60,7 +60,7 @@ class Testobject extends CommonObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = [], $hash = 'default') {
         parent::setValues($default, $hash);
@@ -71,7 +71,7 @@ class Testobject extends CommonObject {
     }
 
     /**
-     * @return Form
+     * @return \XoopsModules\Common\ThemedForm
      */
     public function getForm($action = false) {
         if ($action === false) {

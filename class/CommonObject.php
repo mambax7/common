@@ -106,7 +106,7 @@ abstract class CommonObject extends \XoopsObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = [], $hash = 'default') {
         $this->setVar('weight', Request::getInt('weight', 0, $hash));

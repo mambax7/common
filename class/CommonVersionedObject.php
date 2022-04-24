@@ -65,7 +65,7 @@ abstract class CommonVersionedObject extends CommonObject
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = [], $hash = 'default')
     {

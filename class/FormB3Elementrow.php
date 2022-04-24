@@ -94,9 +94,8 @@ class FormB3Elementrow extends \XoopsFormElement {
     /**
      * Add an element to the group
      *
-     * @param XoopsFormElement $formElement {@link XoopsFormElement} to add
-     * @param bool             $required
-     *
+     * @param \XoopsFormElement $formElement {@link XoopsFormElement} to add
+     * @param bool              $required
      */
     public function addElement(\XoopsFormElement $formElement, $required = false) {
         $this->_elements[] = $formElement;

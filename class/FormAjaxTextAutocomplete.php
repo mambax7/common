@@ -104,7 +104,6 @@ if (!class_exists('FormAjaxTextAutocomplete')) {
         /**
          * set the "id" attribute for the element
          *
-         * @param string $name "name" attribute for the element
          */
         public function setId()
         {

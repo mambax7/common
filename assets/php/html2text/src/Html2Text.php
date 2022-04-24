@@ -93,7 +93,7 @@ class Html2Text {
 	 *
 	 * @param string $html the input HTML
 	 * @param boolean $ignore_error Ignore xml parsing errors
-	 * @return DOMDocument the parsed document tree
+	 * @return \DOMDocument the parsed document tree
 	 */
 	static function getDocument($html, $ignore_error = false) {
 

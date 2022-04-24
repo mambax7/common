@@ -1123,7 +1123,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
              *
              * @param $return
              *
-             * @return string
+             * @return void
              */
             function setReturn($return)
             {
@@ -1196,7 +1196,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             /**
              * prepare HTML for output
              *
-             * @return sting HTML
+             * @return string HTML
              */
             function render()
             {

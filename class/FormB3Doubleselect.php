@@ -100,7 +100,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
     /**
      * Set To values
      *
-     * @param mixed $value
+     * @param $values
      */
     public function setValuesTo($values) {
         if (is_array($values)) {
@@ -132,7 +132,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
     /**
      * Set From values
      *
-     * @param mixed $value
+     * @param $values
      */
     public function setValuesFrom($values) {
         if (is_array($values)) {
@@ -164,7 +164,7 @@ class FormB3Doubleselect extends \XoopsFormElement {
     /**
      * prepare HTML for output
      *
-     * @return sting HTML
+     * @return string HTML
      */
     public function render() {
         static $isCommonFormB3DoubleselectIncluded = false;

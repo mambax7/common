@@ -509,7 +509,7 @@ class UploadHandler
     /**
      * @param $name
      *
-     * @return mixed
+     * @return array|string|string[]|null
      */
     protected function upcount_name($name) {
         return preg_replace_callback(
@@ -551,7 +551,7 @@ class UploadHandler
      * @param null $index
      * @param null $content_range
      *
-     * @return mixed|string
+     * @return array|string|string[]
      */
     protected function trim_file_name($name,
             $type = null, $index = null, $content_range = null) {
@@ -1326,6 +1326,7 @@ class UploadHandler
     /**
      * @param      $content
      * @param bool $print_response
+     * @return mixed|void
      */
     protected function generate_response($content, $print_response = true) {
         if ($print_response) {

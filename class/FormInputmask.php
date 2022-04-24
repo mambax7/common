@@ -48,12 +48,11 @@ class FormInputmask extends \XoopsFormElement {
     /**
      * Constructor
      *
-     * @param mixed     $caption
-     * @param mixed     $name
-     * @param integer   $value
-     * @param string    $inputmask more info here:https://github.com/RobinHerbots/Inputmask
-     * @param array     $attributes
-     * 
+     * @param mixed  $caption
+     * @param mixed  $name
+     * @param string $value
+     * @param string $inputmask more info here:https://github.com/RobinHerbots/Inputmask
+     * @param array  $options
      */
     public function __construct($caption, $name, $value = '', $inputmask = null, $options = []) {
         $this->setCaption($caption);

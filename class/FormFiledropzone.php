@@ -48,14 +48,13 @@ class FormFiledropzone extends \XoopsFormText
     private $_moduleDirname;
     private $_field;
     private $_segreteria_ids;
-     /**
+
+    /**
      * Constructor
      *
-     * @param string $caption   Caption
-     * @param string $name      "name" attribute
-     * @param int    $size      "size" attribute
-     * @param bool   $maxlength "maxlength" attribute
-     * @param int    $min_length should be > 1
+     * @param string $caption Caption
+     * @param string $name    "name" attribute
+     * @param string $value
      */
     public function __construct($caption, $name, $value = '')
     {
@@ -67,7 +66,6 @@ class FormFiledropzone extends \XoopsFormText
     /**
      * set the "id" attribute for the element
      *
-     * @param string $name "name" attribute for the element
      */
     function setId()
     {

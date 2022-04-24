@@ -48,11 +48,11 @@ class FormBootstrapDatepicker extends \XoopsFormText {
     /**
      * Constructor
      *
-     * @param string $caption   Caption
-     * @param string $name      "name" attribute
-     * @param int    $size      "size" attribute
-     * @param bool   $maxlength "maxlength" attribute
-     * @param int    $min_length should be > 1
+     * @param string $caption Caption
+     * @param string $name    "name" attribute
+     * @param string $value
+     * @param null   $startDate
+     * @param null   $endDate
      */
     public function __construct($caption, $name, $value = '', $startDate = null, $endDate = null) {
         $this->setCaption($caption);

@@ -49,11 +49,10 @@ class FormB3Slider extends \XoopsFormElement {
     /**
      * Constructor
      *
-     * @param mixed         $caption
-     * @param mixed         $name
-     * @param integer|array $value single numeric or array with 2 numeric values
-     * @param array         $options more info here: https://github.com/seiyria/bootstrap-slider
-     * 
+     * @param mixed $caption
+     * @param mixed $name
+     * @param null  $values
+     * @param array $options more info here: https://github.com/seiyria/bootstrap-slider
      */
     public function __construct($caption, $name, $values = null, $options = []) {
         $this->setCaption($caption);

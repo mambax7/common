@@ -1133,7 +1133,7 @@ if ((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQ
             /**
              * Set initial content
              *
-             * @param  $value string
+             * @param string $value
              */
             function setValue($value)
             {

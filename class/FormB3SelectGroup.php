@@ -100,7 +100,7 @@ class FormB3SelectGroup extends \XoopsFormElement {
     /**
      * Set initial content
      *
-     * @param  $value string
+     * @param string $value
      */
     function setValue($value) {
         $this->_value = $value;

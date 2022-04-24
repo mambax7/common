@@ -97,7 +97,7 @@ class FormXoopsImage extends \XoopsFormText
     /**
      * Set initial text value
      *
-     * @param  $value string
+     * @param string $value
      */
     public function setValue($value)
     {
